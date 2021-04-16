@@ -63,7 +63,7 @@ public class MeleeAI : MonoBehaviour
             playerTracker.Clear();
             thingsICanSee.Clear();
 
-            //Transform player = targetsInViewRadius[i].transform;
+            Transform player = targetsInViewRadius[i].transform;
             Transform playerTargetPoint = player.transform;
 
             Vector3 dirToTarget = (playerTargetPoint.position - (transform.position - transform.forward)).normalized;
@@ -79,7 +79,7 @@ public class MeleeAI : MonoBehaviour
                     lastKnownPos = playerTargetPoint.position;
                     distanceToLastKnownPos = dist;
                     seenPlayer = true;
-                    //Debug.DrawLine(transform.position + new Vector3(0, eyeHeight, 0), hit.point, Color.green);
+                    Debug.DrawLine(transform.position + new Vector3(0, eyeHeight, 0), hit.point, Color.green);
                 }
 
                 else
