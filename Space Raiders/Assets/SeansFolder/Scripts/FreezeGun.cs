@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class FreezeGun : MonoBehaviour
 {
+   //m1 gun
+
+    public float damage = 10f;
+    public float range = 100f;
+    public float firerate = 25f;
+    public Camera fpscam;
+    public float nexttimetofire = 0f;
+
+    public GameObject projectile;
+    public GameObject gunpoint;
+    
+    public bool shooting;
+
+
+    //Freeze m2 Var
+  
     public GameObject freezebeam;
     public bool Beam;
-    public Rigidbody projectile;
-    public Transform gunpoint;
-    public LayerMask ground;
-
-    //Freeze Var
     private bool freezing = false;
     public int freezespeed = 2;
     public int Slow = 1;
@@ -23,14 +34,18 @@ public class FreezeGun : MonoBehaviour
     void Start()
     {
         freezebeam.SetActive(false);
+        shooting = false;
     }
     // Update is called once per frame
     void Update()
     {
+        
+        
         if (Input.GetKey(KeyCode.Mouse0))
         {
             freezebeam.SetActive(true);
             Beam = true;
+
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -38,13 +53,17 @@ public class FreezeGun : MonoBehaviour
             Beam = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !Beam)
+        if (Input.GetKey(KeyCode.Mouse1) && !Beam && Time.time >= nexttimetofire)
         {
-            Rigidbody projectileInstance;
-            projectileInstance = Instantiate(projectile, gunpoint.position, gunpoint.rotation) as Rigidbody;
-            projectileInstance.AddForce(gunpoint.forward * 4000f);
-
+           nexttimetofire = Time.time + 1f/firerate;
+           Shoot();
+           shooting = true;
         }
+        else
+        {
+            shooting = false;
+        }
+       
          
         if(freezing)
         {
@@ -74,7 +93,6 @@ public class FreezeGun : MonoBehaviour
    
         }
 
-
         private void OnParticleTrigger()
         {
             StartFreezing();
@@ -82,4 +100,20 @@ public class FreezeGun : MonoBehaviour
 
 
 
+        void Shoot()
+    {
+        RaycastHit hit;
+ 
+        if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+        {
+            // instantiate the bullet
+            Debug.Log(hit.transform.name);
+
+
+        
+            
+        }
+    }
 }
+
+
