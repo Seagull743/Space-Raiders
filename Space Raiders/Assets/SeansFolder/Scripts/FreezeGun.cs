@@ -22,13 +22,9 @@ public class FreezeGun : MonoBehaviour
   
     public GameObject freezebeam;
     public bool Beam;
-    private bool freezing = false;
-    public int freezespeed = 2;
-    public int Slow = 1;
-    public static int freezeduration = 5;
-    private int unfreezetime;
-
-    public float freezecooldown = 0;
+   
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +35,8 @@ public class FreezeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
         if (Input.GetKey(KeyCode.Mouse0))
         {
             freezebeam.SetActive(true);
@@ -55,49 +51,18 @@ public class FreezeGun : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1) && !Beam && Time.time >= nexttimetofire)
         {
-           nexttimetofire = Time.time + 1f/firerate;
-           Shoot();
-           shooting = true;
+            nexttimetofire = Time.time + 1f / firerate;
+            Shoot();
+            shooting = true;
         }
         else
         {
             shooting = false;
         }
-       
-         
-        if(freezing)
-        {
-            if (unfreezetime > 0)
-            {
-                StartFreezing();
-                //Put Enemy FUnction Here
-            }
-            else if(unfreezetime <= 0)
-            {
-               UnFreezing();
-               //Enemy Normal
-            }
-        }
 
     }
-        private void StartFreezing()
-        {
-            freezing = true;
-            unfreezetime = freezeduration;
-        }
-        private void UnFreezing()
-        {
-            freezing = false;
-            Slow = 1;
-            unfreezetime = 0;
-   
-        }
-
-        private void OnParticleTrigger()
-        {
-            StartFreezing();
-        }
-
+        
+        
 
 
         void Shoot()
@@ -106,13 +71,12 @@ public class FreezeGun : MonoBehaviour
  
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
-            // instantiate the bullet
-            Debug.Log(hit.transform.name);
-
-
-        
+            GameObject tempProjectile = Instantiate(projectile, gunpoint.transform.position, gunpoint.transform.rotation);
+            tempProjectile.GetComponent<Projectile>().hitpoint = hit.point;
+            Debug.Log(hit.transform.name);      
             
         }
+        
     }
 }
 

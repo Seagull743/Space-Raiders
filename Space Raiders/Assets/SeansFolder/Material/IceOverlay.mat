@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ToonMat
+  m_Name: IceOverlay
   m_Shader: {fileID: -6465566751694194690, guid: 6e7377b3c938fe8428033daf8458aab9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -65,10 +65,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1C2A4340: 0.758
+    - Vector1_1C2A4340: 1
     - Vector1_274CB7FC: 0
-    - Vector1_DBE3EE6B: 0.019
-    - Vector1_E42B6392: 0.5
+    - Vector1_DBE3EE6B: 1
+    - Vector1_E42B6392: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -91,8 +91,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_A140058F: {r: 0.00093449844, g: 0.030210545, b: 0.1981132, a: 0}
-    - Color_B1DAC0D7: {r: 0.40392157, g: 0.29453793, b: 0.0745098, a: 0}
+    - Color_A140058F: {r: 0, g: 1, b: 0.952054, a: 0}
+    - Color_B1DAC0D7: {r: 0.2190053, g: 0.0047169924, b: 1, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
