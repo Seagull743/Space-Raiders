@@ -38,11 +38,12 @@ public class MoveObject : MonoBehaviour
                 nextposindex = 0;
             }
             nextpos = positions[nextposindex];
-        }           
-        else
+        }                 
+        else 
         {
            transform.position = Vector3.MoveTowards(transform.position, nextpos.position, Objectspeed * Time.deltaTime);
         }
+       
     }
 
 

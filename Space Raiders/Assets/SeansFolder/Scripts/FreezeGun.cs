@@ -21,6 +21,7 @@ public class FreezeGun : MonoBehaviour
     //Freeze m2 Var
   
     public GameObject freezebeam;
+    public GameObject colliderBeam;
     public bool Beam;
    
     
@@ -31,6 +32,7 @@ public class FreezeGun : MonoBehaviour
     {
         freezebeam.SetActive(false);
         shooting = false;
+        colliderBeam.GetComponent<Collider>().enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -40,12 +42,14 @@ public class FreezeGun : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             freezebeam.SetActive(true);
+            colliderBeam.GetComponent<Collider>().enabled = true;
             Beam = true;
 
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             freezebeam.SetActive(false);
+            colliderBeam.GetComponent<Collider>().enabled = false;
             Beam = false;
         }
 
@@ -61,11 +65,10 @@ public class FreezeGun : MonoBehaviour
         }
 
     }
-        
-        
 
 
-        void Shoot()
+
+    void Shoot()
     {
         RaycastHit hit;
  

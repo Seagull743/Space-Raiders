@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-
     public int freezespeed = 2;
-    public int Slow = 1;
+    public static int Slow = 1;
     public static int freezeduration = 5;
     private int unfreezetime;
-
     public bool freezing = false;
-
     public float freezecooldown = 0;
 
     // Start is called before the first frame update
@@ -19,7 +16,6 @@ public class Freeze : MonoBehaviour
     {
 
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,32 +23,30 @@ public class Freeze : MonoBehaviour
         {
             if (unfreezetime > 0)
             {
-                StartFreezing();
-                //Put Enemy FUnction Here
+                StartFreezing();           
             }
             else if (unfreezetime <= 0)
             {
-                UnFreezing();
-                //Enemy Normal
+                UnFreezing();        
             }
         }
-
     }
     private void StartFreezing()
     {
         freezing = true;
         unfreezetime = freezeduration;
-
+        unfreezetime--;
     }
     private void UnFreezing()
     {
         freezing = false;
-        Slow = 1;
         unfreezetime = 0;
-
     }
-
+   
+   
 }
+
+
 
         
         
