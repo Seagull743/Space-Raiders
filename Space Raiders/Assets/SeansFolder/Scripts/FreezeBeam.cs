@@ -14,13 +14,18 @@ public class FreezeBeam : MonoBehaviour
         {
             timertoFreeze += Time.deltaTime;
 
-            if(timertoFreeze >= 3)
+            if(timertoFreeze >= 2)
             {
-                Debug.Log("Frozen complete");
-                timerunFreeze -= Time.deltaTime;
-                if(timerunFreeze <= 0)
+                Debug.Log("Frozen complete");             
+                
+                if(timerunFreeze >= 0)
                 {
-                    freezing = false;
+                    timerunFreeze -= Time.deltaTime;
+                    
+                    if(timerunFreeze == 0)
+                    {
+                        Invoke("TheTimer", 3);
+                    }         
                 }
                 //Get the enemys component speed etc
             }
@@ -30,6 +35,13 @@ public class FreezeBeam : MonoBehaviour
             timertoFreeze = 0;
         }
     }
+
+    public void TheTimer()
+    {
+        freezing = false;
+        Debug.Log("I've been unfrozen");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -42,8 +54,7 @@ public class FreezeBeam : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            freezing = false;
-            Debug.Log("I'm  un frozen");        
+            freezing = false;       
         }
     }
 }
