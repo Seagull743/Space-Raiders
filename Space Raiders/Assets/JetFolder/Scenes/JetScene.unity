@@ -908,7 +908,17 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderDist: 10
   seenPlayer: 0
-  speed: 0
+  speed: 3
+  viewAngle: 0
+  playerOnlyLM:
+    serializedVersion: 2
+    m_Bits: 0
+  wallsOnlyLM:
+    serializedVersion: 2
+    m_Bits: 0
+  playerTracker: []
+  thingsIThinkICanSee: []
+  thingsICanSee: []
 --- !u!54 &923910568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -959,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a592ae197aa945847b6960fb1fde57b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolWaiting: 0
+  _patrolWaiting: 1
   _totalWaitTime: 3
   _switchProbability: 0.2
   _patrolPoints: []

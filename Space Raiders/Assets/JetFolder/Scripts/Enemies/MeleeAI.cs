@@ -10,18 +10,42 @@ public class MeleeAI : MonoBehaviour
     [SerializeField]
     private NPCState npcState = NPCState.idle;
 
-    public GameObject Player;
+    public Transform player;
 
     [SerializeField]
     float wanderDist = 10f;
 
-    public bool seenPlayer;
-    public float speed;
+    bool seenPlayer;
+
+    float walkSpeed = 1f;
+    float runSpeed = 5f;
+    float closeToPlayerSpeed = 3f;
+
+    float damage;
+
+    float distToPlayer;
+
+    [Range(0, 360)]
+    [SerializeField] float viewAngle;
+    [SerializeField] LayerMask targetMask;
+    [SerializeField] LayerMask obstacleMask;
+    public List<Transform> visibleTargets = new List<Transform>();
+
+    [SerializeField] private Vector3 lastKnownPos;
+    [SerializeField] Color sightColour = new Color(207, 169, 255, 255);
+
+    Rigidbody rb;
+
+    RaycastHit hit;
+
+    private void Start()
+    {
+        nav.speed = walkSpeed;
+    }
 
     public enum NPCState
     {
         idle,
-        wander,
         chase,
         attack,
     }
@@ -34,10 +58,6 @@ public class MeleeAI : MonoBehaviour
                 Idle();
 
                 break;
-            case NPCState.wander:
-                Wander();
-
-                break;
             case NPCState.chase:
                 Chase();
 
@@ -48,41 +68,43 @@ public class MeleeAI : MonoBehaviour
 
             default:
                 break;
-
         }
+
+        float distToPlayer = Vector3.Distance(player.position, transform.position);
     }
 
     void Idle()
     {
-        if(seenPlayer == false)
-        {
 
-        }
-    }
-
-    void Wander()
-    {
-        if(seenPlayer == false)
-        {
-
-        }
     }
 
     void Chase()
     {
         if(seenPlayer == true)
         {
-
+            nav.speed = runSpeed;
         }
     }
 
     void Attack()
     {
-
+        if(seenPlayer == true && distToPlayer <= 3f)
+        {
+            
+        }
     }
 
     void Death()
     {
 
+    }
+
+    public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleInDegrees += transform.rotation.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
