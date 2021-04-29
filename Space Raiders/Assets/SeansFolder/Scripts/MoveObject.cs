@@ -25,6 +25,16 @@ public class MoveObject : MonoBehaviour
     void Update()
     {
         MoveGameObject();
+
+        if(FreezeBeam.freezingComplete == true)
+        {
+            Objectspeed = 1;
+        }
+        else
+        {
+            Objectspeed = 5;
+        }
+
     }
 
 
@@ -38,7 +48,7 @@ public class MoveObject : MonoBehaviour
                 nextposindex = 0;
             }
             nextpos = positions[nextposindex];
-        }                 
+        }
         else 
         {
            transform.position = Vector3.MoveTowards(transform.position, nextpos.position, Objectspeed * Time.deltaTime);

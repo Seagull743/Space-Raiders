@@ -20,7 +20,7 @@ public class FreezeGun : MonoBehaviour
 
     //Freeze m2 Var
   
-    public GameObject freezebeam;
+    public ParticleSystem freezebeam;
     public GameObject colliderBeam;
     public bool Beam;
    
@@ -30,7 +30,7 @@ public class FreezeGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        freezebeam.SetActive(false);
+        freezebeam.Stop();
         shooting = false;
         colliderBeam.GetComponent<Collider>().enabled = false;
     }
@@ -41,14 +41,15 @@ public class FreezeGun : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            freezebeam.SetActive(true);
+            freezebeam.Play();
             colliderBeam.GetComponent<Collider>().enabled = true;
             Beam = true;
 
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            freezebeam.SetActive(false);
+            freezebeam.Stop();
+            FreezeBeam.timertoFreeze = 0;
             colliderBeam.GetComponent<Collider>().enabled = false;
             Beam = false;
         }

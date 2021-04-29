@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FreezeBeam : MonoBehaviour
 {
-    public float timertoFreeze = 0;
-    public float timerunFreeze = 5;
+    public static float timertoFreeze = 0;
+    public float timerunFreeze = 3;
     public static bool freezing = false;
+    public static bool freezingComplete = false;
     public static float freezeslow = -3f;
     void Update()
     {
@@ -16,45 +17,57 @@ public class FreezeBeam : MonoBehaviour
 
             if(timertoFreeze >= 2)
             {
-                Debug.Log("Frozen complete");             
-                
-                if(timerunFreeze >= 0)
+                Debug.Log("Frozen complete");
+                freezingComplete = true;
+
+                if (freezingComplete == true)
                 {
-                    timerunFreeze -= Time.deltaTime;
-                    
-                    if(timerunFreeze == 0)
+                                   
+                    if (timerunFreeze > 0)
                     {
-                        Invoke("TheTimer", 3);
-                    }         
+                        timerunFreeze -= Time.deltaTime;             
+                    }
+                    else
+                    {
+                        Invoke("TheTimer", 1.5f);
+                    }
                 }
-                //Get the enemys component speed etc
             }
+         
         }
         else if(!freezing)
         {
             timertoFreeze = 0;
+            freezingComplete = false;
+            timerunFreeze = 5;
         }
-    }
 
+    }
     public void TheTimer()
     {
         freezing = false;
+        freezingComplete = false;
         Debug.Log("I've been unfrozen");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             freezing = true;
             Debug.Log("I'm freezing");      
         }
+        else
+        {
+            timertoFreeze = 0;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            freezing = false;       
+            freezing = false;
+            timertoFreeze = 0;
         }
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-    public int freezespeed = 2;
-    public static int Slow = 1;
-    public static int freezeduration = 5;
-    private int unfreezetime;
+    public float freezespeed = 2;
+    public static float Slow = 1;
+    public static float freezeduration = 5;
+    private float unfreezetime;
     public bool freezing = false;
     public float freezecooldown = 0;
 
