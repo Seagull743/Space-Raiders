@@ -25,6 +25,8 @@ public class MeleeAI : MonoBehaviour
 
     float distToPlayer;
 
+    float radius;
+
     [Range(0, 360)]
     [SerializeField] float viewAngle;
     [SerializeField] LayerMask targetMask;
@@ -68,9 +70,7 @@ public class MeleeAI : MonoBehaviour
 
             default:
                 break;
-        }
-
-        float distToPlayer = Vector3.Distance(player.position, transform.position);
+        }  
     }
 
     void Idle()
@@ -80,7 +80,9 @@ public class MeleeAI : MonoBehaviour
 
     void Chase()
     {
-        if(seenPlayer == true)
+        float distToPlayer = Vector3.Distance(player.position, transform.position);
+
+        if (seenPlayer == true && distToPlayer >= 20f)
         {
             nav.speed = runSpeed;
         }
@@ -88,9 +90,14 @@ public class MeleeAI : MonoBehaviour
 
     void Attack()
     {
-        if(seenPlayer == true && distToPlayer <= 3f)
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        
+        foreach (var hitCollider in hitColliders)
         {
-            
+            if (seenPlayer == true && distToPlayer <= 3f)
+            {
+
+            }
         }
     }
 
