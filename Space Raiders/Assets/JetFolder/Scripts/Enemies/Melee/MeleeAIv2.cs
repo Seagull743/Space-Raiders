@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Active.Core;
-using static Active.Raw;
+using static Active.Status;
 
-public class MeleeAIv2 : MonoBehaviour
+public class MeleeAIv2 : UGig
 {
-    static status state = cont;
+    override public status Step() => Eval(
+        Attack())
 
-    status Idle() =
+    void Update()
+    {
+        state = Attack() || Defend() || Retreat();
+        if (!state.running)
+        {
+            enabled = false;
+        }
+    }
+
+    status Attack()
+    {
+
+    }
 }
