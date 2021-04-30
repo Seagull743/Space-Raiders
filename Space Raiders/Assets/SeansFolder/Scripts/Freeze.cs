@@ -4,46 +4,89 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-    public float freezespeed = 2;
-    public static float Slow = 1;
-    public static float freezeduration = 5;
-    private float unfreezetime;
-    public bool freezing = false;
-    public float freezecooldown = 0;
+    public static float timertoFreeze = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public float timerunFreeze = 5;
+        
+
+    public static bool freezing = false;
+    public static bool freezingComplete = false;
+    public static float freezeslow = -3f;
+    public bool canFreeze = true;
+
+    //Creating the FreezeHighlight
+    public Material normal;
+    public Material Frozen;
+
+
+     void Start()
     {
-
+        gameObject.GetComponent<Renderer>().material = normal;    
     }
-    // Update is called once per frame
+
+
     void Update()
     {
-        if (freezing)
-        {
-            if (unfreezetime > 0)
-            {
-                StartFreezing();           
-            }
-            else if (unfreezetime <= 0)
-            {
-                UnFreezing();        
-            }
+       
+        
+         if (freezing)
+         {
+             timertoFreeze += Time.deltaTime;
+
+             if (timertoFreeze >= 2)
+                 {
+                    Debug.Log("Frozen complete");
+                    gameObject.GetComponent<Renderer>().material = Frozen;
+                    freezingComplete = true;
+
+                        if (freezingComplete == true)
+                        {
+                                
+                             if (timerunFreeze >= 0)
+                                {
+                                    timerunFreeze -= Time.deltaTime;
+                                }
+                             else
+                                {
+                                    Invoke("TheTimer", 1.5f);
+                                }
+                            }
+                        }
+       }
+       else if (!freezing)
+       {
+           timertoFreeze = 0;
+           freezingComplete = false;
+            timerunFreeze = 5;
         }
+    
+        
+        if(freezingComplete && freezing)
+        {
+            timerunFreeze -= Time.deltaTime;
+        }     
+
     }
-    private void StartFreezing()
+
+    public void StartFreezing()
     {
         freezing = true;
-        unfreezetime = freezeduration;
-        unfreezetime--;
+        Debug.Log("I'm freezing");
     }
-    private void UnFreezing()
+
+    public void UnFreezing()
     {
         freezing = false;
-        unfreezetime = 0;
+        timertoFreeze = 0;
     }
-   
-   
+
+    public void TheTimer()
+    {
+        freezing = false;
+        freezingComplete = false;
+        Debug.Log("I've been unfrozen");
+        gameObject.GetComponent<Renderer>().material = normal;
+    }
 }
 
 

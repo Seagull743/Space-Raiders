@@ -6,7 +6,7 @@ public class MoveObject : MonoBehaviour
 {
     
     [SerializeField] Transform[] positions;
-    [SerializeField] float Objectspeed;
+    public static float Objectspeed;
 
 
 
@@ -26,15 +26,14 @@ public class MoveObject : MonoBehaviour
     {
         MoveGameObject();
 
-        if(FreezeBeam.freezingComplete == true)
+        if(Freeze.freezingComplete == true)
         {
-            Objectspeed = 1;
+            Objectspeed = 2;
         }
         else
         {
             Objectspeed = 5;
         }
-
     }
 
 
