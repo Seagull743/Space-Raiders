@@ -122,7 +122,67 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: f5e96ddbf11f9a844916d53e2b0d8113, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 69c76510a811982428440c060fe3b790, type: 2}
+--- !u!1 &195100347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195100348}
+  - component: {fileID: 195100349}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &195100348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195100347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.372015, y: -9.156456, z: 15.027695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195100349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195100347}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 1d31ae83c975d0c49a55000425182903, type: 2}
 --- !u!1 &424489911
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,25 +755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97be13a0e8053e746b0fb97598a7bc4c, type: 3}
---- !u!1 &837824258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2429893408259004358, guid: 97be13a0e8053e746b0fb97598a7bc4c, type: 3}
+--- !u!4 &837824263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2429893408259004216, guid: 97be13a0e8053e746b0fb97598a7bc4c, type: 3}
   m_PrefabInstance: {fileID: 837824257}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &837824259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837824258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9293d7fca8c1b9f4680e3b9104150831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingPlayerHealth: 20
-  currentPlayerHealth: 0
 --- !u!1 &912832259
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,19 +969,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778af8516748b5942b4f10b2156d95b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcState: 0
-  player: {fileID: 0}
-  wanderDist: 10
-  viewAngle: 0
+  nav: {fileID: 923910569}
+  player: {fileID: 837824263}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
   targetMask:
     serializedVersion: 2
     m_Bits: 512
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  visibleTargets: []
-  lastKnownPos: {x: 0, y: 0, z: 0}
-  sightColour: {r: 207, g: 169, b: 255, a: 255}
+  health: 100
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  timeBetweenAttacks: 1
+  projectile: {fileID: 0}
+  sightRange: 10
+  attackRange: 5
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!54 &923910568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -962,7 +1012,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 11
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -981,7 +1031,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923910562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a592ae197aa945847b6960fb1fde57b1, type: 3}
   m_Name: 
@@ -1570,27 +1620,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607292891}
-  - component: {fileID: 1607292890}
   m_Layer: 0
   m_Name: HurtPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1607292890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607292889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b81a045e4ef9044be9db82aff85ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
+  m_IsActive: 0
 --- !u!4 &1607292891
 Transform:
   m_ObjectHideFlags: 0

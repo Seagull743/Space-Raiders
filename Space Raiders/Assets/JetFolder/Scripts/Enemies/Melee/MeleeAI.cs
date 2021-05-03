@@ -2,116 +2,113 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
 
 public class MeleeAI : MonoBehaviour
 {
-    private NavMeshAgent nav;
-    [SerializeField]
-    private NPCState npcState = NPCState.idle;
+    public NavMeshAgent nav;
 
     public Transform player;
 
-    [SerializeField]
-    float wanderDist = 10f;
+    public LayerMask groundMask, targetMask;
 
-    bool seenPlayer;
+    public float health;
 
-    float walkSpeed = 1f;
-    float runSpeed = 5f;
-    float closeToPlayerSpeed = 3f;
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange;
 
-    float damage;
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+    //public GameObject projectile;
 
-    float distToPlayer;
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
-    float radius;
-
-    [Range(0, 360)]
-    [SerializeField] float viewAngle;
-    [SerializeField] LayerMask targetMask;
-    [SerializeField] LayerMask obstacleMask;
-    public List<Transform> visibleTargets = new List<Transform>();
-
-    [SerializeField] private Vector3 lastKnownPos;
-    [SerializeField] Color sightColour = new Color(207, 169, 255, 255);
-
-    Rigidbody rb;
-
-    RaycastHit hit;
-
-    private void Start()
+    private void Awake()
     {
-        nav.speed = walkSpeed;
+        player = GameObject.Find("Player").transform;
+        nav = GetComponent<NavMeshAgent>();
     }
 
-    public enum NPCState
+    private void Update()
     {
-        idle,
-        chase,
-        attack,
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
+
+        if (!playerInSightRange && !playerInAttackRange) Patrol();
+        if (playerInSightRange && !playerInAttackRange) Chase();
+        if (playerInAttackRange && playerInSightRange) Attack();
     }
 
-    void Update()
+    private void Patrol()
     {
-        switch (npcState)
+        if (!walkPointSet) SearchWalkPoint();
+
+        if (walkPointSet)
+            nav.SetDestination(walkPoint);
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        if (distanceToWalkPoint.magnitude < 1f)
+            walkPointSet = false;
+    }
+
+    private void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundMask))
+            walkPointSet = true;
+    }
+
+    private void Chase()
+    {
+        nav.SetDestination(player.position);
+    }
+    
+    private void Attack()
+    {
+        nav.SetDestination(transform.position);
+
+        transform.LookAt(player);
+
+        if(!alreadyAttacked)
         {
-            case NPCState.idle:
-                Idle();
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-                break;
-            case NPCState.chase:
-                Chase();
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-                break;
-            case NPCState.attack:
-                Attack();
-                break;
-
-            default:
-                break;
-        }  
-    }
-
-    void Idle()
-    {
-
-    }
-
-    void Chase()
-    {
-        float distToPlayer = Vector3.Distance(player.position, transform.position);
-
-        if (seenPlayer == true && distToPlayer >= 20f)
-        {
-            nav.speed = runSpeed;
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
-    void Attack()
+    private void ResetAttack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        
-        foreach (var hitCollider in hitColliders)
-        {
-            if (seenPlayer == true && distToPlayer <= 3f)
-            {
-
-            }
-        }
+        alreadyAttacked = false;
     }
 
-    void Death()
+    public void TakeDamage(int damage)
     {
+        health -= damage;
 
+        if (health <= 0) Invoke(nameof(DestroyEnemy), .5f);
     }
 
-    public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGlobal)
+    private void DestroyEnemy()
     {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.rotation.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
