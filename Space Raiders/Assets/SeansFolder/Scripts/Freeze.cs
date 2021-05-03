@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-    public static float timertoFreeze = 0;
+    public float timertoFreeze = 0;
 
     public float timerunFreeze = 5;
         
 
-    public static bool freezing = false;
-    public static bool freezingComplete = false;
-    public static float freezeslow = -3f;
+    public  bool freezing = false;
+    public  bool freezingComplete = false;
+    public  float freezeslow = -3f;
     public bool canFreeze = true;
 
     //Creating the FreezeHighlight
@@ -71,7 +71,7 @@ public class Freeze : MonoBehaviour
     public void StartFreezing()
     {
         freezing = true;
-        Debug.Log("I'm freezing");
+        
     }
 
     public void UnFreezing()

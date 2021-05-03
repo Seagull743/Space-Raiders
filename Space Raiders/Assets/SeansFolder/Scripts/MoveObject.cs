@@ -6,7 +6,7 @@ public class MoveObject : MonoBehaviour
 {
     
     [SerializeField] Transform[] positions;
-    public static float Objectspeed;
+    public float Objectspeed;
 
 
 
@@ -24,12 +24,12 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveGameObject();
+       // MoveGameObject();
 
-        if(Freeze.freezingComplete == true)
-        {
-            Objectspeed = 2;
-        }
+       // if(Freeze.freezingComplete == true)
+       // {
+         //   Objectspeed = 2;
+       // }
         else
         {
             Objectspeed = 5;
@@ -54,6 +54,5 @@ public class MoveObject : MonoBehaviour
         }
        
     }
-
 
 }
