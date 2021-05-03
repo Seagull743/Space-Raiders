@@ -30,7 +30,7 @@ public class MoveObject : MonoBehaviour
        // {
          //   Objectspeed = 2;
        // }
-        else
+        //else
         {
             Objectspeed = 5;
         }

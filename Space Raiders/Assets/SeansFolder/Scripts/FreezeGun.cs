@@ -49,7 +49,7 @@ public class FreezeGun : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             freezebeam.Stop();
-            Freeze.timertoFreeze = 0;
+            //Freeze.timertoFreeze = 0;
             colliderBeam.GetComponent<Collider>().enabled = false;
             Beam = false;
         }
