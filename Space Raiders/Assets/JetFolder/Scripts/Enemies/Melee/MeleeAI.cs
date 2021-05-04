@@ -9,20 +9,23 @@ public class MeleeAI : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask groundMask, targetMask;
+    [SerializeField] LayerMask groundMask, targetMask;
 
     public float health;
 
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField] float walkSpeed = 1f;
+    [SerializeField] float runSpeed = 4f;
 
-    public float timeBetweenAttacks;
+    //public Vector3 walkPoint;
+    //bool walkPointSet;
+    //public float walkPointRange;
+
+    [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
     //public GameObject projectile;
 
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [SerializeField] float sightRange, attackRange;
+    [SerializeField] bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
@@ -35,37 +38,38 @@ public class MeleeAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrol();
+        if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
         if (playerInSightRange && !playerInAttackRange) Chase();
         if (playerInAttackRange && playerInSightRange) Attack();
     }
 
-    private void Patrol()
-    {
-        if (!walkPointSet) SearchWalkPoint();
+    //private void Patrol()
+    //{
+    //    if (!walkPointSet) SearchWalkPoint();
 
-        if (walkPointSet)
-            nav.SetDestination(walkPoint);
+    //    if (walkPointSet)
+    //        nav.SetDestination(walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+    //    Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
+    //    if (distanceToWalkPoint.magnitude < 1f)
+    //        walkPointSet = false;
+    //}
 
-    private void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+    //private void SearchWalkPoint()
+    //{
+    //    float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    //    float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    //    walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundMask))
-            walkPointSet = true;
-    }
+    //    if (Physics.Raycast(walkPoint, -transform.up, 2f, groundMask))
+    //        walkPointSet = true;
+    //}
 
     private void Chase()
     {
+        nav.speed = runSpeed;
         nav.SetDestination(player.position);
     }
     
