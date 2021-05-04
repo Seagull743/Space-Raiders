@@ -24,7 +24,7 @@ public class FreezeGun : MonoBehaviour
     public GameObject colliderBeam;
     public bool Beam;
    
-    
+    public GameObject[] enemys;
     
 
     // Start is called before the first frame update
@@ -49,10 +49,14 @@ public class FreezeGun : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             freezebeam.Stop();
-            //Freeze.timertoFreeze = 0;
             colliderBeam.GetComponent<Collider>().enabled = false;
-            Beam = false;
+            Beam = false; 
+            foreach (GameObject e in enemys)
+            {
+                e.GetComponent<Freeze>().UnFreezing();
+            }
         }
+
 
         if (Input.GetKey(KeyCode.Mouse1) && !Beam && Time.time >= nexttimetofire)
         {
@@ -66,9 +70,6 @@ public class FreezeGun : MonoBehaviour
         }
 
     }
-
-
-
     void Shoot()
     {
         RaycastHit hit;

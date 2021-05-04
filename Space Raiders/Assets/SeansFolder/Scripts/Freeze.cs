@@ -11,8 +11,8 @@ public class Freeze : MonoBehaviour
 
     public  bool freezing = false;
     public  bool freezingComplete = false;
-    public  float freezeslow = -3f;
-    public bool canFreeze = true;
+
+    private bool CanFreeze = true;
 
     //Creating the FreezeHighlight
     public Material normal;
@@ -29,49 +29,66 @@ public class Freeze : MonoBehaviour
     {
        
         
-         if (freezing)
+         if (freezing && CanFreeze == true)
          {
              timertoFreeze += Time.deltaTime;
 
-             if (timertoFreeze >= 2)
+             if (timertoFreeze >= 1.5)
                  {
                     Debug.Log("Frozen complete");
                     gameObject.GetComponent<Renderer>().material = Frozen;
                     freezingComplete = true;
 
                         if (freezingComplete == true)
-                        {
-                                
-                             if (timerunFreeze >= 0)
-                                {
-                                    timerunFreeze -= Time.deltaTime;
-                                }
-                             else
-                                {
-                                    Invoke("TheTimer", 1.5f);
-                                }
+                        {                           
+                             CanFreeze = false;                           
+                            if(TryGetComponent<MoveObject>(out var moveObject))
+                            {
+                                moveObject.Frozen();
+                            } 
+
+                            if(TryGetComponent<Platform>(out var platform))
+                            {
+                                platform.Frozen();
                             }
+                                                 
+                             Invoke("TheTimer", 5f);
+                             
+                             //if (timerunFreeze >= 0)
+                               // {
+                              //      timerunFreeze -= Time.deltaTime;
+                              //  }
+                             //else
+                             //   {
+                              //      Invoke("TheTimer", 1.5f);
+                              //  }
+                           // }
                         }
        }
-       else if (!freezing)
+       //else 
+       if (!freezing)
        {
-           timertoFreeze = 0;
-           freezingComplete = false;
-            timerunFreeze = 5;
+        timertoFreeze = 0;
+           //freezingComplete = false;
+        timerunFreeze = 5;
         }
     
+        //if(freezingComplete == true)
+       // {
+        //    Invoke("TheTimer", 4f);
+      //  }
         
-        if(freezingComplete && freezing)
-        {
-            timerunFreeze -= Time.deltaTime;
-        }     
+        //if(freezingComplete && freezing)
+       // {
+       //     timerunFreeze -= Time.deltaTime;
+       // }     
 
     }
 
+    }
     public void StartFreezing()
     {
-        freezing = true;
-        
+        freezing = true;      
     }
 
     public void UnFreezing()
@@ -86,6 +103,17 @@ public class Freeze : MonoBehaviour
         freezingComplete = false;
         Debug.Log("I've been unfrozen");
         gameObject.GetComponent<Renderer>().material = normal;
+        CanFreeze = true;
+        timertoFreeze = 0;
+        if(TryGetComponent<MoveObject>(out var moveObject))
+            {
+                moveObject.UnFrozen();
+            }
+
+        if(TryGetComponent<Platform>(out var platform))
+            {
+                platform.UnFrozen();
+            }
     }
 }
 

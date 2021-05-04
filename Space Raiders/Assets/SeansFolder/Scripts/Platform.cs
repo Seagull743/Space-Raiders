@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour
+public class Platform : MonoBehaviour
 {
     
     [SerializeField] Transform[] positions;
@@ -52,7 +52,7 @@ public class MoveObject : MonoBehaviour
 
 public void Frozen()
 {
-    Objectspeed = 2;
+    Objectspeed = 0;
 }
 
 public void UnFrozen()

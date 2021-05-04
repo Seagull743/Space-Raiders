@@ -19,10 +19,12 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")
-        {
-            //this is where i would put the hit effect
-            collision.gameObject.GetComponent<Health>().currenthealth -= 20;
-            Destroy(this.gameObject);
+        {         
+            if(TryGetComponent<Health>(out var health))
+            {
+                health.ShardDamage();
+                Destroy(this.gameObject);
+            }       
         }
         else
         {

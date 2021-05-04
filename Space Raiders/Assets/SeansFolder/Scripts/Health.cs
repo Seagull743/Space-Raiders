@@ -23,4 +23,10 @@ public class Health : MonoBehaviour
         }
 
     }
+
+    public void ShardDamage()
+    {
+        currenthealth -= 20;
+    }
+
 }
