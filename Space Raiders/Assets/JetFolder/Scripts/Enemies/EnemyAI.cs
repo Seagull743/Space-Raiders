@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent nav;
 
     public Transform player;
 
-    [SerializeField] LayerMask groundMask, targetMask;
-
-    public float health;
+    [SerializeField] LayerMask groundMask, targetMask, obstacleMask;
 
     [SerializeField] float walkSpeed = 1f;
     [SerializeField] float runSpeed = 4f;
-
-    //public Vector3 walkPoint;
-    //bool walkPointSet;
-    //public float walkPointRange;
 
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -26,6 +20,8 @@ public class MeleeAI : MonoBehaviour
 
     [SerializeField] float sightRange, attackRange;
     [SerializeField] bool playerInSightRange, playerInAttackRange;
+
+    RaycastHit hit;
 
     private void Awake()
     {
@@ -43,43 +39,21 @@ public class MeleeAI : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) Attack();
     }
 
-    //private void Patrol()
-    //{
-    //    if (!walkPointSet) SearchWalkPoint();
-
-    //    if (walkPointSet)
-    //        nav.SetDestination(walkPoint);
-
-    //    Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-    //    if (distanceToWalkPoint.magnitude < 1f)
-    //        walkPointSet = false;
-    //}
-
-    //private void SearchWalkPoint()
-    //{
-    //    float randomZ = Random.Range(-walkPointRange, walkPointRange);
-    //    float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-    //    walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-    //    if (Physics.Raycast(walkPoint, -transform.up, 2f, groundMask))
-    //        walkPointSet = true;
-    //}
-
     private void Chase()
     {
         nav.speed = runSpeed;
         nav.SetDestination(player.position);
     }
-    
+
     private void Attack()
     {
+        Debug.Log("Damage Player");
+
         nav.SetDestination(transform.position);
 
         transform.LookAt(player);
 
-        if(!alreadyAttacked)
+        if (!alreadyAttacked)
         {
             //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
@@ -96,16 +70,14 @@ public class MeleeAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), .5f);
-    }
-
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    private void Alert()
+    {
+
     }
 
     private void OnDrawGizmosSelected()
