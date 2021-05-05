@@ -8,12 +8,8 @@ public class MoveObject : MonoBehaviour
     [SerializeField] Transform[] positions;
     public float Objectspeed;
 
-
-
     private int nextposindex;
     private Transform nextpos;
-
-
     
     // Start is called before the first frame update
     void Start()

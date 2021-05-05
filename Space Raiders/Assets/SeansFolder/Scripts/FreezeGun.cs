@@ -6,40 +6,67 @@ public class FreezeGun : MonoBehaviour
 {
    //m1 gun
 
-    public float damage = 10f;
-    public float range = 100f;
-    public float firerate = 25f;
-    public Camera fpscam;
-    public float nexttimetofire = 0f;
-
-    public GameObject projectile;
-    public GameObject gunpoint;
+    [SerializeField]
+    private float damage = 10f;
+    [SerializeField]
+    private float range = 100f;
+    [SerializeField]
+    private float firerate = 25f;
+    [SerializeField]
+    private Camera fpscam;
+    [SerializeField]
+    private float nexttimetofire = 0f;
+    [SerializeField]
+    private GameObject projectile;
+    [SerializeField]
+    private GameObject gunpoint;
     
-    public bool shooting;
+    private bool shooting;
 
+    [SerializeField]
+    private Animator anim;
+    public bool freezeon;
 
     //Freeze m2 Var
-  
-    public ParticleSystem freezebeam;
-    public GameObject colliderBeam;
-    public bool Beam;
-   
+
+    [SerializeField]
+    private ParticleSystem freezebeam;
+    [SerializeField]
+    private  GameObject colliderBeam;
+    private bool Beam;
     public GameObject[] enemys;
-    
+    public GameObject[] platforms;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
+        freezeon = true;
         freezebeam.Stop();
         shooting = false;
         colliderBeam.GetComponent<Collider>().enabled = false;
+        anim = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.R) && !Beam)
+        {
+            if (freezeon)
+            {
+                anim.SetBool("isbeamon", false);
+                freezeon = false;
+            }
+            else if (freezeon == false)
+            {
+                anim.SetBool("isbeamon", true);
+                freezeon = true;
+            }
+        }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && freezeon)
         {
             freezebeam.Play();
             colliderBeam.GetComponent<Collider>().enabled = true;
@@ -55,10 +82,14 @@ public class FreezeGun : MonoBehaviour
             {
                 e.GetComponent<Freeze>().UnFreezing();
             }
+            foreach (GameObject p in platforms)
+            {
+                p.GetComponent<Freeze>().UnFreezing();
+            }
         }
 
 
-        if (Input.GetKey(KeyCode.Mouse1) && !Beam && Time.time >= nexttimetofire)
+        if (Input.GetKey(KeyCode.Mouse1) && !freezeon && !Beam && Time.time >= nexttimetofire)
         {
             nexttimetofire = Time.time + 1f / firerate;
             Shoot();
@@ -70,7 +101,7 @@ public class FreezeGun : MonoBehaviour
         }
 
     }
-    void Shoot()
+    public void Shoot()
     {
         RaycastHit hit;
  

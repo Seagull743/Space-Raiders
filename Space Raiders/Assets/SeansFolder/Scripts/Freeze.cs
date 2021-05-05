@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-    public float timertoFreeze = 0;
+    
+    [SerializeField]
+    private float timertoFreeze = 0;
+    [SerializeField]
+    private float timerunFreeze = 5;
 
-    public float timerunFreeze = 5;
-        
-
-    public  bool freezing = false;
+    public  bool freezing = false;  
     public  bool freezingComplete = false;
 
     private bool CanFreeze = true;
 
     //Creating the FreezeHighlight
-    public Material normal;
-    public Material Frozen;
+    [SerializeField]
+    private Material normal;
+    [SerializeField]
+    private Material Frozen;
 
 
      void Start()
@@ -41,7 +44,7 @@ public class Freeze : MonoBehaviour
 
                         if (freezingComplete == true)
                         {                           
-                             CanFreeze = false;                           
+                            CanFreeze = false;                           
                             if(TryGetComponent<MoveObject>(out var moveObject))
                             {
                                 moveObject.Frozen();
@@ -94,14 +97,13 @@ public class Freeze : MonoBehaviour
     public void UnFreezing()
     {
         freezing = false;
-        timertoFreeze = 0;
+        timertoFreeze = 0;    
     }
 
     public void TheTimer()
     {
         freezing = false;
         freezingComplete = false;
-        Debug.Log("I've been unfrozen");
         gameObject.GetComponent<Renderer>().material = normal;
         CanFreeze = true;
         timertoFreeze = 0;
@@ -115,7 +117,9 @@ public class Freeze : MonoBehaviour
                 platform.UnFrozen();
             }
     }
+
 }
+
 
 
 
