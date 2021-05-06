@@ -106,7 +106,7 @@ public class FreezeGun : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Mouse1) && !freezeon && !Beam && Time.time >= nexttimetofire)
+        if (Input.GetKey(KeyCode.Mouse0) && !freezeon && !Beam && Time.time >= nexttimetofire)
         {
             nexttimetofire = Time.time + 1f / firerate;
             Shoot();
