@@ -2,12 +2,12 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor (typeof (FieldOfView))]
+[CustomEditor (typeof (EnemyAI))]
 public class FOVEditor : Editor
 {
     void OnSceneGUI()
     {
-        FieldOfView fov = (FieldOfView)target;
+        EnemyAI fov = (EnemyAI)target;
 		Handles.color = Color.white;
 		Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.viewRadius);
 		Vector3 viewAngleA = fov.DirFromAngle(-fov.viewAngle / 2, false);
