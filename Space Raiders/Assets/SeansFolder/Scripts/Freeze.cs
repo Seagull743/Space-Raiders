@@ -36,7 +36,7 @@ public class Freeze : MonoBehaviour
          {
              timertoFreeze += Time.deltaTime;
 
-             if (timertoFreeze >= 1.5)
+             if (timertoFreeze >= 1)
                  {
                     Debug.Log("Frozen complete");
                     gameObject.GetComponent<Renderer>().material = Frozen;

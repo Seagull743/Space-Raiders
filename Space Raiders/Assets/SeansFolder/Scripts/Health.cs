@@ -28,5 +28,4 @@ public class Health : MonoBehaviour
     {
         currenthealth -= 20;
     }
-
 }
