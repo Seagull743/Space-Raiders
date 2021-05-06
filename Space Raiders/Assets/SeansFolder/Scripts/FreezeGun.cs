@@ -97,6 +97,7 @@ public class FreezeGun : MonoBehaviour
             foreach (GameObject e in enemys)
             {
                 e.GetComponent<Freeze>().UnFreezing();
+
             }
             foreach (GameObject p in platforms)
             {
