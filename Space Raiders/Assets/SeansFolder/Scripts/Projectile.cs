@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
+            Destroy(this.gameObject);
             //if (TryGetComponent<Health>(out var health))
             //{
             //    health.ShardDamage(shardDmg);
