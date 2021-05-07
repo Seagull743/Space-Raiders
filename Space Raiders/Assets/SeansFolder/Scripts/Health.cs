@@ -21,11 +21,10 @@ public class Health : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 
-    public void ShardDamage()
+    public void ShardDamage(int damageAmount)
     {
-        currenthealth -= 20;
+        currenthealth -= damageAmount;
     }
 }
