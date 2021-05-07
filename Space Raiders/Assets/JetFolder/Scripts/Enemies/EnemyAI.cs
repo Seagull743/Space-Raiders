@@ -58,12 +58,12 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
-    private void Update()
+    void Update()
     {
         //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
-		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed; nav.ResetPath();
+		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
         if (playerInSightRange && !playerInAttackRange) Chase();
         if (playerInAttackRange && playerInSightRange) Attack();
     }
