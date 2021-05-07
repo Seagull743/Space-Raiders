@@ -21,8 +21,10 @@ public class Freeze : MonoBehaviour
     [SerializeField]
     private Material Frozen;
 
+    [SerializeField]
+    private int damageAmount;
 
-     void Start()
+    void Start()
     {
         gameObject.GetComponent<Renderer>().material = normal;    
     }
@@ -54,38 +56,20 @@ public class Freeze : MonoBehaviour
                             {
                                 platform.Frozen();
                             }
-                                                 
-                             Invoke("TheTimer", 5f);
-                             
-                             //if (timerunFreeze >= 0)
-                               // {
-                              //      timerunFreeze -= Time.deltaTime;
-                              //  }
-                             //else
-                             //   {
-                              //      Invoke("TheTimer", 1.5f);
-                              //  }
-                           // }
+                            
+                            
+
+                             Invoke("TheTimer", 5f);      
                         }
        }
-       //else 
+     
        if (!freezing)
        {
         timertoFreeze = 0;
-           //freezingComplete = false;
+     
         timerunFreeze = 5;
         }
     
-        //if(freezingComplete == true)
-       // {
-        //    Invoke("TheTimer", 4f);
-      //  }
-        
-        //if(freezingComplete && freezing)
-       // {
-       //     timerunFreeze -= Time.deltaTime;
-       // }     
-
     }
 
     }
@@ -93,7 +77,7 @@ public class Freeze : MonoBehaviour
     {
         freezing = true;      
     }
-
+    
     public void UnFreezing()
     {
         freezing = false;
@@ -116,6 +100,17 @@ public class Freeze : MonoBehaviour
             {
                 platform.UnFrozen();
             }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Shard")
+        {
+            if (freezingComplete == true)
+            {
+                this.gameObject.GetComponent<Health>().ShardDamage(damageAmount);
+            }
+        }
     }
 
 }

@@ -101,8 +101,13 @@ public class FreezeGun : MonoBehaviour
             GA.GetComponent<GunAnimations>().BeamAnimoff();
             foreach (GameObject e in enemys)
             {
-                e.GetComponent<Freeze>().UnFreezing();
-
+                // e.GetComponent<Freeze>().UnFreezing();
+                
+                if (TryGetComponent<Freeze>(out var freeze))
+                {
+                    freeze.UnFreezing();
+                }
+                
             }
             foreach (GameObject p in platforms)
             {

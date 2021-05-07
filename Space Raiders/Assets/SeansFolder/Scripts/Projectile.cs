@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public Vector3 hitpoint;
 
     public int shardDmg = 20;
+    public int frozenDmg = 50;
 
     public int speed;
     
@@ -21,12 +22,7 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
-            Destroy(this.gameObject);
-            //if (TryGetComponent<Health>(out var health))
-            //{
-            //    health.ShardDamage(shardDmg);
-            //    Destroy(this.gameObject);
-            //}
+            Destroy(this.gameObject);       
         }
         else
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckFalling : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class CheckFalling : MonoBehaviour
 
 	private void OnBelowLevel()
 	{
-		Debug.Log("Player fell below level");
-
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
