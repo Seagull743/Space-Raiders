@@ -16,11 +16,11 @@ public class Projectile : MonoBehaviour
         this.GetComponent<Rigidbody>().AddForce((hitpoint - this.transform.position).normalized * speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
+            other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
             //if (TryGetComponent<Health>(out var health))
             //{
             //    health.ShardDamage(shardDmg);
