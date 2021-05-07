@@ -12,7 +12,12 @@ public class FreezeBeam : MonoBehaviour
         if (other.gameObject.tag == ("Enemy"))
         {
             other.GetComponent<Freeze>().StartFreezing();
-        }       
+        }
+
+        if (other.gameObject.tag == ("Platform"))
+        {
+            other.GetComponent<Freeze>().StartFreezing();
+        }
     }
 
     
@@ -21,6 +26,11 @@ public class FreezeBeam : MonoBehaviour
         if (other.gameObject.tag == ("Enemy"))
         {
             other.GetComponent<Freeze>().UnFreezing();
+        }
+
+        if (other.gameObject.tag == ("Platform"))
+        {
+            other.GetComponent<Freeze>().StartFreezing();
         }
     }
 

@@ -42,6 +42,11 @@ public class FreezeGun : MonoBehaviour
     private GameObject crossCircle;
     [SerializeField]
     private GameObject crossShard;
+    [SerializeField]
+    private ParticleSystem muzzleFlash;
+
+    
+
 
 
     // Start is called before the first frame update
@@ -122,7 +127,7 @@ public class FreezeGun : MonoBehaviour
     public void Shoot()
     {
         RaycastHit hit;
-
+        muzzleFlash.Play();
 
  
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
