@@ -29,11 +29,8 @@ public class Freeze : MonoBehaviour
         gameObject.GetComponent<Renderer>().material = normal;    
     }
 
-
     void Update()
-    {
-       
-        
+    {   
          if (freezing && CanFreeze == true)
          {
              timertoFreeze += Time.deltaTime;
@@ -57,8 +54,6 @@ public class Freeze : MonoBehaviour
                                 platform.Frozen();
                             }
                             
-                            
-
                              Invoke("TheTimer", 5f);      
                         }
        }
@@ -71,7 +66,8 @@ public class Freeze : MonoBehaviour
         }
     
     }
-
+    
+    
     }
     public void StartFreezing()
     {
@@ -108,7 +104,11 @@ public class Freeze : MonoBehaviour
         {
             if (freezingComplete == true)
             {
-                this.gameObject.GetComponent<Health>().ShardDamage(damageAmount);
+                if(this.gameObject.TryGetComponent<Health>(out var health))
+                {
+                    health.ShardDamage(damageAmount);
+                }
+                
             }
         }
     }

@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
         nextpos = positions[0];
 
         {
-            Objectspeed = 5;
+            Objectspeed = 35;
         }    
     }
 
@@ -57,7 +57,7 @@ public void Frozen()
 
 public void UnFrozen()
 {
-    Objectspeed = 5;
+    Objectspeed = 35;
 }
 
 }
