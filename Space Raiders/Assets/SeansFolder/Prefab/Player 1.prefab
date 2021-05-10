@@ -2091,9 +2091,14 @@ GameObject:
   - component: {fileID: 2748633806865481769}
   - component: {fileID: 548784722328728770}
   - component: {fileID: 1912540598}
+<<<<<<< Updated upstream
   - component: {fileID: 4555324}
   - component: {fileID: 3609240503818177776}
   m_Layer: 11
+=======
+  - component: {fileID: 7381756883867175089}
+  m_Layer: 10
+>>>>>>> Stashed changes
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2178,7 +2183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetBelowThisY: -100
+<<<<<<< Updated upstream
 --- !u!114 &4555324
+=======
+--- !u!114 &7381756883867175089
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2187,6 +2196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2748633806865481942}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: e454bd35aecad6343bdf690559f4abb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -2207,6 +2217,13 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
+=======
+  m_Script: {fileID: 11500000, guid: b3cbbfa6a6a4fcf4ebe6ccc2977fd733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currenthealth: 0
+>>>>>>> Stashed changes
 --- !u!1 &2748633807044846610
 GameObject:
   m_ObjectHideFlags: 0

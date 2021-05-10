@@ -27,5 +27,4 @@ public class Health : MonoBehaviour
     {
         currenthealth -= damageAmount;
     }
-
 }
