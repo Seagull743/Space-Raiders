@@ -5,6 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+	public bool melee = false;
+
+	public bool range = false;
+
+	public bool boss = false;
+
     public NavMeshAgent nav;
 
     public Transform player;
@@ -47,13 +53,24 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player 1").transform;
+        player = GameObject.Find("Player").transform;
         nav = GetComponent<NavMeshAgent>();
     }
 
     void Start()
     {
-        viewMesh = new Mesh();
+		if(this.gameObject.tag == "Melee")
+			melee = true;
+
+
+		if(this.gameObject.tag == "Range")
+			range = true;
+
+
+		if(this.gameObject.tag == "Boss")
+			boss = true;
+
+		viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
@@ -62,13 +79,18 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
-        //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
+		//playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
+		//playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
 		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
         if (playerInSightRange && !playerInAttackRange) Chase();
         if (playerInAttackRange && playerInSightRange) Attack();
-    }
+
+		if(playerInAttackRange == true)
+        {
+			Attack();
+        }
+	}
 
     private void Chase()
     {
@@ -84,17 +106,17 @@ public class EnemyAI : MonoBehaviour
 
         transform.LookAt(player);
 
-        //if (!alreadyAttacked)
-        //{
+        if (!alreadyAttacked)
+        {
 
-        //    Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-        //    rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        //    rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-        //    alreadyAttacked = true;
-        //    Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        //}
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
     }
 
     private void ResetAttack()
@@ -112,7 +134,12 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-	IEnumerator FindTargetsWithDelay(float delay)
+	private void Damage()
+    {
+
+    }
+
+    IEnumerator FindTargetsWithDelay(float delay)
 	{
 		while (true)
 		{
@@ -130,7 +157,7 @@ public class EnemyAI : MonoBehaviour
 	{
 		visibleTargets.Clear();
 		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-		Collider[] targetsInAttackRadius = Physics.OverlapSphere(transform.position, attackRange, targetMask);
+        Collider[] targetsInAttackRadius = Physics.OverlapSphere(transform.position, attackRange, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++)
 		{
@@ -140,49 +167,38 @@ public class EnemyAI : MonoBehaviour
 			{
 				float dstToTarget = Vector3.Distance(transform.position, target.position);
 				if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
-				{
+				{			
 					playerInSightRange = true;
-					visibleTargets.Add(target);
+					visibleTargets.Add(target);		
 				}
 			}
 		}
 
-		for (int i = 0; i < targetsInAttackRadius.Length; i++)
-		{
-			Transform target = targetsInAttackRadius[i].transform;
-			Vector3 dirToTarget = (target.position - transform.position).normalized;
-			if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
-			{
-				float dstToTarget = Vector3.Distance(transform.position, target.position);
-				if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
-				{
-					playerInAttackRange = true;
-					visibleTargets.Add(target);
-					if (!alreadyAttacked)
-					{
-						target.GetComponent<Health>().ShardDamage(damage);
-						//Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        for (int i = 0; i < targetsInAttackRadius.Length; i++)
+        {
+            Transform target = targetsInAttackRadius[i].transform;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+            {
+                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                {
+                    playerInAttackRange = true;
+                    visibleTargets.Add(target);
+                }
+            }
+        }
 
-						//rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-						//rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
-						alreadyAttacked = true;
-						Invoke(nameof(ResetAttack), timeBetweenAttacks);
-					}				
-				}
-			}
-		}
-
-		if (targetsInViewRadius.Length == 0)
+        if (targetsInViewRadius.Length == 0)
         {
 			playerInSightRange = false;
         }
 
-		if(targetsInAttackRadius.Length == 0)
+        if (targetsInAttackRadius.Length == 0)
         {
-			playerInAttackRange = false;
+            playerInAttackRange = false;
         }
-	}
+    }
 
 	#region FOVMeshDraw
 	void DrawFieldOfView()
