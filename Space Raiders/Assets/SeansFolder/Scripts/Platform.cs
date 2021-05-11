@@ -54,6 +54,7 @@ public void Frozen()
 {
     Objectspeed = 0;
     gameObject.GetComponent<BoxCollider>().isTrigger = false;
+    
 }
 
 public void UnFrozen()

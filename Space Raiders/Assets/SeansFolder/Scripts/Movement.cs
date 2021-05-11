@@ -9,9 +9,9 @@ public class Movement : MonoBehaviour
 
     public float speed = 12f;
 
-    public float gravity = -19.62f;
+    public float gravity = -29.61f;
 
-    public float jumpHeight = 3f;
+    public float jumpHeight = 4.5f;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
