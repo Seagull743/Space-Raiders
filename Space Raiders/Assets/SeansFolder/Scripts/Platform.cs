@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
         nextpos = positions[0];
 
         {
-            Objectspeed = 35;
+            Objectspeed = 10;
         }    
     }
 
@@ -53,11 +53,13 @@ public class Platform : MonoBehaviour
 public void Frozen()
 {
     Objectspeed = 0;
+    gameObject.GetComponent<BoxCollider>().isTrigger = false;
 }
 
 public void UnFrozen()
 {
-    Objectspeed = 35;
+    Objectspeed = 10;
+    gameObject.GetComponent<BoxCollider>().isTrigger = true;
 }
 
 }

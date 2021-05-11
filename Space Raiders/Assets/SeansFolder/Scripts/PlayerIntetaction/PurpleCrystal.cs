@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystal1 : InteractiveObject
+public class PurpleCrystal : InteractiveObject
 {
-    public static bool GreenCrystalCollected = false;
+    public static bool PurpleCrystalCollected = false;
     public override void PlayerInteraction()
     {
         PickedupCrystal();
     }
-    
+
     public void PickedupCrystal()
     {
         GameManager.theScore += 1;
-        GreenCrystalCollected = true;
+        PurpleCrystalCollected = true;
         Destroy(gameObject);
     }
-
 }

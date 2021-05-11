@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedCrystalShrine : InteractiveObject
+public class GreenCrystalShrine : InteractiveObject
 {
     public GameObject Crystal;
     public GameManager GM;
-    public static bool redCrystalplaced = false;
+    public static bool GreenPlaced = false;
 
     public override void PlayerInteraction()
     {
@@ -15,15 +15,18 @@ public class RedCrystalShrine : InteractiveObject
 
     public void PlaceCrystal()
     {
-        if (RedCrystal.RedCrystalCollected == true)
+        if(GreenCrystal.GreenCrystalCollected == true)
         {
             Crystal.SetActive(true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            redCrystalplaced = true;
+            GreenPlaced = true;
         }
         else
         {
             GM.GetComponent<GameManager>().CrystalText();
+
         }
     }
+
+
 }

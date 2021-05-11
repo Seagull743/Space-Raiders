@@ -54,6 +54,7 @@ public class FreezeGun : MonoBehaviour
 
     void Start()
     {
+        
 
         crossCircle.SetActive(true);
         crossShard.SetActive(false);
@@ -67,7 +68,7 @@ public class FreezeGun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R) && !Beam)
+        if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true)
         {
             if (freezeon)
             {
@@ -127,7 +128,6 @@ public class FreezeGun : MonoBehaviour
             shooting = false;
             
         }
-
     }
     public void Shoot()
     {
@@ -139,8 +139,7 @@ public class FreezeGun : MonoBehaviour
         {
             GameObject tempProjectile = Instantiate(projectile, gunpoint.transform.position, gunpoint.transform.rotation);
             GA.GetComponent<GunAnimations>().Shardrecoil();
-            tempProjectile.GetComponent<Projectile>().hitpoint = hit.point;
-            Debug.Log(hit.transform.name);      
+            tempProjectile.GetComponent<Projectile>().hitpoint = hit.point;   
         }
         else
         {
