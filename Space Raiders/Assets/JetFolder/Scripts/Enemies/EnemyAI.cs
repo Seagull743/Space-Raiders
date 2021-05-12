@@ -5,11 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-	public bool melee = false;
+	//public bool melee = false;
 
-	public bool range = false;
+	//public bool range = false;
 
-	public bool boss = false;
+	//public bool boss = false;
+	private Animator anim;
 
     public NavMeshAgent nav;
 
@@ -21,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float runSpeed = 4f;
 
     [SerializeField] float timeBetweenAttacks;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
     //public GameObject projectile;
 
     //[SerializeField] float sightRange, attackRange;
@@ -55,20 +56,21 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         nav = GetComponent<NavMeshAgent>();
+		anim = GetComponent<Animator>();
     }
 
     void Start()
     {
-		if(this.gameObject.tag == "Melee")
-			melee = true;
+		//if(this.gameObject.tag == "Melee")
+		//	melee = true;
 
 
-		if(this.gameObject.tag == "Range")
-			range = true;
+		//if(this.gameObject.tag == "Range")
+		//	range = true;
 
 
-		if(this.gameObject.tag == "Boss")
-			boss = true;
+		//if(this.gameObject.tag == "Boss")
+		//	boss = true;
 
 		viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -108,7 +110,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-
+			anim.SetTrigger("attacktrigger");
+			player.GetComponent<Health>().ShardDamage(damage);
             //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
             //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
