@@ -439,39 +439,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424489911}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &524821184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2856635283099537080, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
-  m_PrefabInstance: {fileID: 1071126760}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &524821186
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524821184}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &524821187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524821184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008bf22b2fe8dba4e9dfeca9cded38f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
-  knockbackDir: {x: 0, y: 0, z: 0}
-  damage: 10
 --- !u!1 &542953859
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,8 +552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008bf22b2fe8dba4e9dfeca9cded38f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
-  knockbackDir: {x: 0, y: 0, z: 0}
   damage: 10
 --- !u!1 &701930697
 GameObject:
@@ -1853,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6775565290935391450, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_Size.z
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7017619805468431158, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1917,7 +1882,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649443839035394444, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_TagString
-      value: Melee
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946605055573131497, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946605055573131497, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946605055573131497, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946605055573131497, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Center.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946605055573131497, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}

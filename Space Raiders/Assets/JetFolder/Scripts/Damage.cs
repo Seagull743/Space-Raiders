@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public Rigidbody playerRB;
+    //public Rigidbody playerRB;
 
-    public Vector3 knockbackDir;
+    //public Vector3 knockbackDir;
 
     public int damage;
 

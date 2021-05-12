@@ -21,6 +21,5 @@ public class FOVEditor : Editor
 		{
 			Handles.DrawLine(fov.transform.position, visibleTarget.position);
 		}
-
 	}
 }
