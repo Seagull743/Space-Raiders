@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
 
 	public float attackRange;
 
-	public int damage;
+	public GameObject damageBox;
 
     //FOV variables
     public float viewRadius;
@@ -61,6 +61,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+		damageBox.SetActive(false);
+
 		//if(this.gameObject.tag == "Melee")
 		//	melee = true;
 
@@ -111,7 +113,10 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
 			anim.SetTrigger("attacktrigger");
-			player.GetComponent<Health>().ShardDamage(damage);
+
+			damageBox.SetActive(true);
+			
+			//player.GetComponent<Health>().ShardDamage(damage);
             //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
             //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
@@ -124,6 +129,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ResetAttack()
     {
+		damageBox.SetActive(false);
         alreadyAttacked = false;
     }
 

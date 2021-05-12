@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
+    public Rigidbody playerRB;
+
+    public Vector3 knockbackDir;
+
     public int damage;
 
     private void OnTriggerEnter(Collider other)
