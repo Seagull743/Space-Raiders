@@ -7,12 +7,6 @@ public class CheckFalling : MonoBehaviour
 {
    
 	public float resetBelowThisY = -100f;
-	private Vector3 startingPosition;
-
-	void Awake()
-	{
-		startingPosition = transform.position;
-	}
 
 	void Update()
 	{
@@ -26,4 +20,8 @@ public class CheckFalling : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+
+
+	
+
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PurpleCrystalShrine : InteractiveObject
 {
     public GameObject Crystal;
-    public GameManager GM;
     public static bool PurplePlaced = false;
 
     public override void PlayerInteraction()
@@ -23,7 +22,7 @@ public class PurpleCrystalShrine : InteractiveObject
         }
         else
         {
-            GM.GetComponent<GameManager>().CrystalText();
+            GameManager.CrystalText();
         }
     }
 }

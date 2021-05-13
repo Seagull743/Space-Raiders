@@ -12,7 +12,7 @@ public class PurpleCrystal : InteractiveObject
 
     public void PickedupCrystal()
     {
-        GameManager.theScore += 1;
+        GameManager.TheScoreAdd();
         PurpleCrystalCollected = true;
         Destroy(gameObject);
     }

@@ -9,16 +9,18 @@ public class Platform : MonoBehaviour
     public float Objectspeed;
 
 
-
+    [SerializeField]
     private int nextposindex;
+    [SerializeField]
     private Transform nextpos;
-
 
     
     // Start is called before the first frame update
     void Start()
     {
+        this.gameObject.layer = default;
         nextpos = positions[0];
+        
 
         {
             Objectspeed = 10;
@@ -50,17 +52,18 @@ public class Platform : MonoBehaviour
        
     }
 
-public void Frozen()
-{
+    public void Frozen()
+    {
     Objectspeed = 0;
     gameObject.GetComponent<BoxCollider>().isTrigger = false;
-    
-}
+        this.gameObject.layer = 8;
+    }
 
-public void UnFrozen()
-{
+    public void UnFrozen()
+    {
     Objectspeed = 10;
     gameObject.GetComponent<BoxCollider>().isTrigger = true;
-}
+    this.gameObject.layer = default;
+    }
 
 }

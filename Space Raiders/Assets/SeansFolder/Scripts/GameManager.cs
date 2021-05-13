@@ -5,76 +5,73 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public Vector3 lastCheckPoint;
-    [SerializeField] private GameObject interactcross;
+    private Vector3 LastCheckPoint;
+    [SerializeField] private GameObject InteractCross;
 
     [SerializeField]
-    public Text scoretext;
-    public static int theScore;
+    private Text ScoreText;
+    private int TheScore;
 
     [SerializeField]
-    private GameObject Crytaltext;
-
-    [SerializeField]
-    private GameObject bossSpawn;
+    private GameObject CrytalText;
 
     [SerializeField]
     private GameObject PickedUpText;
+    //checkpoints
+    private static GameManager Instance;
 
     void Awake()
     {
-        interactcross.SetActive(false);
-        Crytaltext.SetActive(false);
-        theScore = 0;
-        bossSpawn.SetActive(false);
-        PickedUpText.SetActive(false);
-        
-        if (instance == null)
+        TheScore = 0;
+        if (Instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(instance);
+            Instance = this;
+            DontDestroyOnLoad(Instance);
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
     void Update()
     {
-        scoretext.text = "Collected  " + theScore + " / 4" ;
+        ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
-        if (GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
-        {
-            BossSpawner();
-        }
 
     }
-
-    public void InteractCrossOn()
+    private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
     {
-        interactcross.SetActive(true);
+        InteractCross = interactCross;
+        PickedUpText = pickedUpText;
+        CrytalText = crystalText;
+        ScoreText = scoreText;
+
+        InteractCross.SetActive(false);
+        CrytalText.SetActive(false);
+        PickedUpText.SetActive(false);
+    }
+    public void InteractCrossOnInternal()
+    {
+        InteractCross.SetActive(true);
+    }
+    public void InteractCrossOffInternal()
+    {
+        InteractCross.SetActive(false);
     }
 
-    public void InteractCrossoff()
+    private void CrystalTextInternal()
     {
-        interactcross.SetActive(false);
+        StartCoroutine(CrystalTextCoroutine());
     }
 
-    public void CrystalText()
+    IEnumerator CrystalTextCoroutine()
     {
-        StartCoroutine(Crystaltext());
-    }
-
-    IEnumerator Crystaltext()
-    {
-        Crytaltext.SetActive(true);
+        CrytalText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        Crytaltext.SetActive(false);
+        CrytalText.SetActive(false);
     }
 
-    public void EnergyTextCoroutine()
+    public void EnergyTextCoroutineInternal()
     {
         StartCoroutine(EnergyTextToggle());
     }
@@ -86,9 +83,26 @@ public class GameManager : MonoBehaviour
         PickedUpText.SetActive(false);
     }
 
-    public void BossSpawner()
+    public void TheScoreInternal()
     {
-        bossSpawn.SetActive(true);
+        TheScore += 1;
     }
+
+    public void BossSpawnerInternal(GameObject boss)
+    {
+        boss.SetActive(true);
+    }
+    public void SetLastCheckpointInternal(Vector3 checkpoint)
+    {
+        LastCheckPoint = checkpoint;
+    }
+    public static void RegisterPlayerCharacter(GameObject interactCross, GameObject crystalText, GameObject pickedUpText, Text scoreText) => Instance.RegisterPlayerCharacterInternal(interactCross, crystalText, pickedUpText, scoreText);
+    public static void CrystalText() => Instance.CrystalTextInternal();
+    public static void EnergyTextCoroutine() => Instance.EnergyTextCoroutineInternal();
+    public static void SetLastCheckpoint(Vector3 checkpoint) => Instance.SetLastCheckpointInternal(checkpoint);
+    public static void InteractCrossOn() => Instance.InteractCrossOnInternal();
+    public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
+    public static void TheScoreAdd() => Instance.TheScoreInternal();
+    public static void BossSpawn(GameObject boss) => Instance.BossSpawnerInternal(boss);
 
 }

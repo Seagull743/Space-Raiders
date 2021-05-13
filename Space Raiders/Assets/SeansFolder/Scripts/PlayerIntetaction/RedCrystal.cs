@@ -12,7 +12,7 @@ public class RedCrystal : InteractiveObject
 
     public void PickedupCrystal()
     {
-        GameManager.theScore += 1;
+        GameManager.TheScoreAdd();
         RedCrystalCollected = true;
         Destroy(gameObject);
     }

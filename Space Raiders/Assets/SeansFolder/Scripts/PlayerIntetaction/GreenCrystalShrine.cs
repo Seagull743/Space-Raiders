@@ -5,7 +5,6 @@ using UnityEngine;
 public class GreenCrystalShrine : InteractiveObject
 {
     public GameObject Crystal;
-    public GameManager GM;
     public static bool GreenPlaced = false;
 
     public override void PlayerInteraction()
@@ -23,8 +22,7 @@ public class GreenCrystalShrine : InteractiveObject
         }
         else
         {
-            GM.GetComponent<GameManager>().CrystalText();
-
+            GameManager.CrystalText();
         }
     }
 

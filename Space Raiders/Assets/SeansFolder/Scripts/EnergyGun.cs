@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnergyGun : InteractiveObject
 {
     public static bool EnergyPickedUp = false;
-    public GameManager GM;
     
     public override void PlayerInteraction()
     {
@@ -15,7 +14,7 @@ public class EnergyGun : InteractiveObject
     public void SerumPickedup()
     {
         EnergyPickedUp = true;
-        GM.GetComponent<GameManager>().EnergyTextCoroutine();
+        GameManager.EnergyTextCoroutine();
         Destroy(gameObject);
     }
 }

@@ -8,7 +8,6 @@ public class PlayerInteract : MonoBehaviour {
 
 public Transform playerCam;
 public static float maxDistance = 5f;
-public GameManager GM;
 public LayerMask playerLayer;
 
 
@@ -30,18 +29,17 @@ void Update()
         var SelectionComponent = Selection.GetComponent<InteractiveObject>();
         if (SelectionComponent != null)
         {
-            GM.InteractCrossOn();
+            GameManager.InteractCrossOn();
         }
         else
         {
-                GM.InteractCrossoff();
+             GameManager.InteractCrossOff();
         }
     }
     else
     {
-            GM.InteractCrossoff();
+            GameManager.InteractCrossOff();
     }
-
 
 }
 
