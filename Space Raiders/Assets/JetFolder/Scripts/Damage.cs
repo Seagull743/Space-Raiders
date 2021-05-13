@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    //public Rigidbody playerRB;
-
-    //public Vector3 knockbackDir;
+    public bool done;
 
     public int damage;
+    private void OnEnable()
+    {
+        done = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<Health>().ShardDamage(damage);
+            if(!done)
+            {
+                other.GetComponent<Health>().ShardDamage(damage);
+                done = true;
+            }            
         }
     }
 }

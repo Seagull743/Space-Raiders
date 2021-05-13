@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     public CharacterController controller;
 
+    [SerializeField]
+    private Rigidbody rb;
 
     public float speed = 12f;
 
@@ -37,10 +39,9 @@ public class Movement : MonoBehaviour
     private float walkingTime;
     private Vector3 targetCameraPosition;
 
- 
-
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         controller.GetComponent<CharacterController>();
         isWalking = false;
     }

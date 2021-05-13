@@ -114,21 +114,24 @@ public class EnemyAI : MonoBehaviour
         {
 			anim.SetTrigger("attacktrigger");
 
-			damageBox.SetActive(true);
-			
 			//player.GetComponent<Health>().ShardDamage(damage);
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+			//Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+			//rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+			//rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-            alreadyAttacked = true;
+			alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
-    private void ResetAttack()
+	private void Damage()
     {
+		damageBox.SetActive(true);
+	}
+
+    private void ResetAttack()
+    {	
 		damageBox.SetActive(false);
         alreadyAttacked = false;
     }
@@ -139,11 +142,6 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void Alert()
-    {
-
-    }
-
-	private void Damage()
     {
 
     }
