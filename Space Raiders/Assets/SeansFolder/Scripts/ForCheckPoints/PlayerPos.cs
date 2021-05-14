@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPos : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-       // transform.position =
-       GameManager.SetLastCheckpoint(transform.position);
+        if (GameManager.HasLastCheckpoint())
+        transform.position = GameManager.GetLastCheckpoint();
+    
     }
 
-        void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {

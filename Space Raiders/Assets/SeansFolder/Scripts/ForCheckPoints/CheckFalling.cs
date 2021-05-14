@@ -19,6 +19,7 @@ public class CheckFalling : MonoBehaviour
 	private void OnBelowLevel()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		
 	}
 
 

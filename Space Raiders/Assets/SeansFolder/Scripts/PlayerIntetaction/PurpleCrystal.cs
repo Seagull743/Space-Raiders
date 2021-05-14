@@ -5,6 +5,8 @@ using UnityEngine;
 public class PurpleCrystal : InteractiveObject
 {
     public static bool PurpleCrystalCollected = false;
+
+   
     public override void PlayerInteraction()
     {
         PickedupCrystal();
@@ -14,6 +16,6 @@ public class PurpleCrystal : InteractiveObject
     {
         GameManager.TheScoreAdd();
         PurpleCrystalCollected = true;
-        Destroy(gameObject);
+        Destroy(gameObject);     
     }
 }

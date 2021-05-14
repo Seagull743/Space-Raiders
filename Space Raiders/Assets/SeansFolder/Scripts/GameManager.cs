@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     private Vector3 LastCheckPoint;
     [SerializeField] private GameObject InteractCross;
 
+
+    private bool LastCheckPointIsSet = false; 
+
     [SerializeField]
     private Text ScoreText;
     private int TheScore;
@@ -50,11 +53,11 @@ public class GameManager : MonoBehaviour
         CrytalText.SetActive(false);
         PickedUpText.SetActive(false);
     }
-    public void InteractCrossOnInternal()
+    private void InteractCrossOnInternal()
     {
         InteractCross.SetActive(true);
     }
-    public void InteractCrossOffInternal()
+    private void InteractCrossOffInternal()
     {
         InteractCross.SetActive(false);
     }
@@ -83,23 +86,36 @@ public class GameManager : MonoBehaviour
         PickedUpText.SetActive(false);
     }
 
-    public void TheScoreInternal()
+    private void TheScoreInternal()
     {
         TheScore += 1;
     }
 
-    public void BossSpawnerInternal(GameObject boss)
+    private void BossSpawnerInternal(GameObject boss)
     {
         boss.SetActive(true);
     }
-    public void SetLastCheckpointInternal(Vector3 checkpoint)
+    private void SetLastCheckpointInternal(Vector3 checkpoint)
     {
+        LastCheckPointIsSet = true;
         LastCheckPoint = checkpoint;
     }
+    private Vector3 GetLastCheckpointInternal()
+    {
+        return LastCheckPoint;
+    }
+
+    private bool HasLastCheckPointInternal()
+    {
+        return LastCheckPointIsSet;
+    }
+  
     public static void RegisterPlayerCharacter(GameObject interactCross, GameObject crystalText, GameObject pickedUpText, Text scoreText) => Instance.RegisterPlayerCharacterInternal(interactCross, crystalText, pickedUpText, scoreText);
     public static void CrystalText() => Instance.CrystalTextInternal();
     public static void EnergyTextCoroutine() => Instance.EnergyTextCoroutineInternal();
     public static void SetLastCheckpoint(Vector3 checkpoint) => Instance.SetLastCheckpointInternal(checkpoint);
+    public static Vector3 GetLastCheckpoint() => Instance.GetLastCheckpointInternal();
+    public static bool HasLastCheckpoint() => Instance.HasLastCheckPointInternal();
     public static void InteractCrossOn() => Instance.InteractCrossOnInternal();
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();

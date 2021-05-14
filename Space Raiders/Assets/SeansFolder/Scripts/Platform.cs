@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour
         
 
         {
-            Objectspeed = 10;
+            Objectspeed = 6;
         }    
     }
 
@@ -61,7 +61,7 @@ public class Platform : MonoBehaviour
 
     public void UnFrozen()
     {
-    Objectspeed = 10;
+    Objectspeed = 6;
     gameObject.GetComponent<BoxCollider>().isTrigger = true;
     this.gameObject.layer = default;
     }

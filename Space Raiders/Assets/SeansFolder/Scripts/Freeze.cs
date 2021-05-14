@@ -24,9 +24,16 @@ public class Freeze : MonoBehaviour
     [SerializeField]
     private int damageAmount;
 
+    [SerializeField]
+    private GameObject[] CharacterMesh;
+
     void Start()
     {
-        gameObject.GetComponent<Renderer>().material = normal;    
+        foreach (GameObject CM in CharacterMesh)
+        {
+            CM.GetComponent<Renderer>().material = normal;
+        }
+        //gameObject.GetComponent<Renderer>().material = normal;    
     }
 
     void Update()
@@ -38,8 +45,12 @@ public class Freeze : MonoBehaviour
              if (timertoFreeze >= 1)
                  {
                     Debug.Log("Frozen complete");
-                    gameObject.GetComponent<Renderer>().material = Frozen;
-                    freezingComplete = true;
+                foreach (GameObject CM in CharacterMesh)
+                {
+                    CM.GetComponent<Renderer>().material = Frozen;
+                }
+                //gameObject.GetComponent<Renderer>().material = Frozen;
+                freezingComplete = true;
 
                         if (freezingComplete == true)
                         {                           
@@ -84,7 +95,11 @@ public class Freeze : MonoBehaviour
     {
         freezing = false;
         freezingComplete = false;
-        gameObject.GetComponent<Renderer>().material = normal;
+        foreach (GameObject CM in CharacterMesh)
+        {
+            CM.GetComponent<Renderer>().material = normal;
+        }
+        //gameObject.GetComponent<Renderer>().material = normal;
         CanFreeze = true;
         timertoFreeze = 0;
         if(TryGetComponent<MoveObject>(out var moveObject))
