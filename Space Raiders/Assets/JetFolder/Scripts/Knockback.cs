@@ -10,6 +10,8 @@ public class Knockback : MonoBehaviour
     {
         if(other.gameObject.tag == "dmgBox")
         {
+            Debug.Log("Knockback");
+
             Vector3 knockbackDir = other.transform.position - transform.position;
 
             knockbackDir = -knockbackDir.normalized;

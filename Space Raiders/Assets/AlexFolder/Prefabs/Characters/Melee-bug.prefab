@@ -915,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008bf22b2fe8dba4e9dfeca9cded38f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  done: 0
   damage: 10
 --- !u!65 &8946605055573131497
 BoxCollider:
@@ -2495,6 +2496,7 @@ GameObject:
   - component: {fileID: 3861756397020520012}
   - component: {fileID: 5655205216298747745}
   - component: {fileID: 4831416061792377136}
+  - component: {fileID: 4443262910374549221}
   m_Layer: 0
   m_Name: Melee-bug
   m_TagString: Untagged
@@ -2645,6 +2647,25 @@ MonoBehaviour:
   _totalWaitTime: 3
   _switchProbability: 0.2
   _patrolPoints: []
+--- !u!114 &4443262910374549221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649443839035394444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d081694a4b3fc4cbe6c93912c67656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timertoFreeze: 0
+  timerunFreeze: 5
+  freezing: 0
+  freezingComplete: 0
+  normal: {fileID: 2100000, guid: 041b28992ac03a3458f7a6876e67572c, type: 2}
+  Frozen: {fileID: 2100000, guid: ee10ce2181f10c844b5aac80eb4f9982, type: 2}
+  damageAmount: 0
 --- !u!1 &7965638837713159536
 GameObject:
   m_ObjectHideFlags: 0

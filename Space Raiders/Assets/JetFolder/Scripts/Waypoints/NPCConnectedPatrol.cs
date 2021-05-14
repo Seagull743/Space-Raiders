@@ -10,6 +10,8 @@ namespace Waypoints
 {
     public class NPCConnectedPatrol : MonoBehaviour
     {
+        private Animator anim;
+
         [SerializeField]
         bool _patrolWaiting;
 
@@ -26,10 +28,15 @@ namespace Waypoints
         ConnectedWaypoint _currentWaypoint;
         ConnectedWaypoint _previousWaypoint;
 
-        bool _travelling;
+        public bool _travelling;
         bool _waiting;
         float _waitTimer;
         int _waypointsVisited;
+
+        private void Awake()
+        {
+            anim = GetComponent<Animator>();
+        }
 
         public void Start()
         {

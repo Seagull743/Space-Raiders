@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-	//public bool melee = false;
+    public bool melee = false;
 
-	//public bool range = false;
+    public bool range = false;
 
-	//public bool boss = false;
-	private Animator anim;
+    public bool boss = false;
+
+    private Animator anim;
 
     public NavMeshAgent nav;
 
@@ -30,7 +31,11 @@ public class EnemyAI : MonoBehaviour
 
 	public float attackRange;
 
+	public bool attacking;
+
 	public GameObject damageBox;
+
+	public GameObject projectile;
 
     //FOV variables
     public float viewRadius;
@@ -63,18 +68,28 @@ public class EnemyAI : MonoBehaviour
     {
 		damageBox.SetActive(false);
 
-		//if(this.gameObject.tag == "Melee")
-		//	melee = true;
+        if (this.gameObject.tag == "Melee")
+            melee = true;
 
 
-		//if(this.gameObject.tag == "Range")
-		//	range = true;
+        if (this.gameObject.tag == "Range")
+            range = true;
 
 
-		//if(this.gameObject.tag == "Boss")
-		//	boss = true;
+        if (this.gameObject.tag == "Boss")
+            boss = true;
 
-		viewMesh = new Mesh();
+		if(melee == false || boss == false || range == true && projectile != null)
+        {
+			Debug.LogError("No Projectile Assigned on Range Enemy");
+        }
+
+		if(melee == true || boss == true || range == false && damageBox != null)
+        {
+			Debug.LogError("No Damage Box Assigned on Melee/Boss Enemy");
+        }
+
+        viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
@@ -94,35 +109,55 @@ public class EnemyAI : MonoBehaviour
         {
 			Attack();
         }
+
+		if(GetComponent<Waypoints.NPCConnectedPatrol>()._travelling == true)
+        {
+			anim.SetBool("walk", true);
+		}
+		else
+        {
+			anim.SetBool("walk", false);
+		}
 	}
 
     private void Chase()
     {
-		nav.speed = runSpeed;
-		nav.SetDestination(player.position);
+		if(!attacking)
+        {
+			nav.speed = runSpeed;
+			nav.SetDestination(player.position);
+		}		
 	}
 
-    private void Attack()
-    {
-        Debug.Log("Damage Player");
+	private void Attack()
+	{
+		Debug.Log("Damage Player");
 
-        nav.SetDestination(transform.position);
+		anim.SetBool("attack", true);
 
-        transform.LookAt(player);
+        //transform.LookAt(player);
 
-        if (!alreadyAttacked)
-        {
-			anim.SetTrigger("attacktrigger");
-
-			//player.GetComponent<Health>().ShardDamage(damage);
-			//Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-
-			//rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-			//rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+        if (!alreadyAttacked && melee == true)
+		{
+			nav.SetDestination(transform.position);
+			attacking = true;
 			alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+			Invoke(nameof(ResetAttack), timeBetweenAttacks);
+		}
+
+		if (!alreadyAttacked && range == true)
+        {
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
         }
+	}
+
+	private void AttackDone()
+    {
+		anim.SetBool("attack", false);
+		attacking = false;
     }
 
 	private void Damage()
