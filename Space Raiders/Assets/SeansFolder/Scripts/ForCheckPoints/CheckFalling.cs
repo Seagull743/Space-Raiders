@@ -5,24 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class CheckFalling : MonoBehaviour
 {
-   
+	
 	public float resetBelowThisY = -100f;
+	public GameManager GM;
 
-	void Update()
+    void Start()
+    {
+		GM.SpawnPlayer();
+    }
+
+    void FixedUpdate()
 	{
 		if (transform.position.y < resetBelowThisY)
 		{
-			OnBelowLevel();
+			GM.SpawnPlayer();
 		}
 	}
 
-	private void OnBelowLevel()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		
-	}
-
-
 	
-
 }

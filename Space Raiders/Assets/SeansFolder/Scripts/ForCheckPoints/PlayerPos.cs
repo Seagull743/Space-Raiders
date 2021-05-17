@@ -5,21 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPos : MonoBehaviour
 {
-    
+    //public Transform TargetLocation;
+   // public CharacterController body;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.HasLastCheckpoint())
-        transform.position = GameManager.GetLastCheckpoint();
-    
+     //   body.transform.position = TargetLocation.position;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }    
+       // if (Input.GetKeyDown(KeyCode.Q))
+       // {
+       //     SpawnPlayer();
+       // }    
     }
 
+  
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private Vector3 LastCheckPoint;
+    public Vector3 LastCheckPoint;
     [SerializeField] private GameObject InteractCross;
 
 
@@ -22,6 +22,13 @@ public class GameManager : MonoBehaviour
     private GameObject PickedUpText;
     //checkpoints
     private static GameManager Instance;
+
+    public CharacterController body;
+
+
+    public Transform checkpoint1;
+    public Transform checkpoint2;
+    public Transform checkpoint3;
 
     void Awake()
     {
@@ -109,7 +116,28 @@ public class GameManager : MonoBehaviour
     {
         return LastCheckPointIsSet;
     }
-  
+
+
+    public void SpawnPlayer()
+    {
+        if(PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
+        {
+            body.transform.position = checkpoint1.position;
+        }
+        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
+        {
+            body.transform.position = checkpoint2.position;
+        }
+        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && RedCrystal.RedCrystalCollected == false)
+        {
+            body.transform.position = checkpoint3.position;
+        }
+           
+   
+    }
+
+   // if (GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
+
     public static void RegisterPlayerCharacter(GameObject interactCross, GameObject crystalText, GameObject pickedUpText, Text scoreText) => Instance.RegisterPlayerCharacterInternal(interactCross, crystalText, pickedUpText, scoreText);
     public static void CrystalText() => Instance.CrystalTextInternal();
     public static void EnergyTextCoroutine() => Instance.EnergyTextCoroutineInternal();

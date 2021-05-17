@@ -14,10 +14,4 @@ public class Playerspawn : MonoBehaviour
         }
         instance = this.gameObject;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
