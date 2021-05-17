@@ -24,7 +24,6 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] float timeBetweenAttacks;
     public bool alreadyAttacked;
-    //public GameObject projectile;
 
     //[SerializeField] float sightRange, attackRange;
     [SerializeField] bool playerInSightRange, playerInAttackRange;
@@ -33,9 +32,9 @@ public class EnemyAI : MonoBehaviour
 
 	public bool attacking;
 
-	public GameObject damageBox;
+	public bool alerted;
 
-	public GameObject projectile;
+	public GameObject damageBox;
 
     //FOV variables
     public float viewRadius;
@@ -66,28 +65,20 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-		damageBox.SetActive(false);
-
+		if(damageBox !=null)
+			damageBox.SetActive(false);
+		
         if (this.gameObject.tag == "Melee")
             melee = true;
-
 
         if (this.gameObject.tag == "Range")
             range = true;
 
-
         if (this.gameObject.tag == "Boss")
             boss = true;
 
-		if(melee == false || boss == false || range == true && projectile != null)
-        {
-			Debug.LogError("No Projectile Assigned on Range Enemy");
-        }
-
-		if(melee == true || boss == true || range == false && damageBox != null)
-        {
-			Debug.LogError("No Damage Box Assigned on Melee/Boss Enemy");
-        }
+		if(melee != false && boss != false && range != true && !damageBox)
+			Debug.LogWarning("No Damage Box Assigned on Melee/Boss Enemy");
 
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -106,17 +97,21 @@ public class EnemyAI : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) Attack();
 
 		if(playerInAttackRange == true)
-        {
 			Attack();
-        }
 
-		if(GetComponent<Waypoints.NPCConnectedPatrol>()._travelling == true)
-        {
-			anim.SetBool("walk", true);
-		}
-		else
-        {
-			anim.SetBool("walk", false);
+		if (alerted == true)
+			Alert();
+
+		if (melee != false && boss != false && range != true)
+		{
+			if (GetComponent<Waypoints.NPCConnectedPatrol>()._travelling != false)
+			{
+				anim.SetBool("walk", true);
+			}
+			else
+			{
+				anim.SetBool("walk", false);
+			}
 		}
 	}
 
@@ -147,10 +142,10 @@ public class EnemyAI : MonoBehaviour
 
 		if (!alreadyAttacked && range == true)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+			GetComponent<EnemyGun>().isFiring = true;
+			attacking = true;
+			alreadyAttacked = true;
+			Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 	}
 
@@ -162,12 +157,16 @@ public class EnemyAI : MonoBehaviour
 
 	private void Damage()
     {
-		damageBox.SetActive(true);
+		if(damageBox != null)
+			damageBox.SetActive(true);
 	}
 
     private void ResetAttack()
     {	
-		damageBox.SetActive(false);
+		if(damageBox != null)
+        {
+			damageBox.SetActive(false);
+		}		
         alreadyAttacked = false;
     }
 
@@ -178,7 +177,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Alert()
     {
-
+		
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
