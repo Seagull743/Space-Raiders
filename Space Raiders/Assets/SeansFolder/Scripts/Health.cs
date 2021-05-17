@@ -19,8 +19,18 @@ public class Health : MonoBehaviour
     {
         if(currenthealth <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
+    }
+
+    public void RespawnEnemy()
+    {
+        currenthealth = maxHealth;
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(this.gameObject);
     }
 
     public void ShardDamage(int damageAmount)

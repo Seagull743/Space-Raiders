@@ -26,10 +26,27 @@ public class GameManager : MonoBehaviour
     public CharacterController body;
 
 
-    public Transform checkpoint1;
-    public Transform checkpoint2;
-    public Transform checkpoint3;
+    [SerializeField] 
+    private Transform checkpoint1;
+    [SerializeField]
+    private Transform checkpoint2;
+    [SerializeField]
+    private Transform checkpoint3;
 
+    
+    
+    // Enemy spawn checks
+    [SerializeField]
+    private GameObject[] EnemysIsland1;
+    private GameObject[] EnemysIsland2;
+    private GameObject[] EnemysIsland3;
+    private GameObject[] EnemysIsland4;
+
+    private bool CheckPoint1Complete = false;
+    private bool CheckPoint2Complete = false;
+    private bool CheckPoint3Complete = false;
+    private bool CheckPoint4Complete = false;
+    
     void Awake()
     {
         TheScore = 0;
@@ -120,21 +137,55 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
+                    
         if(PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
         {
             body.transform.position = checkpoint1.position;
+            
         }
         else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
         {
             body.transform.position = checkpoint2.position;
+            CheckPoint1Complete = true;
         }
         else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && RedCrystal.RedCrystalCollected == false)
         {
             body.transform.position = checkpoint3.position;
+            CheckPoint1Complete = true;
         }
            
-   
+         WaveCheck();
     }
+
+
+    public void WaveCheck()
+    {
+//checks the stages Player is at
+        if(CheckPoint1Complete)
+        {
+            foreach(GameObject Ai in EnemysIsland1)
+            {            
+                
+                 if (TryGetComponent<Health>(out var health))
+                {
+                   health.DestroyEnemy();
+                }
+               // Ai.GetComponent<Health>().DestroyEnemy();
+               // Ai.GetComponent<Health>().enabled = false;              
+            }
+        }
+        else if (!CheckPoint1Complete)
+        {
+            foreach(GameObject Ai in EnemysIsland1)
+            {
+                Ai.SetActive(true);
+                Ai.GetComponent<Health>().RespawnEnemy();             
+              
+            }
+        }
+    }
+
+
 
    // if (GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
 
