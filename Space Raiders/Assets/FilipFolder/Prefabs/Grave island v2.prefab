@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1913206883209012604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grave island v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280925731692560326}
-  m_LocalRotation: {x: -0, y: -0.6066436, z: -0, w: 0.79497397}
+  m_LocalRotation: {x: 0, y: -0.6066407, z: 0, w: 0.7949762}
   m_LocalPosition: {x: 117.9, y: -9.3, z: -328.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1537817597931021343}
   - component: {fileID: 3934366940728194827}
   - component: {fileID: 2091828547822125313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface409
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715292244119194696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pasted__polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8363582785346485883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 695371053254205195}
   - component: {fileID: 237838768537982234}
   - component: {fileID: 2091828547900959837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface410
   m_TagString: Untagged
   m_Icon: {fileID: 0}

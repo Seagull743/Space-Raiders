@@ -227,7 +227,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1126,10 +1126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grave island v2
       objectReference: {fileID: 0}
-    - target: {fileID: 1280925731692560326, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1913206883209012604, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 117.9
@@ -1173,22 +1169,6 @@ PrefabInstance:
     - target: {fileID: 1913206883209012604, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3003158131806814807, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214167826976000309, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064818039589864574, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330119985317348405, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 614cd1241f900c1478409d37df9b0a4f, type: 3}
