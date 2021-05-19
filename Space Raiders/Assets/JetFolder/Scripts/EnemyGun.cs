@@ -18,6 +18,6 @@ public class EnemyGun : MonoBehaviour
     private void Fire()
     {
         Debug.Log("Shot Fired");
-        Instantiate(projectile, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(projectile, new Vector3(0, 0, 0), Quaternion.identity, firePoint);
     }
 }
