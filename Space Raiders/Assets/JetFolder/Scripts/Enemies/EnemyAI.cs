@@ -142,7 +142,7 @@ public class EnemyAI : MonoBehaviour
 
 		if (!alreadyAttacked && range == true)
         {
-			GetComponent<EnemyGun>().isFiring = true;
+			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
 			alreadyAttacked = true;
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -167,6 +167,11 @@ public class EnemyAI : MonoBehaviour
         {
 			damageBox.SetActive(false);
 		}		
+
+		if(range != false)
+        {
+			GetComponentInChildren<EnemyGun>().isFiring = false;
+        }
         alreadyAttacked = false;
     }
 

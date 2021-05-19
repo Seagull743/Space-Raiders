@@ -6,18 +6,18 @@ public class EnemyGun : MonoBehaviour
 {
     public GameObject projectile;
     public bool isFiring;
-    public float fireRate;
     public Transform firePoint;
+    public bool alreadyFired;
 
-    private void Firing()
+    private void Update()
     {
         if (isFiring == true)
-            StartCoroutine("Fire", fireRate);
+            Fire();
     }
 
-    IEnumerator Fire(float fireRate)
+    private void Fire()
     {
-        yield return new WaitForSeconds(fireRate);
-        Instantiate(projectile, firePoint);
+        Debug.Log("Shot Fired");
+        Instantiate(projectile, new Vector3(0, 0, 0), Quaternion.identity);
     }
 }

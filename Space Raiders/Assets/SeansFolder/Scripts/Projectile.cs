@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     public int frozenDmg = 50;
 
     public int speed;
+
+    public float lifeTime = 3f;
+
     [SerializeField]
     private GameObject impact;
     
