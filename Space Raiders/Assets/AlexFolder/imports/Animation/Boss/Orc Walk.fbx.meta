@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 987884e9cc64f144e9eac1adfd41546f
+guid: ab76488edfb978546a9f53c456f27b9a
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: roaring-enterstate
-  - first:
-      74: 8154042200662383244
-    second: Roaring-enterstate
+    second: walk-orc
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Roaring-enterstate
+      name: walk-orc
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 162
+      lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
