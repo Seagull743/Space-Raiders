@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-            GameObject.Find("Player").GetComponent<Health>().currenthealth -= damage;
+            GameObject.Find("Player").GetComponent<PlayerHealth>().currenthealth -= damage;
             Destroy(gameObject);
     }
 

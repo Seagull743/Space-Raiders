@@ -45,6 +45,11 @@ public class FreezeGun : MonoBehaviour
     [SerializeField]
     private ParticleSystem muzzleFlash;
 
+    //JET Variables
+
+    private Vector3 lastKnownPos;
+    public Vector3 storedPos;
+
     
 
 
@@ -120,6 +125,9 @@ public class FreezeGun : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && !freezeon && !Beam && Time.time >= nexttimetofire)
         {
             nexttimetofire = Time.time + 1f / firerate;
+            //Gets position of Gun -- JET
+            lastKnownPos = this.transform.position;
+            
             Shoot();
             shooting = true;
         }

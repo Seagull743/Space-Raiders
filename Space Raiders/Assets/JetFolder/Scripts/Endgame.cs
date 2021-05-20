@@ -9,7 +9,7 @@ public class Endgame : MonoBehaviour
     {
         if (GreenCrystalShrine.GreenPlaced == true && RedCrystalShrine.redCrystalplaced == true && PurpleCrystalShrine.PurplePlaced == true)
         {
-            SceneManager.LoadScene("JetScene");
+            SceneManager.LoadScene("randomscene");
         }
     }
 }

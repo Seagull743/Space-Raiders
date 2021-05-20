@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
     public bool alreadyAttacked;
 
     //[SerializeField] float sightRange, attackRange;
-    [SerializeField] bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
 	public float attackRange;
 
@@ -113,6 +113,9 @@ public class EnemyAI : MonoBehaviour
 				anim.SetBool("walk", false);
 			}
 		}
+
+		
+
 	}
 
     private void Chase()

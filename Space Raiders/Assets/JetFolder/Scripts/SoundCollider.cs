@@ -10,10 +10,12 @@ public class SoundCollider : MonoBehaviour
     [SerializeField]
     LayerMask Enemy;
 
+    public bool alert;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        alert = GetComponent<EnemyAI>().alerted;
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class SoundCollider : MonoBehaviour
 
         foreach(var enemyInRange in enemiesInRange)
         {
-
+            alert = true;
         }
     }
 }
