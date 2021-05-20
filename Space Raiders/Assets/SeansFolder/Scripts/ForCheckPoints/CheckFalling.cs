@@ -14,6 +14,8 @@ public class CheckFalling : MonoBehaviour
 		GM.SpawnPlayer();
     }
 
+
+
     void FixedUpdate()
 	{
 		if (transform.position.y < resetBelowThisY)
@@ -22,5 +24,4 @@ public class CheckFalling : MonoBehaviour
 		}
 	}
 
-	
 }

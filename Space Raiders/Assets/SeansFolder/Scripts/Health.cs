@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public float currenthealth;
 
     [SerializeField]
-    private Image EnemyHealthBar;
+    private Image HealthBar;
    
  
     
@@ -18,14 +18,14 @@ public class Health : MonoBehaviour
     void Start()
     {   
         currenthealth = maxHealth;
-        EnemyHealthBar.enabled = false;
+        HealthBar.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        EnemyHealthBar.fillAmount = currenthealth / maxHealth;
+        HealthBar.fillAmount = currenthealth / maxHealth;
         
         
         
@@ -55,9 +55,9 @@ public class Health : MonoBehaviour
 
     IEnumerator HealthBarIndication()
     {
-        EnemyHealthBar.enabled = true;
+        HealthBar.enabled = true;
         yield return new WaitForSeconds(3);
-        EnemyHealthBar.enabled = false;  
+        HealthBar.enabled = false;  
     }
 
 }

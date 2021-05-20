@@ -158,6 +158,9 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+
+
     public void WaveCheck()
     {
 //checks the stages Player is at
@@ -169,9 +172,7 @@ public class GameManager : MonoBehaviour
                  if (TryGetComponent<Health>(out var health))
                 {
                    health.DestroyEnemy();
-                }
-               // Ai.GetComponent<Health>().DestroyEnemy();
-               // Ai.GetComponent<Health>().enabled = false;              
+                }          
             }
         }
         else if (!CheckPoint1Complete)
