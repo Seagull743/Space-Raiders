@@ -318,6 +318,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCanvas-Final
       objectReference: {fileID: 0}
+    - target: {fileID: 3207187175692607572, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_Text
+      value: '[E] Interact'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207187175692607572, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207187175692607572, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_Color.g
+      value: 0.43137258
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207187175692607572, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_Color.b
+      value: 0.627451
+      objectReference: {fileID: 0}
     - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -325,6 +341,10 @@ PrefabInstance:
     - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104640167283666219, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
