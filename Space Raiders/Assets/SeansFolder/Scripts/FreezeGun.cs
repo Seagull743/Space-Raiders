@@ -33,7 +33,7 @@ public class FreezeGun : MonoBehaviour
     [SerializeField]
     private ParticleSystem freezebeam;
     [SerializeField]
-    private  GameObject colliderBeam;
+    private GameObject colliderBeam;
     private bool Beam;
     public GameObject[] enemys;
     public GameObject[] platforms;
@@ -47,20 +47,11 @@ public class FreezeGun : MonoBehaviour
 
     //JET Variables
 
-    private Vector3 lastKnownPos;
-    public Vector3 storedPos;
-
-    
-
-
+    public Vector3 lastKnownPos;
 
     // Start is called before the first frame update
-
-
     void Start()
     {
-        
-
         crossCircle.SetActive(true);
         crossShard.SetActive(false);
         freezeon = true;
@@ -72,7 +63,6 @@ public class FreezeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true)
         {
             if (freezeon)
@@ -126,23 +116,21 @@ public class FreezeGun : MonoBehaviour
         {
             nexttimetofire = Time.time + 1f / firerate;
             //Gets position of Gun -- JET
-            lastKnownPos = this.transform.position;
-            
+            lastKnownPos = this.transform.position;         
             Shoot();
             shooting = true;
         }
         else
         {
             shooting = false;
-            
         }
     }
+
     public void Shoot()
     {
         RaycastHit hit;
         muzzleFlash.Play();
 
- 
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
             GameObject tempProjectile = Instantiate(projectile, gunpoint.transform.position, gunpoint.transform.rotation);
@@ -154,8 +142,7 @@ public class FreezeGun : MonoBehaviour
             GameObject tempProjectile = Instantiate(projectile, gunpoint.transform.position, gunpoint.transform.rotation);
             tempProjectile.GetComponent<Projectile>().hitpoint = fpscam.transform.position + fpscam.transform.forward * range;
             GA.GetComponent<GunAnimations>().Shardrecoil();
-        }
-        
+        } 
     }
 }
 

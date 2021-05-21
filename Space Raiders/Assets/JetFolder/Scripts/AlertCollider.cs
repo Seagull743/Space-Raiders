@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundCollider : MonoBehaviour
+public class AlertCollider : MonoBehaviour
 {
     [SerializeField]
     float radius;
@@ -10,12 +10,10 @@ public class SoundCollider : MonoBehaviour
     [SerializeField]
     LayerMask Enemy;
 
-    public bool alert;
-
     // Start is called before the first frame update
     void Start()
     {
-        alert = GetComponent<EnemyAI>().alerted;
+
     }
 
     // Update is called once per frame
@@ -25,7 +23,14 @@ public class SoundCollider : MonoBehaviour
 
         foreach(var enemyInRange in enemiesInRange)
         {
-            alert = true;
+            Debug.Log("Alerted " + enemyInRange);
+            enemyInRange.GetComponent<EnemyAI>().GoToPos();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

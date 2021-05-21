@@ -56,6 +56,8 @@ public class EnemyAI : MonoBehaviour
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
+	public Vector3 storedPos;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -113,10 +115,13 @@ public class EnemyAI : MonoBehaviour
 				anim.SetBool("walk", false);
 			}
 		}
-
-		
-
 	}
+
+	public void GoToPos()
+    {
+		storedPos = player.GetComponentInChildren<FreezeGun>().lastKnownPos;
+		nav.SetDestination(storedPos);
+    }
 
     private void Chase()
     {

@@ -17,10 +17,6 @@ public class PlayerHealth : MonoBehaviour
     private GameObject heart2;
     [SerializeField]
     private GameObject heart3;
-
-  
-      
-
     [SerializeField]
     private Slider HealthBar;
     [SerializeField]
@@ -28,8 +24,6 @@ public class PlayerHealth : MonoBehaviour
 
     private bool isTakingDmg = false;
     private bool isRegeningHealth;
-
-
 
     public GameManager gameManager;
     
@@ -51,8 +45,7 @@ public class PlayerHealth : MonoBehaviour
     }
     
     void Update()
-    {
-        
+    {       
         HealthBar.value = currenthealth / maxHealth;
         healthText.text = currenthealth + "/100";
 
@@ -67,7 +60,6 @@ public class PlayerHealth : MonoBehaviour
             isTakingDmg = true;
             Invoke("TakingDamageFalse", 5);
         }      
-    
     }  
 
     private IEnumerator RegainHealthOverTime()
@@ -103,7 +95,6 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("You lost");
             //You lost screen
         }
-
     }
 
     private void HealthRegen()

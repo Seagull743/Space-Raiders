@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8647368445917671377}
   - component: {fileID: 7946877311262677216}
   m_Layer: 0
-  m_Name: RangeBullet
+  m_Name: EnemyBullet
   m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7092291784164696719}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.1977587, y: 0.124609806, z: 7.878469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24921961, y: 0.24921961, z: 0.24921961}
   m_Children: []
   m_Father: {fileID: 0}
