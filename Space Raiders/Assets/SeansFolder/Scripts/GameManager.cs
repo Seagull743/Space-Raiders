@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject InteractCross;
 
 
-    private bool LastCheckPointIsSet = false; 
+    private bool LastCheckPointIsSet = false;
 
     [SerializeField]
     private Text ScoreText;
@@ -26,13 +26,21 @@ public class GameManager : MonoBehaviour
     public CharacterController body;
 
 
-    [SerializeField] 
+    [SerializeField]
     private Transform checkpoint1;
     [SerializeField]
     private Transform checkpoint2;
     [SerializeField]
     private Transform checkpoint3;
 
+
+    // Spawn Boss
+    [SerializeField]
+    private GameObject Boss;
+    [SerializeField]
+    private Transform BossSpawnLocation;
+    private bool SpawnedBoss = false;
+    private bool youwon = false;
     
     
     // Enemy spawn checks
@@ -64,6 +72,21 @@ public class GameManager : MonoBehaviour
     {
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
+
+        if (YellowCrystalShrine.YellowCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
+        {
+            if (!SpawnedBoss)
+            {
+                Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
+                SpawnedBoss = true;
+            }
+            
+            if(BossHealth.BossKilled == true && !youwon)
+            {
+                youwon = true;
+                Invoke("YouWon", 4);
+            }
+        }
 
     }
     private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
@@ -134,6 +157,12 @@ public class GameManager : MonoBehaviour
         return LastCheckPointIsSet;
     }
 
+
+    private void YouWon()
+    {
+        Debug.Log("You Won");
+        //Load Game win Scene
+    }
 
     public void SpawnPlayer()
     {

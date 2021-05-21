@@ -30,6 +30,12 @@ public class Projectile : MonoBehaviour
             GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));     
             Destroy(this.gameObject);       
         }
+        else if(other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<BossHealth>().ShardDamage(shardDmg);
+            GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));
+            Destroy(this.gameObject);
+        }     
         else
         {
             Instantiate(impact, this.transform.position, this.transform.rotation);

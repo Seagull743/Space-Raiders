@@ -7,16 +7,29 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
     private float maxHealth = 100;
-    [SerializeField]
     public float currenthealth;
 
     [SerializeField]
-    private Image HealthBar;
+    public float playerLives = 3;
+    [SerializeField]
+    private GameObject heart1;
+    [SerializeField]
+    private GameObject heart2;
+    [SerializeField]
+    private GameObject heart3;
+
+  
+      
+
+    [SerializeField]
+    private Slider HealthBar;
     [SerializeField]
     private Text healthText;
 
     private bool isTakingDmg = false;
     private bool isRegeningHealth;
+
+
 
     public GameManager gameManager;
     
@@ -40,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         
-        HealthBar.fillAmount = currenthealth / maxHealth;
+        HealthBar.value = currenthealth / maxHealth;
         healthText.text = currenthealth + "/100";
 
         if(!isTakingDmg && currenthealth != maxHealth && !isRegeningHealth)
@@ -70,10 +83,27 @@ public class PlayerHealth : MonoBehaviour
 
     private void RespawnPlayer()
     {
+        playerLives -= 1;
         gameManager.SpawnPlayer();
         currenthealth = maxHealth;
         Debug.Log("Spawned");
         isTakingDmg = true;
+
+        if(playerLives == 2)
+        {
+            heart3.SetActive(false);
+        }
+        else if(playerLives == 1)
+        {
+            heart2.SetActive(false);
+        }
+        else if(playerLives == 0)
+        {
+            heart1.SetActive(false);
+            Debug.Log("You lost");
+            //You lost screen
+        }
+
     }
 
     private void HealthRegen()
