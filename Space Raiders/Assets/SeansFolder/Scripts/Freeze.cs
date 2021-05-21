@@ -42,7 +42,7 @@ public class Freeze : MonoBehaviour
          {
              timertoFreeze += Time.deltaTime;
 
-             if (timertoFreeze >= 1)
+             if (timertoFreeze >= 0.5)
                  {
                     Debug.Log("Frozen complete");
                 foreach (GameObject CM in CharacterMesh)

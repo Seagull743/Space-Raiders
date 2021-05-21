@@ -7,7 +7,7 @@ public class Endgame : MonoBehaviour
 {
     void Update()
     {
-        if (GreenCrystalShrine.GreenPlaced == true && RedCrystalShrine.redCrystalplaced == true && PurpleCrystalShrine.PurplePlaced == true)
+        if (GreenCrystalShrine.GreenPlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && PurpleCrystalShrine.PurplePlaced == true)
         {
             SceneManager.LoadScene("randomscene");
         }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedCrystal : InteractiveObject
+public class PinkCrystal : InteractiveObject
 {
-    public static bool RedCrystalCollected = false;
+    public static bool PinkCrystalCollected = false;
     public override void PlayerInteraction()
     {
         PickedupCrystal();
@@ -13,7 +13,7 @@ public class RedCrystal : InteractiveObject
     public void PickedupCrystal()
     {
         GameManager.TheScoreAdd();
-        RedCrystalCollected = true;
+        PinkCrystalCollected = true;
         Destroy(gameObject);
     }
 }

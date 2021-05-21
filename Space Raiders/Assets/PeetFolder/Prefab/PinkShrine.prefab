@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5442196070201358971}
+  - component: {fileID: 1454598907751068520}
+  - component: {fileID: 2139633495069969893}
   m_Layer: 0
   m_Name: PinkShrine
   m_TagString: Untagged
@@ -32,6 +34,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 126.612, z: 0}
+--- !u!65 &1454598907751068520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669459656938135745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.977247, y: 8.259659, z: 2.5644014}
+  m_Center: {x: -0.047068834, y: 3.987337, z: -0.06820894}
+--- !u!114 &2139633495069969893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669459656938135745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8934cc21f2c5746478f6656b5456cf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Crystal: {fileID: 2765114903813078778}
 --- !u!1 &7137196661496939746
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f086c51b22ebac941a9b0ce2a826f895, type: 3}
+--- !u!1 &2765114903813078778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7661608516090390653, guid: f086c51b22ebac941a9b0ce2a826f895, type: 3}
+  m_PrefabInstance: {fileID: 5479799930560599687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3248355330024465472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6996431041348809415, guid: f086c51b22ebac941a9b0ce2a826f895, type: 3}

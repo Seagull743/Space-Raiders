@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2475618309561038108}
+  - component: {fileID: 9079769486210708744}
+  - component: {fileID: 8266288203675408997}
   m_Layer: 0
   m_Name: GreenShrine
   m_TagString: Untagged
@@ -32,6 +34,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 85.483, z: 0}
+--- !u!65 &9079769486210708744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959138806296932262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2696033, y: 7.0517263, z: 3.2883325}
+  m_Center: {x: 0.049989346, y: 4.198776, z: -0.0051958566}
+--- !u!114 &8266288203675408997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959138806296932262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08258ffe782ade348861d7c5f421c950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Crystal: {fileID: 3029461930098544981}
 --- !u!1 &3525803313563166277
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 008d8703f3b77684fa4d3920bed7cc8b, type: 3}
+--- !u!1 &3029461930098544981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1142611737022557553, guid: 008d8703f3b77684fa4d3920bed7cc8b, type: 3}
+  m_PrefabInstance: {fileID: 2725118408969174052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2396230834440342511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 328921096967141323, guid: 008d8703f3b77684fa4d3920bed7cc8b, type: 3}

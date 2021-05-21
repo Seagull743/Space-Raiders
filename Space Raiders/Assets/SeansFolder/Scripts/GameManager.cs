@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
 
-        if (YellowCrystalShrine.YellowCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
+        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true)
         {
             if (!SpawnedBoss)
             {
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
             if(BossHealth.BossKilled == true && !youwon)
             {
                 youwon = true;
+                //dfdsf
                 Invoke("YouWon", 4);
             }
         }
@@ -167,17 +168,17 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer()
     {
                     
-        if(PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
+        if(PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint1.position;
             
         }
-        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && RedCrystal.RedCrystalCollected == false)
+        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint2.position;
             CheckPoint1Complete = true;
         }
-        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && RedCrystal.RedCrystalCollected == false)
+        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint3.position;
             CheckPoint1Complete = true;
@@ -185,10 +186,6 @@ public class GameManager : MonoBehaviour
            
          WaveCheck();
     }
-
-
-
-
 
     public void WaveCheck()
     {
