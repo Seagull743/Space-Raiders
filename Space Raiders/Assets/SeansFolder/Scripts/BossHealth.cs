@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
 
-    public float maxHealth = 100;
-    public float currenthealth;
+    public static float maxHealth = 100;
+    public static float currenthealth;
     public static bool BossKilled = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +21,6 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //HealthBar.fillAmount = currenthealth / maxHealth;
-
 
 
         if (currenthealth <= 0)
