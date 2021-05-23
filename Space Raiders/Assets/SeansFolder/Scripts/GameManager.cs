@@ -41,13 +41,21 @@ public class GameManager : MonoBehaviour
     private Transform BossSpawnLocation;
     private bool SpawnedBoss = false;
     private bool youwon = false;
+
+    [SerializeField]
+    private Slider BossHealthBar;
+    [SerializeField]
+    private Image HealthBackGround;
     
     
     // Enemy spawn checks
     [SerializeField]
     private GameObject[] EnemysIsland1;
+    [SerializeField]
     private GameObject[] EnemysIsland2;
+    [SerializeField]
     private GameObject[] EnemysIsland3;
+    [SerializeField]
     private GameObject[] EnemysIsland4;
 
     private bool CheckPoint1Complete = false;
@@ -57,6 +65,8 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
+        HealthBackGround.enabled = false;
+        BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
         if (Instance == null)
         {
@@ -68,9 +78,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    
     void Update()
     {
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
+
+        BossHealthBar.value = BossHealth.currenthealth / BossHealth.maxHealth;
 
 
         if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true)
@@ -78,13 +92,15 @@ public class GameManager : MonoBehaviour
             if (!SpawnedBoss)
             {
                 Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
+                BossHealthBar.gameObject.SetActive(true);
+                HealthBackGround.enabled = true;
                 SpawnedBoss = true;
             }
             
             if(BossHealth.BossKilled == true && !youwon)
             {
                 youwon = true;
-                //dfdsf
+                //Can have a you won text then load you won screen
                 Invoke("YouWon", 4);
             }
         }
