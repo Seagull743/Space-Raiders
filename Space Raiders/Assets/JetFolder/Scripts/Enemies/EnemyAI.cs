@@ -25,7 +25,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float timeBetweenAttacks;
     public bool alreadyAttacked;
 
-    //[SerializeField] float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
 	public float attackRange;
@@ -33,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 	public bool attacking;
 
 	public bool alerted;
+
+	public bool isFrozen;
 
 	public GameObject damageBox;
 
@@ -100,9 +101,6 @@ public class EnemyAI : MonoBehaviour
 
 		if(playerInAttackRange == true)
 			Attack();
-
-		if (alerted == true)
-			Alert();
 
 		if (melee != false && boss != false && range != true)
 		{
@@ -183,14 +181,22 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
+	public void Frozen()
+	{
+		if (boss == true)
+			anim.speed = 0.3F;
+		else
+			anim.speed = 0;
+	}
+
+	public void UnFrozen()
+	{
+		anim.speed = 1;
+    }
+
     private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }
-
-    private void Alert()
-    {
-		
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
