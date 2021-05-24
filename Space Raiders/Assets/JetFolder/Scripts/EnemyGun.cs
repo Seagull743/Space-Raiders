@@ -11,13 +11,13 @@ public class EnemyGun : MonoBehaviour
 
     private void Update()
     {
-        if (isFiring == true)
+        if (isFiring == true && alreadyFired == false)
             Fire();
     }
 
     private void Fire()
     {
         Debug.Log("Shot Fired");
-        Instantiate(projectile, new Vector3(0, 0, 0), Quaternion.identity, firePoint);
+        Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
     }
 }

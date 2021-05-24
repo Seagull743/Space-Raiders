@@ -7,6 +7,7 @@ public class Damage : MonoBehaviour
     public bool done;
 
     public int damage;
+
     private void OnEnable()
     {
         done = false;
@@ -18,7 +19,7 @@ public class Damage : MonoBehaviour
         {
             if(!done)
             {
-                other.GetComponent<Health>().ShardDamage(damage);
+                other.GetComponent<PlayerHealth>().TakeDamage();
                 done = true;
             }            
         }

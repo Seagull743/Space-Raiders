@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
 		//playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
 		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
-        if (playerInSightRange && !playerInAttackRange) Chase();
+        if (playerInSightRange && !playerInAttackRange && melee || boss) Chase();
         if (playerInAttackRange && playerInSightRange) Attack();
 
 		if(playerInAttackRange == true)
@@ -138,7 +138,7 @@ public class EnemyAI : MonoBehaviour
 
         //transform.LookAt(player);
 
-        if (!alreadyAttacked && melee == true)
+        if (!alreadyAttacked && melee == true && !isFrozen)
 		{
 			nav.SetDestination(transform.position);
 			attacking = true;
@@ -146,7 +146,7 @@ public class EnemyAI : MonoBehaviour
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
 		}
 
-		if (!alreadyAttacked && range == true)
+		if (!alreadyAttacked && range == true && !isFrozen)
         {
 			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
@@ -183,14 +183,21 @@ public class EnemyAI : MonoBehaviour
 
 	public void Frozen()
 	{
-		if (boss == true)
+		isFrozen = true;
+
+		if (boss)
 			anim.speed = 0.3F;
-		else
+			nav.speed = 0.3F;
+		
+        if(melee || range)
 			anim.speed = 0;
+			nav.speed = 0;	
 	}
 
 	public void UnFrozen()
 	{
+		isFrozen = false;
+		nav.speed = 1;
 		anim.speed = 1;
     }
 
