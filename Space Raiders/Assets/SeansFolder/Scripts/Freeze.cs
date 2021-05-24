@@ -55,12 +55,12 @@ public class Freeze : MonoBehaviour
                         if (freezingComplete == true)
                         {                           
                             CanFreeze = false;                           
-                            if(TryGetComponent<MoveObject>(out var moveObject))
+                            if(TryGetComponent<EnemyAI>(out var AI))
                             {
-                                moveObject.Frozen();
-                            } 
+                                AI.Frozen();
+                            }
 
-                            if(TryGetComponent<Platform>(out var platform))
+                            if (TryGetComponent<Platform>(out var platform))
                             {
                                 platform.Frozen();
                             }
@@ -102,12 +102,12 @@ public class Freeze : MonoBehaviour
         //gameObject.GetComponent<Renderer>().material = normal;
         CanFreeze = true;
         timertoFreeze = 0;
-        if(TryGetComponent<MoveObject>(out var moveObject))
-            {
-                moveObject.UnFrozen();
-            }
+        if (TryGetComponent<EnemyAI>(out var AI))
+        {
+            AI.UnFrozen();
+        }
 
-        if(TryGetComponent<Platform>(out var platform))
+        if (TryGetComponent<Platform>(out var platform))
             {
                 platform.UnFrozen();
             }
