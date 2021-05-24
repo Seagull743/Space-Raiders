@@ -1241,6 +1241,8 @@ GameObject:
   - component: {fileID: 3368048081337459801}
   - component: {fileID: 5022899185836019571}
   - component: {fileID: 4358052128665023313}
+  - component: {fileID: 1606791329673846033}
+  - component: {fileID: 5206921556509620918}
   m_Layer: 0
   m_Name: Boss-V2
   m_TagString: Boss
@@ -1365,6 +1367,7 @@ MonoBehaviour:
   attackRange: 5
   attacking: 0
   alerted: 0
+  isFrozen: 0
   damageBox: {fileID: 8441862470251693646}
   viewRadius: 20
   viewAngle: 120
@@ -1380,6 +1383,39 @@ MonoBehaviour:
   edgeDstThreshold: 0.5
   maskCutawayDst: 0
   viewMeshFilter: {fileID: 6634564853931013036}
+  storedPos: {x: 0, y: 0, z: 0}
+--- !u!114 &1606791329673846033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706360094748611429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3a71fddfb2a104cb88e6d680861cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5206921556509620918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706360094748611429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d081694a4b3fc4cbe6c93912c67656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timertoFreeze: 0
+  timerunFreeze: 5
+  freezing: 0
+  freezingComplete: 0
+  normal: {fileID: 0}
+  Frozen: {fileID: 0}
+  damageAmount: 0
+  CharacterMesh: []
 --- !u!1 &5865103795805673945
 GameObject:
   m_ObjectHideFlags: 0
