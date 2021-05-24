@@ -162,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6511236245342423214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6865348833052836663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.195002, y: 17.26771, z: 78.24232}
-  m_Center: {x: 0.14346771, y: -0.47902882, z: 38.524506}
 --- !u!1 &3474618644979105567
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +194,7 @@ Transform:
   - {fileID: 6904733719399229975}
   - {fileID: 5721421703606001350}
   m_Father: {fileID: 4766627800840129467}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3481850419847095450
 GameObject:
@@ -430,8 +417,9 @@ Transform:
   m_GameObject: {fileID: 5291067752648511745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.58, z: -4.56}
-  m_LocalScale: {x: 9.552538, y: 9.552536, z: 9.552537}
+  m_LocalScale: {x: 9.873378, y: 9.873379, z: 9.873379}
   m_Children:
+  - {fileID: 6761653053609391998}
   - {fileID: 3098537723718013874}
   - {fileID: 330078806636561061}
   m_Father: {fileID: 0}
@@ -552,6 +540,68 @@ Transform:
   m_Father: {fileID: 7838220987851513147}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6241398698277006788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6761653053609391998}
+  - component: {fileID: 6511236244379554833}
+  m_Layer: 11
+  m_Name: Freeze_Gun_V2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6761653053609391998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6241398698277006788}
+  m_LocalRotation: {x: -0.059615817, y: 0.006605629, z: -0.0019088727, w: 0.9981978}
+  m_LocalPosition: {x: 3.2412555, y: 2.557049, z: 18.70409}
+  m_LocalScale: {x: 0.10128247, y: 0.101282455, z: 0.10128243}
+  m_Children: []
+  m_Father: {fileID: 4766627800840129467}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6511236244379554833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6241398698277006788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187d926fd951daa4cbb7055eda5332fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 60
+  firerate: 2
+  fpscam: {fileID: 0}
+  nexttimetofire: 0
+  projectile: {fileID: 9089622204162267445, guid: 99bdd1e1ca30b904d8674232d14646ca, type: 3}
+  gunpoint: {fileID: 6511236245283484526}
+  anim: {fileID: 0}
+  GA: {fileID: 0}
+  freezeon: 0
+  freezebeam: {fileID: 8149579986137313941}
+  colliderBeam: {fileID: 6865348833052836663}
+  enemys:
+  - {fileID: 0}
+  platforms:
+  - {fileID: 0}
+  crossCircle: {fileID: 0}
+  crossShard: {fileID: 0}
+  muzzleFlash: {fileID: 479876495293942466}
+  lastKnownPos: {x: 0, y: 0, z: 0}
 --- !u!1 &6511236245283484526
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +714,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6511236245342423214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865348833052836663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.195002, y: 17.26771, z: 78.24232}
+  m_Center: {x: 0.14346771, y: -0.47902882, z: 38.524506}
 --- !u!1 &7084206765112801257
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +838,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4766627800840129467}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3572526376216329895
 MeshFilter:
@@ -1067,6 +1130,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2851731961721285618, guid: a94f58095112bb3469d3760980a942b8, type: 3}
   m_PrefabInstance: {fileID: 2301410989694517313}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8149579986137313941 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7992023242480349908, guid: a94f58095112bb3469d3760980a942b8, type: 3}
+  m_PrefabInstance: {fileID: 2301410989694517313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7985288070596079334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1151,5 +1219,10 @@ PrefabInstance:
 --- !u!4 &479876495293942467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7528237438909883429, guid: 2ec9ef44f2aa1014fac3cefc8c33d924, type: 3}
+  m_PrefabInstance: {fileID: 7985288070596079334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &479876495293942466 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7528237438909883428, guid: 2ec9ef44f2aa1014fac3cefc8c33d924, type: 3}
   m_PrefabInstance: {fileID: 7985288070596079334}
   m_PrefabAsset: {fileID: 0}
