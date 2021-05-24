@@ -9,12 +9,7 @@ public class FreezeBeam : MonoBehaviour
    
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == ("Enemy"))
-        {
-            other.GetComponent<Freeze>().StartFreezing();
-        }
-
-        if (other.gameObject.tag == ("Platform"))
+        if (other.gameObject.tag == ("Melee") || other.gameObject.tag == ("Range") || other.gameObject.tag == ("Boss") || other.gameObject.tag == ("Platform"))
         {
             other.GetComponent<Freeze>().StartFreezing();
         }
@@ -23,14 +18,9 @@ public class FreezeBeam : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == ("Enemy"))
+        if (other.gameObject.tag == ("Melee") || other.gameObject.tag == ("Range") || other.gameObject.tag == ("Boss") || other.gameObject.tag == ("Platform"))
         {
             other.GetComponent<Freeze>().UnFreezing();
-        }
-
-        if (other.gameObject.tag == ("Platform"))
-        {
-            other.GetComponent<Freeze>().StartFreezing();
         }
     }
 
