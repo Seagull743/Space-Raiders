@@ -54,12 +54,12 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(RegainHealthOverTime());
         }
     
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            currenthealth -= 20;
-            isTakingDmg = true;
-            Invoke("TakingDamageFalse", 5);
-        }      
+       // if(Input.GetKeyDown(KeyCode.P))
+       //{
+        //    currenthealth -= 20;
+        //    isTakingDmg = true;
+       //     Invoke("TakingDamageFalse", 5);
+       // }      
     }  
 
     private IEnumerator RegainHealthOverTime()
@@ -73,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
         isRegeningHealth = false;
     }
 
-    private void RespawnPlayer()
+    public void RespawnPlayer()
     {
         playerLives -= 1;
         gameManager.SpawnPlayer();
@@ -93,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
         {
             heart1.SetActive(false);
             Debug.Log("You lost");
-            //You lost screen
+            //Load the main Menu
         }
     }
 

@@ -7,6 +7,7 @@ public class CheckFalling : MonoBehaviour
 {
 	
 	public float resetBelowThisY = -100f;
+	public PlayerHealth PH;
 	public GameManager GM;
 
     void Start()
@@ -20,7 +21,7 @@ public class CheckFalling : MonoBehaviour
 	{
 		if (transform.position.y < resetBelowThisY)
 		{
-			GM.SpawnPlayer();
+			PH.RespawnPlayer();
 		}
 	}
 

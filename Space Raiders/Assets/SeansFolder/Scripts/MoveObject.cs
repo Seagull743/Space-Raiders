@@ -49,7 +49,7 @@ public class MoveObject : MonoBehaviour
 
 public void Frozen()
 {
-    Objectspeed = 2;
+    Objectspeed = 0;
 }
 
 public void UnFrozen()

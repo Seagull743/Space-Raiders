@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     private Transform checkpoint2;
     [SerializeField]
     private Transform checkpoint3;
+    [SerializeField]
+    private Transform checkpoint4;
+    [SerializeField]
+    private Transform bossCheckpoint;
+
 
 
     // Spawn Boss
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Slider BossHealthBar;
     [SerializeField]
-    private Image HealthBackGround;
+    private GameObject HealthBackGround;
     
     
     // Enemy spawn checks
@@ -65,7 +70,7 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
-        HealthBackGround.enabled = false;
+        HealthBackGround.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
         if (Instance == null)
@@ -93,7 +98,7 @@ public class GameManager : MonoBehaviour
             {
                 Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
                 BossHealthBar.gameObject.SetActive(true);
-                HealthBackGround.enabled = true;
+                HealthBackGround.SetActive(true);
                 SpawnedBoss = true;
             }
             
@@ -183,21 +188,25 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-                    
-        if(PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
+
+        if (PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint1.position;
-            
+
         }
-        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
+        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint2.position;
             CheckPoint1Complete = true;
         }
-        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == false)
+        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == false)
         {
             body.transform.position = checkpoint3.position;
             CheckPoint1Complete = true;
+        }
+        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && SpawnedBoss == true)
+        {
+            body.transform.position = bossCheckpoint.position;
         }
            
          WaveCheck();
