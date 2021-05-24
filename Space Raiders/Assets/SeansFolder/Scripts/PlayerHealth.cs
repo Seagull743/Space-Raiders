@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
     private bool isTakingDmg = false;
     private bool isRegeningHealth;
 
+    public float damagetoplayer = 20;
+
     public GameManager gameManager;
     
     // Start is called before the first frame update
@@ -54,12 +56,7 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(RegainHealthOverTime());
         }
     
-       // if(Input.GetKeyDown(KeyCode.P))
-       //{
-        //    currenthealth -= 20;
-        //    isTakingDmg = true;
-       //     Invoke("TakingDamageFalse", 5);
-       // }      
+       
     }  
 
     private IEnumerator RegainHealthOverTime()
@@ -71,6 +68,11 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         isRegeningHealth = false;
+    }
+
+    public void TakeDamage()
+    {
+        currenthealth -= damagetoplayer;
     }
 
     public void RespawnPlayer()
