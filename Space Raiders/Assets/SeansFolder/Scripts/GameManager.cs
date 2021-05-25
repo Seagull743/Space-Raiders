@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     private Slider BossHealthBar;
     [SerializeField]
     private GameObject HealthBackGround;
+    [SerializeField]
+    private GameObject ForceField;
+    [SerializeField]
+    private GameObject ObjectiveBar;
     
     
     // Enemy spawn checks
@@ -72,6 +76,7 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
+        ForceField.SetActive(false);
         HealthBackGround.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
@@ -98,6 +103,8 @@ public class GameManager : MonoBehaviour
         {
             if (!SpawnedBoss)
             {
+                ObjectiveBar.SetActive(false);
+                ForceField.SetActive(true);
                 Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
                 BossHealthBar.gameObject.SetActive(true);
                 HealthBackGround.SetActive(true);
@@ -107,6 +114,8 @@ public class GameManager : MonoBehaviour
             if(BossHealth.BossKilled == true && !youwon)
             {
                 youwon = true;
+                BossHealthBar.gameObject.SetActive(false);
+                HealthBackGround.SetActive(false);
                 //Can have a you won text then load you won screen
                 Invoke("YouWon", 4);
             }

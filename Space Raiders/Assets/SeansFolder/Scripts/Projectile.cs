@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Range" || other.gameObject.tag == "Melee")
         {
             other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
             GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));     

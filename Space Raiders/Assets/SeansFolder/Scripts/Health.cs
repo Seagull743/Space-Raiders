@@ -31,10 +31,17 @@ public class Health : MonoBehaviour
         
         if(currenthealth <= 0)
         {
-            this.gameObject.SetActive(false);
+            //do the death animation
+            Invoke("DeathAninmation", 4);
         }
     
     }
+
+    public void DeathAninmation()
+    {
+        this.gameObject.SetActive(false);
+    }
+
 
     public void RespawnEnemy()
     {

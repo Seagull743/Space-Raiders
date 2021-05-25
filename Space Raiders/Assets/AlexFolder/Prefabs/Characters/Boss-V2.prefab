@@ -1265,6 +1265,7 @@ Transform:
   - {fileID: 4213631379637063793}
   - {fileID: 7879169577222343435}
   - {fileID: 588443392804563275}
+  - {fileID: 2308303678513874706}
   - {fileID: 3043772068147149684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1417,7 +1418,17 @@ MonoBehaviour:
   Frozen: {fileID: 0}
   FreezeEffect: {fileID: 0}
   damageAmount: 0
-  CharacterMesh: []
+  CharacterMesh:
+  - {fileID: 9146481478104024566}
+  - {fileID: 6087618445257218907}
+  - {fileID: 310985246652202767}
+  - {fileID: 9146504814307396855}
+  - {fileID: 4449796890960854069}
+  - {fileID: 6703676460717805772}
+  - {fileID: 8070058943377220099}
+  - {fileID: 7586867527125019731}
+  - {fileID: 1743693562401649238}
+  - {fileID: 8517843700581024119}
 --- !u!1 &5865103795805673945
 GameObject:
   m_ObjectHideFlags: 0
