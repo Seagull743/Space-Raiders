@@ -6,9 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public bool melee = false;
-
     public bool range = false;
-
     public bool boss = false;
 
     private Animator anim;
@@ -23,22 +21,21 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float runSpeed = 4f;
 
     [SerializeField] float timeBetweenAttacks;
-    public bool alreadyAttacked;
-
-    public bool playerInSightRange, playerInAttackRange;
-
-	public float attackRange;
-
+	[SerializeField] float attackDelay;
+	public bool alreadyAttacked;
+    public bool playerInSightRange, playerInAttackRange;	
 	public bool attacking;
-
 	public bool alerted;
-
 	public bool isFrozen;
 
 	public GameObject damageBox;
 
-    //FOV variables
-    public float viewRadius;
+	public Vector3 storedPos;
+
+	public float attackRange;
+
+	//FOV variables
+	public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
 
@@ -56,8 +53,6 @@ public class EnemyAI : MonoBehaviour
 
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
-
-	public Vector3 storedPos;
 
     private void Awake()
     {
@@ -98,11 +93,8 @@ public class EnemyAI : MonoBehaviour
 		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
         if (playerInSightRange && !playerInAttackRange && melee || boss) Chase();
         if (playerInAttackRange && playerInSightRange) Attack();
-
-		if(playerInAttackRange == true)
-			Attack();
-
-		if (melee != false && boss != false && range != true)
+		
+		if (melee != false)
 		{
 			if (GetComponent<Waypoints.NPCConnectedPatrol>()._travelling != false)
 			{
@@ -134,23 +126,25 @@ public class EnemyAI : MonoBehaviour
 	{
 		Debug.Log("Damage Player");
 
-		anim.SetBool("attack", true);
+		anim.SetTrigger("attacktrigger");
 
         //transform.LookAt(player);
 
-        if (!alreadyAttacked && melee == true && !isFrozen)
+        if (!alreadyAttacked && melee != false && !isFrozen || !alreadyAttacked && boss != false && !isFrozen)
 		{
 			nav.SetDestination(transform.position);
 			attacking = true;
 			alreadyAttacked = true;
+			Invoke(nameof(StartAttack), attackDelay);
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
 		}
 
-		if (!alreadyAttacked && range == true && !isFrozen)
+		if (!alreadyAttacked && range != false && !isFrozen)
         {
 			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
 			alreadyAttacked = true;
+			Invoke(nameof(StartAttack), attackDelay);
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 	}
@@ -161,9 +155,9 @@ public class EnemyAI : MonoBehaviour
 		attacking = false;
     }
 
-	private void Damage()
-    {
-		if(damageBox != null)
+	private void StartAttack()
+	{
+		if (damageBox != null)
 			damageBox.SetActive(true);
 	}
 
@@ -172,7 +166,7 @@ public class EnemyAI : MonoBehaviour
 		if(damageBox != null)
         {
 			damageBox.SetActive(false);
-		}		
+		}	
 
 		if(range != false)
         {

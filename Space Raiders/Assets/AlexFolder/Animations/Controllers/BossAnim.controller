@@ -7,10 +7,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: bigattack
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2710255142206535035}
   m_Solo: 0
@@ -37,7 +34,7 @@ AnimatorStateTransition:
     m_ConditionEvent: walk
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: bigattack
+    m_ConditionEvent: attacktrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5246002768006315642}
@@ -194,13 +191,19 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: death
+  - m_Name: deathtrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: roar
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: attacktrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -227,9 +230,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: bigattack
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: walk
     m_EventTreshold: 0
@@ -256,7 +256,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: bigattack
+    m_ConditionEvent: attacktrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5246002768006315642}
@@ -311,7 +311,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: death
+    m_ConditionEvent: deathtrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2885853144497347858}
