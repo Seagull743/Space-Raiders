@@ -9,14 +9,18 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     public float currenthealth;
 
+    private bool death = false;
+
+
     [SerializeField]
     private Image HealthBar;
-   
- 
-    
+
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {   
+        anim = GetComponent<Animator>();
         currenthealth = maxHealth;
         HealthBar.enabled = false;
     }
@@ -24,21 +28,20 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HealthBar.fillAmount = currenthealth / maxHealth;    
         
-        HealthBar.fillAmount = currenthealth / maxHealth;
-        
-        
-        
-        if(currenthealth <= 0)
+        if(currenthealth <= 0 && !death)
         {
-            //do the death animation
-            Invoke("DeathAninmation", 4);
+            StartCoroutine("Death");
         }
-    
     }
 
-    public void DeathAninmation()
+    IEnumerator Death()
     {
+        death = true;
+        yield return new WaitForSeconds(0.1f);
+        anim.SetTrigger("deathtrigger");
+        yield return new WaitForSeconds(4f);
         this.gameObject.SetActive(false);
     }
 

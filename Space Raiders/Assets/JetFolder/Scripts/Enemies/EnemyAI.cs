@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
 
 	public float attackRange;
 
+	public Health health;
+
 	//FOV variables
 	public float viewRadius;
     [Range(0, 360)]
@@ -59,6 +61,8 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         nav = GetComponent<NavMeshAgent>();
 		anim = GetComponent<Animator>();
+		health = GetComponent<Health>();
+
     }
 
     void Start()
@@ -105,6 +109,11 @@ public class EnemyAI : MonoBehaviour
 				anim.SetBool("walk", false);
 			}
 		}
+
+		if(health.currenthealth <= 0)
+        {
+
+        }
 	}
 
 	public void GoToPos()
