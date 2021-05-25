@@ -579,6 +579,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1161414897}
     m_Modifications:
+    - target: {fileID: 327778646107112360, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 728350650498413555, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 3088923535307141389, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 4658458429205438580, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
     - target: {fileID: 5655205216298747745, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: viewMeshFilter
       value: 
@@ -627,10 +643,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7600795551713192727, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
     - target: {fileID: 7649443839035394444, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_Name
       value: Melee-bug (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8643125441188481653, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 8784500837513522793, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
 --- !u!4 &247657461 stripped
@@ -660,6 +688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1161414897}
     m_Modifications:
+    - target: {fileID: 4443262910374549221, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
     - target: {fileID: 5655205216298747745, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: viewMeshFilter
       value: 
@@ -3896,6 +3928,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1161414897}
     m_Modifications:
+    - target: {fileID: 327778646107112360, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 728350650498413555, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 3088923535307141389, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 4658458429205438580, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
     - target: {fileID: 5655205216298747745, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: viewMeshFilter
       value: 
@@ -3948,6 +3996,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee-bug
       objectReference: {fileID: 0}
+    - target: {fileID: 8643125441188481653, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
+    - target: {fileID: 8784500837513522793, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 890b90c286083ee4b9c4ca1a2587fc34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
 --- !u!4 &1670089289 stripped
@@ -4720,6 +4776,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1161414897}
     m_Modifications:
+    - target: {fileID: 327778646107112360, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
+    - target: {fileID: 728350650498413555, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
+    - target: {fileID: 3088923535307141389, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
+    - target: {fileID: 4443262910374549221, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
+    - target: {fileID: 4658458429205438580, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
     - target: {fileID: 5655205216298747745, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: viewMeshFilter
       value: 
@@ -4768,10 +4844,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7600795551713192727, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
     - target: {fileID: 7649443839035394444, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_Name
       value: Melee-bug (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8643125441188481653, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
+    - target: {fileID: 8784500837513522793, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c6e89caf3c07844ac309196cba19fe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
 --- !u!4 &2043863980 stripped
