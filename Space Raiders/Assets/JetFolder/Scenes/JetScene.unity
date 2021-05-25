@@ -1753,6 +1753,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 849821650}
+    - target: {fileID: 5655205216298747745, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
+      propertyPath: viewMeshFilter
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7017619805468431158, guid: 0e67704b7e9b70d478f292e4cab79c8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 315.94
@@ -3969,10 +3973,18 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 2.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3474618646674746160, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4569776692693989229, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: EnemyHealthBar
       value: 
       objectReference: {fileID: 1658451438}
+    - target: {fileID: 6241398698462444011, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6511236244229767230, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: platforms.Array.size
       value: 0

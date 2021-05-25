@@ -83,10 +83,12 @@ public class EnemyAI : MonoBehaviour
 		if(melee != false && boss != false && range != true && !damageBox)
 			Debug.LogWarning("No Damage Box Assigned on Melee/Boss Enemy");
 
-        viewMesh = new Mesh();
-        viewMesh.name = "View Mesh";
-        viewMeshFilter.mesh = viewMesh;
-
+		if(viewMeshFilter != null)
+        {
+			viewMesh = new Mesh();
+			viewMesh.name = "View Mesh";
+			viewMeshFilter.mesh = viewMesh;
+		}
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
@@ -324,11 +326,14 @@ public class EnemyAI : MonoBehaviour
 			}
 		}
 
-		viewMesh.Clear();
+		if(viewMeshFilter != null)
+        {
+			viewMesh.Clear();
 
-		viewMesh.vertices = vertices;
-		viewMesh.triangles = triangles;
-		viewMesh.RecalculateNormals();
+			viewMesh.vertices = vertices;
+			viewMesh.triangles = triangles;
+			viewMesh.RecalculateNormals();
+		}		
 	}
 
 
