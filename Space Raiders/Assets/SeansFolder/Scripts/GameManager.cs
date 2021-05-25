@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     private bool CheckPoint3Complete = false;
     private bool CheckPoint4Complete = false;
     
+
     void Awake()
     {
         ForceField.SetActive(false);
@@ -99,16 +100,12 @@ public class GameManager : MonoBehaviour
         BossHealthBar.value = BossHealth.currenthealth / BossHealth.maxHealth;
 
 
-        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true)
+        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && Boss == true)
         {
             if (!SpawnedBoss)
             {
-                ObjectiveBar.SetActive(false);
                 ForceField.SetActive(true);
-                Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
-                BossHealthBar.gameObject.SetActive(true);
-                HealthBackGround.SetActive(true);
-                SpawnedBoss = true;
+                Invoke("SpawnTheBoss", 4);
             }
             
             if(BossHealth.BossKilled == true && !youwon)
@@ -133,6 +130,16 @@ public class GameManager : MonoBehaviour
         CrytalText.SetActive(false);
         PickedUpText.SetActive(false);
     }
+   
+    private void SpawnTheBoss()
+    {
+        ObjectiveBar.SetActive(false);
+        Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
+        BossHealthBar.gameObject.SetActive(true);
+        HealthBackGround.SetActive(true);
+        SpawnedBoss = true;
+    }
+   
     private void InteractCrossOnInternal()
     {
         InteractCross.SetActive(true);
