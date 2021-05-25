@@ -8,9 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float maxHealth = 100;
     public float currenthealth;
-
-    [SerializeField]
-    public float playerLives = 3;
+    public static float playerLives = 3;
     [SerializeField]
     private GameObject heart1;
     [SerializeField]
@@ -56,7 +54,11 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(RegainHealthOverTime());
         }
     
-       
+       if(Input.GetKeyDown(KeyCode.P))
+       {
+           currenthealth -= 20;
+       }
+
     }  
 
     private IEnumerator RegainHealthOverTime()

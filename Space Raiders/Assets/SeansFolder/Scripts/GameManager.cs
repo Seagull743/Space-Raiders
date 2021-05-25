@@ -7,10 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Vector3 LastCheckPoint;
     [SerializeField] private GameObject InteractCross;
-
-
     private bool LastCheckPointIsSet = false;
-
     [SerializeField]
     private Text ScoreText;
     private int TheScore;
@@ -22,9 +19,7 @@ public class GameManager : MonoBehaviour
     private GameObject PickedUpText;
     //checkpoints
     private static GameManager Instance;
-
     public CharacterController body;
-
 
     [SerializeField]
     private Transform checkpoint1;
@@ -49,6 +44,10 @@ public class GameManager : MonoBehaviour
     private bool SpawnedBoss = false;
     private bool youwon = false;
 
+    
+    [SerializeField]
+    private ParticleSystem Ring;
+
     [SerializeField]
     private Slider BossHealthBar;
     [SerializeField]
@@ -57,6 +56,11 @@ public class GameManager : MonoBehaviour
     private GameObject ForceField;
     [SerializeField]
     private GameObject ObjectiveBar;
+
+    [SerializeField]
+    private GameObject bossText;
+
+    public BossHealth BH;
     
     
     // Enemy spawn checks
@@ -76,7 +80,10 @@ public class GameManager : MonoBehaviour
     
 
     void Awake()
-    {
+    {    
+        Boss.SetActive(false);
+        Ring.Stop();
+        bossText.SetActive(false);
         ForceField.SetActive(false);
         HealthBackGround.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
@@ -100,14 +107,16 @@ public class GameManager : MonoBehaviour
         BossHealthBar.value = BossHealth.currenthealth / BossHealth.maxHealth;
 
 
-        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && Boss == true)
+        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && BossObject.boss == true)
         {
             if (!SpawnedBoss)
             {
                 ForceField.SetActive(true);
+                Ring.Play();
                 Invoke("SpawnTheBoss", 4);
             }
             
+
             if(BossHealth.BossKilled == true && !youwon)
             {
                 youwon = true;
@@ -119,6 +128,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    
     private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
     {
         InteractCross = interactCross;
@@ -131,10 +141,23 @@ public class GameManager : MonoBehaviour
         PickedUpText.SetActive(false);
     }
    
+    private void RespawnPlayer()
+    {
+        Boss.SetActive(false);
+        BossHealthBar.gameObject.SetActive(false);
+        HealthBackGround.SetActive(false);
+        BossObject.boss = false;
+        SpawnedBoss = false;
+        ForceField.SetActive(false);
+    }
+
     private void SpawnTheBoss()
     {
+        Ring.Stop();
+        BH.GetComponent<BossHealth>().RespawnEnemy();
         ObjectiveBar.SetActive(false);
-        Instantiate(Boss, BossSpawnLocation.position, BossSpawnLocation.rotation);
+        Boss.transform.position = BossSpawnLocation.position;
+        Boss.SetActive(true);
         BossHealthBar.gameObject.SetActive(true);
         HealthBackGround.SetActive(true);
         SpawnedBoss = true;
@@ -154,6 +177,19 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CrystalTextCoroutine());
     }
 
+    
+    public void BossTextStart()
+    {
+        StartCoroutine(BossText());
+    }
+
+     IEnumerator BossText()
+    {
+        bossText.SetActive(true);
+        yield return new WaitForSeconds(2);
+        bossText.SetActive(false);
+    }
+    
     IEnumerator CrystalTextCoroutine()
     {
         CrytalText.SetActive(true);
@@ -231,13 +267,8 @@ public class GameManager : MonoBehaviour
         {
             CheckPoint1Complete = true;
             body.transform.position = checkpoint5.position;
-        }
-        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && SpawnedBoss == true)
-        {
-            CheckPoint1Complete = true;
-            body.transform.position = bossCheckpoint.position;
-        }
-           
+            RespawnPlayer();
+        }         
          WaveCheck();
     }
 
@@ -266,9 +297,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
 
-
-   // if (GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && RedCrystalShrine.redCrystalplaced == true)
 
     public static void RegisterPlayerCharacter(GameObject interactCross, GameObject crystalText, GameObject pickedUpText, Text scoreText) => Instance.RegisterPlayerCharacterInternal(interactCross, crystalText, pickedUpText, scoreText);
     public static void CrystalText() => Instance.CrystalTextInternal();

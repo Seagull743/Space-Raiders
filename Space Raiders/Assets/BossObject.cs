@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossObject : InteractiveObject
 {
     public static bool boss = false;
+    public GameManager gameManager;
     public override void PlayerInteraction()
     {
        SpawnBoss();
@@ -18,7 +19,7 @@ public class BossObject : InteractiveObject
         }
         else
         {
-            Debug.Log("You can't spawn the boss");
+            gameManager.GetComponent<GameManager>().BossTextStart();
         }
     }
 }
