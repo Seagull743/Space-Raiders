@@ -7,12 +7,12 @@ public class SceneLoader : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SeanScene");
     }
     
     public void BacktoMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu-Final");
     }
 
     public void QuitGame()
