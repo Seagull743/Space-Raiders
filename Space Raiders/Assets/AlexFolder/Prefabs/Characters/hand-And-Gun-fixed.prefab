@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6436062693056449176, guid: d0845eda9a2768a4486cfd29381557e4, type: 3}
+  - {fileID: 2100000, guid: 401d0185597ea964d900d2407d707c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -601,6 +601,8 @@ MonoBehaviour:
   crossCircle: {fileID: 0}
   crossShard: {fileID: 0}
   muzzleFlash: {fileID: 479876495293942466}
+  FreezeVials: {fileID: 0}
+  ShardVials: {fileID: 0}
   lastKnownPos: {x: 0, y: 0, z: 0}
 --- !u!1 &6511236245283484526
 GameObject:
