@@ -44,6 +44,8 @@ public class FreezeGun : MonoBehaviour
     private GameObject crossShard;
     [SerializeField]
     private ParticleSystem muzzleFlash;
+    [SerializeField]
+    private GameObject FreezeVials;
 
     //JET Variables
 
@@ -69,6 +71,7 @@ public class FreezeGun : MonoBehaviour
             {
                 Debug.Log("Switching to shard");
                 anim.SetBool("isbeamon", false);
+                FreezeVials.SetActive(true);
                 crossCircle.SetActive(false);
                 crossShard.SetActive(true);
                 freezeon = false;
@@ -77,6 +80,7 @@ public class FreezeGun : MonoBehaviour
             {
                 Debug.Log("Switching to Freeze");
                 anim.SetBool("isbeamon", true);
+                FreezeVials.SetActive(false);
                 freezeon = true;
                 crossCircle.SetActive(true);
                 crossShard.SetActive(false);
