@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ToonMatRanged
+  m_Name: ToonMatMelee-pale
   m_Shader: {fileID: -6465566751694194690, guid: 6e7377b3c938fe8428033daf8458aab9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -33,7 +33,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_BBD7C8AD:
-        m_Texture: {fileID: 2800000, guid: ab3ce58176f07844a82c3714acdea5a0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62bb94ee8e51e664092ce28b93eddfa6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -65,10 +65,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1C2A4340: 0
-    - Vector1_274CB7FC: 0.51
+    - Vector1_1C2A4340: 0.049
+    - Vector1_274CB7FC: 0.314
     - Vector1_DBE3EE6B: 0
-    - Vector1_E42B6392: 0.2
+    - Vector1_E42B6392: 0.272
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -91,8 +91,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_A140058F: {r: 0.509434, g: 0, b: 0.0042855428, a: 0}
-    - Color_B1DAC0D7: {r: 0.9528302, g: 0.87790364, b: 0.373042, a: 0}
+    - Color_A140058F: {r: 0.2830189, g: 0.038714856, b: 0.084542595, a: 0}
+    - Color_B1DAC0D7: {r: 1, g: 0.82934725, b: 0.07075471, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
