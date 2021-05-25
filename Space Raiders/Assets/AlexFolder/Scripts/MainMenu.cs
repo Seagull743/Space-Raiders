@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class MainMenu : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //initilize Gmaeanalytics
+        GameAnalytics.Initialize();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Main Menu");
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(Starting());
-        //Game Analytics here:  start Game
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game");
         fade.SetActive(true);
         anim.SetBool("out", true);
         
@@ -43,28 +45,33 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator Starting()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(3);
     }
 
+    //Instruction Menu turn On
     public void InstructionsON()
     {
         menuPage.SetActive(false);
         infoPage.SetActive(true);
     }
 
+    //Instruction Menu Turn Off
     public void InstructionsOFF()
     {
         infoPage.SetActive(false);
         menuPage.SetActive(true);
     }
 
+    //Credit page turn on
     public void CreditsON()
     {
         creditsPage.SetActive(true);
         menuPage.SetActive(false);
 
     }
+
+    //Credit page turn off
     public void CreditsOFF()
     {
         creditsPage.SetActive(false);
