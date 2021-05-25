@@ -20,6 +20,8 @@ public class Freeze : MonoBehaviour
     private Material normal;
     [SerializeField]
     private Material Frozen;
+    [SerializeField]
+    private GameObject FreezeEffect;
 
     [SerializeField]
     private int damageAmount;
@@ -29,6 +31,8 @@ public class Freeze : MonoBehaviour
 
     void Start()
     {
+        FreezeEffect.SetActive(false);
+
         foreach (GameObject CM in CharacterMesh)
         {
             CM.GetComponent<Renderer>().material = normal;
@@ -45,9 +49,11 @@ public class Freeze : MonoBehaviour
              if (timertoFreeze >= 0.5)
                  {
                     Debug.Log("Frozen complete");
+                FreezeEffect.SetActive(true);
                 foreach (GameObject CM in CharacterMesh)
                 {
                     CM.GetComponent<Renderer>().material = Frozen;
+
                 }
                 //gameObject.GetComponent<Renderer>().material = Frozen;
                 freezingComplete = true;
@@ -95,6 +101,7 @@ public class Freeze : MonoBehaviour
     {
         freezing = false;
         freezingComplete = false;
+        FreezeEffect.SetActive(false);
         foreach (GameObject CM in CharacterMesh)
         {
             CM.GetComponent<Renderer>().material = normal;
