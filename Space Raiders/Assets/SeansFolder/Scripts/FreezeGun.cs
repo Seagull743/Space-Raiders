@@ -46,6 +46,8 @@ public class FreezeGun : MonoBehaviour
     private ParticleSystem muzzleFlash;
     [SerializeField]
     private GameObject FreezeVials;
+    [SerializeField]
+    private GameObject ShardVials;
 
     //JET Variables
 
@@ -54,6 +56,8 @@ public class FreezeGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FreezeVials.SetActive(true);
+        ShardVials.SetActive(false);
         crossCircle.SetActive(true);
         crossShard.SetActive(false);
         freezeon = true;
@@ -69,18 +73,19 @@ public class FreezeGun : MonoBehaviour
         {
             if (freezeon)
             {
-                Debug.Log("Switching to shard");
+                FreezeVials.SetActive(false);
+                ShardVials.SetActive(true);
                 anim.SetBool("isbeamon", false);
-                FreezeVials.SetActive(true);
                 crossCircle.SetActive(false);
                 crossShard.SetActive(true);
                 freezeon = false;
             }
             else if (freezeon == false)
             {
-                Debug.Log("Switching to Freeze");
+               
                 anim.SetBool("isbeamon", true);
-                FreezeVials.SetActive(false);
+                ShardVials.SetActive(false);
+                FreezeVials.SetActive(true);
                 freezeon = true;
                 crossCircle.SetActive(true);
                 crossShard.SetActive(false);
