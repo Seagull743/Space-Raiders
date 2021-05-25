@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
 	public bool attacking;
 	public bool alerted;
 	public bool isFrozen;
+	public bool isDead = false;
 
 	public GameObject damageBox;
 
@@ -94,11 +95,11 @@ public class EnemyAI : MonoBehaviour
 		//playerInSightRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
 		//playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
-		if (!playerInSightRange && !playerInAttackRange) nav.speed = walkSpeed;
-        if (playerInSightRange && !playerInAttackRange && melee || boss) Chase();
-        if (playerInAttackRange && playerInSightRange) Attack();
+		if (!playerInSightRange && !playerInAttackRange && !isDead) nav.speed = walkSpeed;
+        if (playerInSightRange && !playerInAttackRange && !isDead && melee || boss) Chase();
+        if (playerInAttackRange && playerInSightRange && !isDead) Attack();
 		
-		if (melee != false)
+		if (melee != false && !isDead)
 		{
 			if (GetComponent<Waypoints.NPCConnectedPatrol>()._travelling != false)
 			{
@@ -112,7 +113,8 @@ public class EnemyAI : MonoBehaviour
 
 		if(health.currenthealth <= 0)
         {
-
+			isDead = true;
+			nav.speed = 0;
         }
 	}
 
@@ -124,7 +126,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-		if(!attacking)
+		if(!attacking && !isDead)
         {
 			nav.speed = runSpeed;
 			nav.SetDestination(player.position);
@@ -139,7 +141,7 @@ public class EnemyAI : MonoBehaviour
 
         //transform.LookAt(player);
 
-        if (!alreadyAttacked && melee != false && !isFrozen || !alreadyAttacked && boss != false && !isFrozen)
+        if (!alreadyAttacked && melee != false && !isFrozen && !isDead || !alreadyAttacked && boss != false && !isFrozen && !isDead)
 		{
 			nav.SetDestination(transform.position);
 			attacking = true;
@@ -148,7 +150,7 @@ public class EnemyAI : MonoBehaviour
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
 		}
 
-		if (!alreadyAttacked && range != false && !isFrozen)
+		if (!alreadyAttacked && range != false && !isFrozen && !isDead)
         {
 			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
