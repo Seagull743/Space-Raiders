@@ -30042,6 +30042,10 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 844907548}
+    - target: {fileID: 479876495143902957, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 771777682420774258, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: m_IsActive
       value: 0
