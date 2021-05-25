@@ -58,7 +58,7 @@ public class FreezeGun : MonoBehaviour
         freezebeam.Stop();
         shooting = false;
         colliderBeam.GetComponent<Collider>().enabled = false;
-        anim = GetComponentInChildren<Animator>();
+       // anim = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -67,6 +67,7 @@ public class FreezeGun : MonoBehaviour
         {
             if (freezeon)
             {
+                Debug.Log("Switching to shard");
                 anim.SetBool("isbeamon", false);
                 crossCircle.SetActive(false);
                 crossShard.SetActive(true);
@@ -74,6 +75,7 @@ public class FreezeGun : MonoBehaviour
             }
             else if (freezeon == false)
             {
+                Debug.Log("Switching to Freeze");
                 anim.SetBool("isbeamon", true);
                 freezeon = true;
                 crossCircle.SetActive(true);
