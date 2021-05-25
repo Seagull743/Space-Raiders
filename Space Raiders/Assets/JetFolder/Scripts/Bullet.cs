@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Transform bulletTarget;
     public float speed;
     public float maxLifeTime;
     public float currentLifeTime;
     public int damage;
 
+    private void Awake()
+    {
+        bulletTarget = GameObject.Find("BulletTarget").transform;
+    }
+
     private void Start()
     {
+        transform.LookAt(bulletTarget);
+
         currentLifeTime = maxLifeTime;
     }
 

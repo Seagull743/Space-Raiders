@@ -8,6 +8,8 @@ public class EnemyGun : MonoBehaviour
     public bool isFiring;
     public Transform firePoint;
     public bool alreadyFired;
+    [SerializeField]
+    private float fireRate;
 
     private void Update()
     {
@@ -18,6 +20,10 @@ public class EnemyGun : MonoBehaviour
     private void Fire()
     {
         Debug.Log("Shot Fired");
-        Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
+        if(alreadyFired != true)
+        {
+            alreadyFired = true;
+            Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
+        }  
     }
 }

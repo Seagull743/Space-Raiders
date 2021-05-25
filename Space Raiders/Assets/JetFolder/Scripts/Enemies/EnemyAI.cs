@@ -15,8 +15,6 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask groundMask;
-
     [SerializeField] float walkSpeed = 1f;
     [SerializeField] float runSpeed = 4f;
 
@@ -35,6 +33,7 @@ public class EnemyAI : MonoBehaviour
 
 	public float attackRange;
 
+	[HideInInspector]
 	public Health health;
 
 	//FOV variables
@@ -112,7 +111,7 @@ public class EnemyAI : MonoBehaviour
 				anim.SetBool("walk", false);
 			}
 		}
-
+ 
 		if(melee && health.currenthealth <= 0 || range && health.currenthealth <= 0)
         {
 			isDead = true;
@@ -122,8 +121,11 @@ public class EnemyAI : MonoBehaviour
 
 	public void GoToPos()
     {
-		storedPos = player.GetComponentInChildren<FreezeGun>().lastKnownPos;
-		nav.SetDestination(storedPos);
+		if(melee != false)
+        {
+			storedPos = player.GetComponentInChildren<FreezeGun>().lastKnownPos;
+			nav.SetDestination(storedPos);
+		}		
     }
 
     private void Chase()
@@ -141,7 +143,7 @@ public class EnemyAI : MonoBehaviour
 
 		anim.SetTrigger("attacktrigger");
 
-        //transform.LookAt(player);
+        transform.LookAt(player);
 
         if (!alreadyAttacked && melee != false && !isFrozen && !isDead || !alreadyAttacked && boss != false && !isFrozen && !isDead)
 		{
@@ -184,6 +186,7 @@ public class EnemyAI : MonoBehaviour
 		if(range != false)
         {
 			GetComponentInChildren<EnemyGun>().isFiring = false;
+			GetComponentInChildren<EnemyGun>().alreadyFired = false;
         }
         alreadyAttacked = false;
     }
