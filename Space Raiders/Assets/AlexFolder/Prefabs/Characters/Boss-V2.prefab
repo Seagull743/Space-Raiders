@@ -1265,7 +1265,6 @@ Transform:
   - {fileID: 4213631379637063793}
   - {fileID: 7879169577222343435}
   - {fileID: 588443392804563275}
-  - {fileID: 2308303678513874706}
   - {fileID: 3043772068147149684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1363,14 +1362,18 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 5
   timeBetweenAttacks: 2
+  attackDelay: 0
   alreadyAttacked: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  attackRange: 5
   attacking: 0
   alerted: 0
   isFrozen: 0
+  isDead: 0
   damageBox: {fileID: 8441862470251693646}
+  storedPos: {x: 0, y: 0, z: 0}
+  attackRange: 5
+  health: {fileID: 0}
   viewRadius: 20
   viewAngle: 120
   targetMask:
@@ -1385,7 +1388,6 @@ MonoBehaviour:
   edgeDstThreshold: 0.5
   maskCutawayDst: 0
   viewMeshFilter: {fileID: 6634564853931013036}
-  storedPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1606791329673846033
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,8 +23,11 @@ public class AlertCollider : MonoBehaviour
 
         foreach(var enemyInRange in enemiesInRange)
         {
-            Debug.Log("Alerted " + enemyInRange);
-            enemyInRange.GetComponent<EnemyAI>().GoToPos();
+            if(enemyInRange != false)
+            {
+                Debug.Log("Alerted " + enemyInRange);
+                enemyInRange.GetComponent<EnemyAI>().GoToPos();
+            }           
         }
     }
 
