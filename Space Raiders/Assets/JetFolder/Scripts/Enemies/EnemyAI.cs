@@ -141,12 +141,12 @@ public class EnemyAI : MonoBehaviour
 	{
 		Debug.Log("Damage Player");
 
-		if(melee != false || boss != false || range != true)
+        if (melee != false || boss != false || range != true)
         {
 			anim.SetTrigger("attacktrigger");
 		}
-
-        transform.LookAt(player);
+        
+		transform.LookAt(player);
 
         if (!alreadyAttacked && melee != false && !isFrozen && !isDead || !alreadyAttacked && boss != false && !isFrozen && !isDead)
 		{
