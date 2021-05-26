@@ -10,6 +10,12 @@ public class EnemyGun : MonoBehaviour
     public bool alreadyFired;
     [SerializeField]
     private float fireRate;
+    private Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -23,6 +29,7 @@ public class EnemyGun : MonoBehaviour
         if(alreadyFired != true)
         {
             alreadyFired = true;
+
             Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
         }  
     }

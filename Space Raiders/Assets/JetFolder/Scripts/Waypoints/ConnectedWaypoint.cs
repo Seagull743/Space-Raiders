@@ -45,7 +45,7 @@ namespace Waypoints
         {
             if(_connections.Count == 0)
             {
-                Debug.LogError("Insufficient waypoint count.");
+                //Debug.LogError("Insufficient waypoint count.");
                 return null;
             }
             else if(_connections.Count == 1 && _connections.Contains(previousWaypoint))

@@ -141,7 +141,10 @@ public class EnemyAI : MonoBehaviour
 	{
 		Debug.Log("Damage Player");
 
-		anim.SetTrigger("attacktrigger");
+		if(melee != false || boss != false || range != true)
+        {
+			anim.SetTrigger("attacktrigger");
+		}
 
         transform.LookAt(player);
 
