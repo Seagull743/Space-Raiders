@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,7 +62,9 @@ public class GameManager : MonoBehaviour
     private GameObject bossText;
 
     public BossHealth BH;
-    
+
+    [SerializeField]
+    private Animator anim;
     
     // Enemy spawn checks
     [SerializeField]
@@ -80,8 +83,14 @@ public class GameManager : MonoBehaviour
     
 
     void Awake()
-    {    
-        Boss.SetActive(false);
+    {
+
+        foreach (GameObject Enemy in EnemysIsland4)
+        {
+            Enemy.SetActive(false);
+        }
+
+            Boss.SetActive(false);
         Ring.Stop();
         bossText.SetActive(false);
         ForceField.SetActive(false);
@@ -106,11 +115,20 @@ public class GameManager : MonoBehaviour
 
         BossHealthBar.value = BossHealth.currenthealth / BossHealth.maxHealth;
 
+        if(GreenCrystal.GreenCrystalCollected == true)
+        {
+            foreach (GameObject Enemy in EnemysIsland4)
+            {
+                Enemy.SetActive(true);
+            }
+        }
+
 
         if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && BossObject.boss == true)
         {
             if (!SpawnedBoss)
             {
+                anim.SetBool("sink",true);
                 ForceField.SetActive(true);
                 Ring.Play();
                 Invoke("SpawnTheBoss", 4);
@@ -128,7 +146,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
     private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
     {
         InteractCross = interactCross;
@@ -144,6 +161,7 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer()
     {
         Boss.SetActive(false);
+        anim.SetBool("sink", false);
         BossHealthBar.gameObject.SetActive(false);
         HealthBackGround.SetActive(false);
         BossObject.boss = false;
@@ -214,10 +232,6 @@ public class GameManager : MonoBehaviour
         TheScore += 1;
     }
 
-    private void BossSpawnerInternal(GameObject boss)
-    {
-        boss.SetActive(true);
-    }
     private void SetLastCheckpointInternal(Vector3 checkpoint)
     {
         LastCheckPointIsSet = true;
@@ -237,7 +251,7 @@ public class GameManager : MonoBehaviour
     private void YouWon()
     {
         Debug.Log("You Won");
-        //Load Game win Scene
+        SceneManager.LoadScene("MainMenu-Final");
     }
 
     public void SpawnPlayer()
@@ -257,15 +271,22 @@ public class GameManager : MonoBehaviour
         {
             body.transform.position = checkpoint3.position;
             CheckPoint1Complete = true;
+            CheckPoint2Complete = true;
         }
         else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && BlueCrystal.BlueCrystalCollected == false)
         {
             CheckPoint1Complete = true;
+            CheckPoint2Complete = true;
+            CheckPoint3Complete = true;
             body.transform.position = checkpoint4.position;
         }
         else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && BlueCrystal.BlueCrystalCollected == true)
         {
             CheckPoint1Complete = true;
+            CheckPoint2Complete = true;
+            CheckPoint3Complete = true;
+            CheckPoint4Complete = true;
+            
             body.transform.position = checkpoint5.position;
             RespawnPlayer();
         }         
@@ -291,10 +312,70 @@ public class GameManager : MonoBehaviour
             foreach(GameObject Ai in EnemysIsland1)
             {
                 Ai.SetActive(true);
-                Ai.GetComponent<Health>().RespawnEnemy();             
-              
+                Ai.GetComponent<Health>().RespawnEnemy();                          
             }
         }
+
+        if (CheckPoint2Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+
+                if (TryGetComponent<Health>(out var health))
+                {
+                    health.DestroyEnemy();
+                }
+            }
+        }
+        else if (!CheckPoint2Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+                Ai.SetActive(true);
+                Ai.GetComponent<Health>().RespawnEnemy();
+            }
+        }
+
+        if (CheckPoint3Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+
+                if (TryGetComponent<Health>(out var health))
+                {
+                    health.DestroyEnemy();
+                }
+            }
+        }
+        else if (!CheckPoint3Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+                Ai.SetActive(true);
+                Ai.GetComponent<Health>().RespawnEnemy();
+            }
+        }
+
+        if (CheckPoint4Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+
+                if (TryGetComponent<Health>(out var health))
+                {
+                    health.DestroyEnemy();
+                }
+            }
+        }
+        else if (!CheckPoint4Complete)
+        {
+            foreach (GameObject Ai in EnemysIsland1)
+            {
+                Ai.SetActive(true);
+                Ai.GetComponent<Health>().RespawnEnemy();
+            }
+        }
+
     }
 
    
@@ -309,6 +390,6 @@ public class GameManager : MonoBehaviour
     public static void InteractCrossOn() => Instance.InteractCrossOnInternal();
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();
-    public static void BossSpawn(GameObject boss) => Instance.BossSpawnerInternal(boss);
+  
 
 }

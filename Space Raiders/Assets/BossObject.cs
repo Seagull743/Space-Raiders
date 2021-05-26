@@ -5,7 +5,9 @@ using UnityEngine;
 public class BossObject : InteractiveObject
 {
     public static bool boss = false;
+    private GameObject crstal;
     public GameManager gameManager;
+
     public override void PlayerInteraction()
     {
        SpawnBoss();

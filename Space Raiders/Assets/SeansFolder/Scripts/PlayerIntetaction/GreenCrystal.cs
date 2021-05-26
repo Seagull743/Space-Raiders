@@ -8,6 +8,7 @@ public class GreenCrystal : InteractiveObject
     public static bool GreenCrystalCollected = false;
     [SerializeField]
     private bool pickedup = false;
+    
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class GreenCrystal : InteractiveObject
     
     public void PickedupCrystal()
     {
+        //GM.GetComponent<GameManager>().TheScoreInternal();
         GameManager.TheScoreAdd();
         GreenCrystalCollected = true;
         pickedup = true;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -75,6 +76,9 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         currenthealth -= damagetoplayer;
+        isTakingDmg = true;
+        Invoke("TakingDamageFalse", 3);
+
     }
 
     public void RespawnPlayer()
@@ -97,9 +101,15 @@ public class PlayerHealth : MonoBehaviour
         {
             heart1.SetActive(false);
             Debug.Log("You lost");
-            //Load the main Menu
+            Invoke("Youlost", 8);
         }
     }
+
+    private void Youlost()
+    {
+        SceneManager.LoadScene("MainMenu-Final");
+    }
+
 
     private void HealthRegen()
     {
