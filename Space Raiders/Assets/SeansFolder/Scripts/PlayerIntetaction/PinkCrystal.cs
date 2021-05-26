@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class PinkCrystal : InteractiveObject
 {
@@ -16,6 +17,8 @@ public class PinkCrystal : InteractiveObject
         //GM.GetComponent<GameManager>().TheScoreInternal();
         GameManager.TheScoreAdd();
         PinkCrystalCollected = true;
+        FindObjectOfType<AudioManager>().Play("crystalCollect");
+        GameAnalytics.NewDesignEvent("Crystal-pink");
         Destroy(gameObject);
     }
 }

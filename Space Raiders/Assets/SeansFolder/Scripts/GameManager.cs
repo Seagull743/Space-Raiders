@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class GameManager : MonoBehaviour
 {
@@ -262,6 +263,7 @@ public class GameManager : MonoBehaviour
     private void YouWon()
     {
         Debug.Log("You Won");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game");
         SceneManager.LoadScene("MainMenu-Final");
     }
 

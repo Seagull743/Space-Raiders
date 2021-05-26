@@ -43,4 +43,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648080022be142c42a7260a8bfa0b6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: freezeRay
+    clip: {fileID: 8300000, guid: 776017659bdcae94692f627956c8c7a6, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: freezing
+    clip: {fileID: 8300000, guid: 076141ec638d5414c89024ad7c276bc2, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: frozen
+    clip: {fileID: 8300000, guid: 85e4c726e44ed754ea64669a7e61719d, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: gasrelease
+    clip: {fileID: 8300000, guid: 4f9f8099cb5f18b4b8471c3c314d14a9, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: gunSwitch
+    clip: {fileID: 8300000, guid: 0eafe32071429314dbf2c564a59e80ff, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: lazerFire
+    clip: {fileID: 8300000, guid: 5a16264e792d9104da23e6fdf8ecb6ff, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: crystalCollect
+    clip: {fileID: 8300000, guid: e1099df58a36057499469271bc9ad870, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 0
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}

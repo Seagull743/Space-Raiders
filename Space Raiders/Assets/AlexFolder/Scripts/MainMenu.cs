@@ -36,12 +36,18 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        SceneManager.LoadScene(1);
         StartCoroutine(Starting());
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game");
         fade.SetActive(true);
         anim.SetBool("out", true);
-        
+
     }
+
+    //public void StartSecondGame()
+    //{
+        //SceneManager.LoadScene(2);
+    //}
 
     IEnumerator Starting()
     {

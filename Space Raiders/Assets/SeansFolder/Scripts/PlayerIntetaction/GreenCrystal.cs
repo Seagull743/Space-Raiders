@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class GreenCrystal : InteractiveObject
 {
@@ -33,6 +34,8 @@ public class GreenCrystal : InteractiveObject
         GameManager.TheScoreAdd();
         GreenCrystalCollected = true;
         pickedup = true;
+        FindObjectOfType<AudioManager>().Play("crystalCollect");
+        GameAnalytics.NewDesignEvent("Crystal-green");
         Destroy(gameObject);
     }
 

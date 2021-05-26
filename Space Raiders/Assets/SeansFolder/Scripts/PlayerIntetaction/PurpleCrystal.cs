@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class PurpleCrystal : InteractiveObject
 {
@@ -16,6 +17,8 @@ public class PurpleCrystal : InteractiveObject
     {
         GameManager.TheScoreAdd();
         PurpleCrystalCollected = true;
+        FindObjectOfType<AudioManager>().Play("crystalCollect");
+        GameAnalytics.NewDesignEvent("Crystal-purple");
         Destroy(gameObject);     
     }
 }
