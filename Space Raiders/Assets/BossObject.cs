@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossObject : InteractiveObject
 {
     public static bool boss = false;
-    private GameObject crstal;
+    [SerializeField]
     public GameManager gameManager;
 
     public override void PlayerInteraction()
@@ -17,7 +17,7 @@ public class BossObject : InteractiveObject
     {
         if(BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true)
         {
-            boss = true;
+            boss = true;  
         }
         else
         {

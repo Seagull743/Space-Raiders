@@ -20,6 +20,9 @@ public class PlayerHealth : MonoBehaviour
     private Slider HealthBar;
     [SerializeField]
     private Text healthText;
+    [SerializeField]
+    private GameObject unAccomplished;
+
 
     private bool isTakingDmg = false;
     private bool isRegeningHealth;
@@ -32,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {   
         currenthealth = maxHealth;
+        unAccomplished.SetActive(false);
     }
 
     // Update is called once per frame
@@ -101,6 +105,7 @@ public class PlayerHealth : MonoBehaviour
         {
             heart1.SetActive(false);
             Debug.Log("You lost");
+            unAccomplished.SetActive(true);
             Invoke("Youlost", 8);
         }
     }

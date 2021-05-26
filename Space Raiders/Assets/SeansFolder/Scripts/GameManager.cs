@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     private Transform BossSpawnLocation;
     private bool SpawnedBoss = false;
     private bool youwon = false;
+    [SerializeField]
+    private GameObject crystalBoss;
 
     
     [SerializeField]
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject bossText;
+    [SerializeField]
+    private GameObject Accomplished;
 
     public BossHealth BH;
 
@@ -82,6 +86,9 @@ public class GameManager : MonoBehaviour
     private bool CheckPoint4Complete = false;
     
 
+
+
+
     void Awake()
     {
 
@@ -89,14 +96,15 @@ public class GameManager : MonoBehaviour
         {
             Enemy.SetActive(false);
         }
-
-            Boss.SetActive(false);
+        Accomplished.SetActive(false);
+        Boss.SetActive(false);
         Ring.Stop();
         bossText.SetActive(false);
         ForceField.SetActive(false);
         HealthBackGround.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
+        
         if (Instance == null)
         {
             Instance = this;
@@ -129,6 +137,7 @@ public class GameManager : MonoBehaviour
             if (!SpawnedBoss)
             {
                 anim.SetBool("sink",true);
+                crystalBoss.SetActive(false);
                 ForceField.SetActive(true);
                 Ring.Play();
                 Invoke("SpawnTheBoss", 4);
@@ -141,7 +150,8 @@ public class GameManager : MonoBehaviour
                 BossHealthBar.gameObject.SetActive(false);
                 HealthBackGround.SetActive(false);
                 //Can have a you won text then load you won screen
-                Invoke("YouWon", 4);
+                Accomplished.SetActive(true);
+                Invoke("YouWon", 6);
             }
         }
 
@@ -161,6 +171,7 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer()
     {
         Boss.SetActive(false);
+        crystalBoss.SetActive(true);
         anim.SetBool("sink", false);
         BossHealthBar.gameObject.SetActive(false);
         HealthBackGround.SetActive(false);
