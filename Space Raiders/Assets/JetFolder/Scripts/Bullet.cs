@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float maxLifeTime;
     public float currentLifeTime;
-    public int damage;
 
     private void Awake()
     {
@@ -37,7 +36,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-            GameObject.Find("Player").GetComponent<PlayerHealth>().currenthealth -= damage;
+            GameObject.Find("Player").GetComponent<PlayerHealth>().TakeDamage();
             Destroy(gameObject);
     }
 

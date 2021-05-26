@@ -9,26 +9,24 @@ public class BossHealth : MonoBehaviour
     public static float maxHealth = 100;
     public static float currenthealth;
     public static bool BossKilled = false;
+    private Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
         currenthealth = maxHealth;
-       
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (currenthealth <= 0)
+        if (currenthealth <= 0 && BossKilled != true)
         {
-            Destroy(this.gameObject);
             BossKilled = true;
+            DestroyEnemy();         
         }
-
     }
 
     public void RespawnEnemy()
@@ -36,10 +34,13 @@ public class BossHealth : MonoBehaviour
         currenthealth = maxHealth;
     }
 
-    public void DestroyEnemy()
+    IEnumerator DestroyEnemy()
     {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetTrigger("deathtrigger");
+        yield return new WaitForSeconds(4f);
         Destroy(this.gameObject);
-    }
+    }    
 
     public void ShardDamage(int damageAmount)
     {

@@ -878,7 +878,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: EnemysIsland1.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: InteractCross
@@ -956,6 +956,10 @@ PrefabInstance:
       propertyPath: bossText
       value: 
       objectReference: {fileID: 1790279884}
+    - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: EnemysIsland1.Array.data[2]
+      value: 
+      objectReference: {fileID: 581171407}
     - target: {fileID: 2754900346515771241, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3610,7 +3614,7 @@ PrefabInstance:
     - target: {fileID: 4358052128665023313, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1929080458}
     - target: {fileID: 4358052128665023313, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: viewMeshFilter
       value: 

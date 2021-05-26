@@ -100,7 +100,7 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange && !isDead && melee || playerInSightRange && !playerInAttackRange && !isDead && boss) Chase();
         if (playerInAttackRange && playerInSightRange && !isDead) Attack();
 		
-		if (melee != false && !isDead)
+		if (melee != false && !isDead || boss != false && !isDead)
 		{
 			if (GetComponent<Waypoints.NPCConnectedPatrol>()._travelling != false)
 			{
