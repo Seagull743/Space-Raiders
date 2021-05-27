@@ -732,6 +732,7 @@ MonoBehaviour:
   firePoint: {fileID: 2905084844315972989}
   alreadyFired: 0
   fireRate: 0
+  shotFired: {fileID: 937813346171188711}
 --- !u!1 &5307172921146626777
 GameObject:
   m_ObjectHideFlags: 0
