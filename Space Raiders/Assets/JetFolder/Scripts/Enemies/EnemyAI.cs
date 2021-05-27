@@ -141,9 +141,11 @@ public class EnemyAI : MonoBehaviour
 	{
 		Debug.Log("Damage Player");
 
+		
 		Vector3 targetPosition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
 
-		this.transform.LookAt(targetPosition);
+		if (!isFrozen)
+			this.transform.LookAt(targetPosition);
 
         if (melee != false || boss != false || range != true)
         {
