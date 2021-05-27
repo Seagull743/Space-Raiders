@@ -85,10 +85,21 @@ public class GameManager : MonoBehaviour
     private bool CheckPoint2Complete = false;
     private bool CheckPoint3Complete = false;
     private bool CheckPoint4Complete = false;
-    
+
+    private bool CrystalPurpleCollected = false;
+    private bool CrystalGreenCollected = false;
+    private bool CrystalPinkCollected = false;
+    private bool CrystalBlueCollected = false;
+
+    private bool CrystalPurplePlaced = false;
+    private bool CrystalGreenPlaced = false;
+    private bool CrystalPinkPlaced = false;
+    private bool CrystalBluePlaced = false;
+
+    private bool CanSpawnBoss = false;
 
 
-
+    private bool bossSpawned = false;
 
     void Awake()
     {
@@ -106,25 +117,25 @@ public class GameManager : MonoBehaviour
         BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
         
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       // if (Instance == null)
+       // {
+       //     Instance = this;
+        //    DontDestroyOnLoad(Instance);
+        //}
+       // else
+       // {
+        //    Destroy(gameObject);
+       // }
     }
-    
-    
+
     void Update()
     {
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
-        BossHealthBar.value = BossHealth.currenthealth / BossHealth.maxHealth;
+        BossHealthBar.value = BH.currenthealth / BH.maxHealth;
 
-        if(GreenCrystal.GreenCrystalCollected == true)
+        //GreenCrystalCollected == true
+        if (CrystalGreenCollected == true)
         {
             foreach (GameObject Enemy in EnemysIsland4)
             {
@@ -132,8 +143,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
-        if (BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true && BossObject.boss == true)
+       // BlueCrystalplaced && GreenPlaced && PurplePlaced && PinkCrystalplaced
+        if (CrystalBluePlaced && CrystalGreenPlaced && CrystalPurplePlaced && CrystalPinkPlaced && bossSpawned)
         {
             if (!SpawnedBoss)
             {
@@ -143,9 +154,8 @@ public class GameManager : MonoBehaviour
                 Ring.Play();
                 Invoke("SpawnTheBoss", 4);
             }
-            
-
-            if(BossHealth.BossKilled == true && !youwon)
+       
+            if(BH.BossKilled == true && !youwon)
             {
                 youwon = true;
                 BossHealthBar.gameObject.SetActive(false);
@@ -155,6 +165,8 @@ public class GameManager : MonoBehaviour
                 Invoke("YouWon", 6);
             }
         }
+   
+ 
 
     }
     private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
@@ -176,7 +188,7 @@ public class GameManager : MonoBehaviour
         anim.SetBool("sink", false);
         BossHealthBar.gameObject.SetActive(false);
         HealthBackGround.SetActive(false);
-        BossObject.boss = false;
+        bossSpawned = false;
         SpawnedBoss = false;
         ForceField.SetActive(false);
     }
@@ -191,8 +203,7 @@ public class GameManager : MonoBehaviour
         BossHealthBar.gameObject.SetActive(true);
         HealthBackGround.SetActive(true);
         SpawnedBoss = true;
-    }
-   
+    } 
     private void InteractCrossOnInternal()
     {
         InteractCross.SetActive(true);
@@ -207,8 +218,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CrystalTextCoroutine());
     }
 
-    
-    public void BossTextStart()
+    private void SetBossSpawnedInternal()
+    {
+        bossSpawned = true;
+    }
+    private void BossTextStartInternal()
     {
         StartCoroutine(BossText());
     }
@@ -268,34 +282,35 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Win");
         Cursor.lockState = CursorLockMode.None;
     }
+ 
 
     public void SpawnPlayer()
     {
 
-        if (PurpleCrystal.PurpleCrystalCollected == false && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false && BlueCrystal.BlueCrystalCollected == false)
+        if (CrystalPurpleCollected == false && CrystalGreenCollected == false && CrystalPinkCollected == false && CrystalBlueCollected == false)
         {
             body.transform.position = checkpoint1.position;
 
         }
-        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == false && PinkCrystal.PinkCrystalCollected == false && BlueCrystal.BlueCrystalCollected == false)
+        else if (CrystalPurpleCollected == true && CrystalGreenCollected == false && CrystalPinkCollected == false && CrystalBlueCollected == false)
         {
             body.transform.position = checkpoint2.position;
             CheckPoint1Complete = true;
         }
-        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == false && BlueCrystal.BlueCrystalCollected == false)
+        else if (CrystalPurpleCollected == true && CrystalGreenCollected == true && CrystalPinkCollected == false && CrystalBlueCollected == false)
         {
             body.transform.position = checkpoint3.position;
             CheckPoint1Complete = true;
             CheckPoint2Complete = true;
         }
-        else if(PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && BlueCrystal.BlueCrystalCollected == false)
+        else if(CrystalPurpleCollected == true && CrystalGreenCollected == true && CrystalPinkCollected == true && CrystalBlueCollected == false)
         {
             CheckPoint1Complete = true;
             CheckPoint2Complete = true;
             CheckPoint3Complete = true;
             body.transform.position = checkpoint4.position;
         }
-        else if (PurpleCrystal.PurpleCrystalCollected == true && GreenCrystal.GreenCrystalCollected == true && PinkCrystal.PinkCrystalCollected == true && BlueCrystal.BlueCrystalCollected == true)
+        else if (CrystalPurpleCollected == true && CrystalGreenCollected == true && CrystalPinkCollected == true && CrystalBlueCollected == true)
         {
             CheckPoint1Complete = true;
             CheckPoint2Complete = true;
@@ -393,7 +408,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-   
+    private bool AllCrystalsPlacedInternal()
+    {
+        return CrystalBluePlaced && CrystalPinkPlaced && CrystalGreenPlaced && CrystalPurplePlaced;
+    }
 
 
     public static void RegisterPlayerCharacter(GameObject interactCross, GameObject crystalText, GameObject pickedUpText, Text scoreText) => Instance.RegisterPlayerCharacterInternal(interactCross, crystalText, pickedUpText, scoreText);
@@ -405,6 +423,19 @@ public class GameManager : MonoBehaviour
     public static void InteractCrossOn() => Instance.InteractCrossOnInternal();
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();
-  
+
+    public static void BossTextStart() => Instance.BossTextStartInternal();
+    public static void SetBossSpawned() => Instance.SetBossSpawnedInternal();
+
+    public static void CollectPurpleCrystal() => Instance.CrystalPurpleCollected = true;
+    public static void CollectBlueCrystal() => Instance.CrystalBlueCollected = true;
+    public static void CollectGreenCrystal() => Instance.CrystalGreenCollected = true;
+    public static void CollectPinkCrystal() => Instance.CrystalPinkCollected = true;
+
+    public static void PlacePurpleCrystal() => Instance.CrystalPurplePlaced = true;
+    public static void PlaceBlueCrystal() => Instance.CrystalBluePlaced = true;
+    public static void PlaceGreenCrystal() => Instance.CrystalGreenPlaced = true;
+    public static void PlacePinkCrystal() => Instance.CrystalPinkPlaced = true;
+    public static bool AllCrystalsPlaced() => Instance.AllCrystalsPlacedInternal();
 
 }

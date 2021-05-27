@@ -5,7 +5,7 @@ using GameAnalyticsSDK;
 
 public class PinkCrystal : InteractiveObject
 {
-    public static bool PinkCrystalCollected = false;
+    public bool PinkCrystalCollected = false;
     
     public override void PlayerInteraction()
     {
@@ -16,9 +16,10 @@ public class PinkCrystal : InteractiveObject
     {
         //GM.GetComponent<GameManager>().TheScoreInternal();
         GameManager.TheScoreAdd();
+        GameManager.CollectPinkCrystal();
         PinkCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        GameAnalytics.NewDesignEvent("Crystal-pink");
-        Destroy(gameObject);
+        //GameAnalytics.NewDesignEvent("Crystal-pink");
+        this.gameObject.SetActive(false);
     }
 }

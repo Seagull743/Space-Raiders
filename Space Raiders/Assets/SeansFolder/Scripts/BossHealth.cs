@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class BossHealth : MonoBehaviour
 {
 
-    public static float maxHealth = 100;
-    public static float currenthealth;
-    public static bool BossKilled = false;
+    public float maxHealth = 100;
+    public float currenthealth;
+    public bool BossKilled = false;
     private Animator anim;
-
 
     // Start is called before the first frame update
     void Start()

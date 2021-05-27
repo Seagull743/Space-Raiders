@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PinkCrystalShrine : InteractiveObject
 {
-    public GameObject Crystal;
-    public static bool PinkCrystalplaced = false;
-
+    public PinkCrystal Crystal;
+    public bool PinkCrystalplaced = false;
+    public GameObject CrystalIn;
     public override void PlayerInteraction()
     {
         PlaceCrystal();
@@ -14,11 +14,13 @@ public class PinkCrystalShrine : InteractiveObject
 
     public void PlaceCrystal()
     {
-        if (PinkCrystal.PinkCrystalCollected == true)
+        if (Crystal.PinkCrystalCollected == true)
         {
-            Crystal.SetActive(true);
+            CrystalIn.SetActive(true);
+            Crystal.gameObject.SetActive(true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            PinkCrystalplaced = true;
+            GameManager.PlacePinkCrystal();
+            //PinkCrystalplaced = true;
         }
         else
         {
