@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
 		//playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, targetMask);
 
 		if (!playerInSightRange && !playerInAttackRange && !isDead) nav.speed = walkSpeed;
-        if (playerInSightRange && !playerInAttackRange && !isDead && melee || playerInSightRange && !playerInAttackRange && !isDead && boss) Chase();
+        if (playerInSightRange && !playerInAttackRange && !isDead && !isFrozen && melee || playerInSightRange && !playerInAttackRange && !isDead && !isFrozen && boss) Chase();
         if (playerInAttackRange && playerInSightRange && !isDead) Attack();
 		
 		if (melee != false && !isDead || boss != false && !isDead)
@@ -130,7 +130,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-		if(!attacking && !isDead)
+		if(!attacking && !isDead && !isFrozen)
         {
 			nav.speed = runSpeed;
 			nav.SetDestination(player.position);
