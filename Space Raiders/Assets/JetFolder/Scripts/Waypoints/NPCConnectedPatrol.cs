@@ -23,7 +23,7 @@ namespace Waypoints
         ConnectedWaypoint _currentWaypoint;
         ConnectedWaypoint _previousWaypoint;
 
-        public bool _travelling;
+        bool _travelling;
         bool _waiting;
         float _waitTimer;
         int _waypointsVisited;

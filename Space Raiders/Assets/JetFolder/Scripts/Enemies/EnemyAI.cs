@@ -102,7 +102,7 @@ public class EnemyAI : MonoBehaviour
 		
 		if (melee != false && !isDead || boss != false && !isDead)
 		{
-			if (GetComponent<Waypoints.NPCConnectedPatrol>()._travelling != false)
+			if (playerInSightRange && !playerInAttackRange)
 			{
 				anim.SetBool("walk", true);
 			}
@@ -167,12 +167,6 @@ public class EnemyAI : MonoBehaviour
         }
 	}
 
-	private void AttackDone()
-    {
-		anim.SetBool("attack", false);
-		attacking = false;
-    }
-
 	private void StartAttack()
 	{
 		if (damageBox != null)
@@ -191,7 +185,8 @@ public class EnemyAI : MonoBehaviour
 			GetComponentInChildren<EnemyGun>().isFiring = false;
 			GetComponentInChildren<EnemyGun>().alreadyFired = false;
         }
-        alreadyAttacked = false;
+		attacking = false;
+		alreadyAttacked = false;
     }
 
 	public void Frozen()
