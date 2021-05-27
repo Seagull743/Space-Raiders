@@ -44,15 +44,11 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    //public void StartSecondGame()
-    //{
-        //SceneManager.LoadScene(2);
-    //}
 
     IEnumerator Starting()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
     //Instruction Menu turn On
