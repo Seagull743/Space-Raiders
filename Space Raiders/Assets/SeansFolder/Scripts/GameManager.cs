@@ -262,10 +262,11 @@ public class GameManager : MonoBehaviour
 
     private void YouWon()
     {
-        Accomplished.SetActive(false);
+        Accomplished.SetActive(false); 
         Debug.Log("You Won");
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game");
-        SceneManager.LoadScene("MainMenu-Final");
+        SceneManager.LoadScene("Win");
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void SpawnPlayer()

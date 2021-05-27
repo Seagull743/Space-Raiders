@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool GameIsPause = false;
+    // made static so you can't shoot when paused 
+    public static bool GameIsPause = false;
 
-    [SerializeField] GameObject pauseMenuUI;
-
-    [SerializeField] GameObject instructionsPage = null;
+    public GameObject pauseMenuUI;
 
     private void Update()
     {
@@ -28,7 +27,6 @@ public class PauseMenu : MonoBehaviour
     public void Resume()  
     {
         pauseMenuUI.SetActive(false);
-        instructionsPage.SetActive(false);
         Time.timeScale = 1f;
         GameIsPause = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -37,12 +35,8 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        instructionsPage.SetActive(false);
         Time.timeScale = 0f;
         GameIsPause = true;
         Cursor.lockState = CursorLockMode.None;
     }
-
-
-
 }

@@ -69,7 +69,7 @@ public class FreezeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true)
+        if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true && PauseMenu.GameIsPause == false)
         {
             if (freezeon)
             {
@@ -92,7 +92,7 @@ public class FreezeGun : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && freezeon)
+        if (Input.GetKey(KeyCode.Mouse0) && freezeon && PauseMenu.GameIsPause == false)
         {
             freezebeam.Play();
             colliderBeam.GetComponent<Collider>().enabled = true;

@@ -106,6 +106,8 @@ public class PlayerHealth : MonoBehaviour
             heart1.SetActive(false);
             Debug.Log("You lost");
             unAccomplished.SetActive(true);
+            HealthBar.value = 0;
+            healthText.text = 0 + "/100";
             Invoke("Youlost", 8);
         }
     }
@@ -113,7 +115,8 @@ public class PlayerHealth : MonoBehaviour
     private void Youlost()
     {
         unAccomplished.SetActive(false);
-        SceneManager.LoadScene("MainMenu-Final");
+        SceneManager.LoadScene("Lose");
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
