@@ -18,7 +18,7 @@ public class Analytics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void OnLose()

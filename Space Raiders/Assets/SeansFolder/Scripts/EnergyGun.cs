@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class EnergyGun : InteractiveObject
 {
@@ -14,6 +15,8 @@ public class EnergyGun : InteractiveObject
     public void SerumPickedup()
     {
         EnergyPickedUp = true;
+        //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game", "ShootingCollected");
+        GameAnalytics.NewDesignEvent("ShootingCollected");
         GameManager.EnergyTextCoroutine();
         Destroy(gameObject);
     }

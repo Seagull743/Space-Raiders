@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class CheckFalling : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class CheckFalling : MonoBehaviour
 		if (transform.position.y < resetBelowThisY)
 		{
 			PH.RespawnPlayer();
+			GameAnalytics.NewDesignEvent("Death:Falling");
 		}
 	}
 
