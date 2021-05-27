@@ -41,51 +41,47 @@ public class Freeze : MonoBehaviour
     }
 
     void Update()
-    {   
-         if (freezing && CanFreeze == true)
-         {
-             timertoFreeze += Time.deltaTime;
-
-             if (timertoFreeze >= 0.5)
-                 {
-                    Debug.Log("Frozen complete");
+    {
+        if(freezing && CanFreeze == true)
+        {
+            timertoFreeze += Time.deltaTime;
+            if(timertoFreeze >= 0.5)
+            {
+                Debug.Log("Frozen complete");
                 FreezeEffect.SetActive(true);
                 foreach (GameObject CM in CharacterMesh)
                 {
                     CM.GetComponent<Renderer>().material = Frozen;
-
                 }
                 //gameObject.GetComponent<Renderer>().material = Frozen;
                 freezingComplete = true;
 
-                        if (freezingComplete == true)
-                        {                           
-                            CanFreeze = false;                           
-                            if(TryGetComponent<EnemyAI>(out var AI))
-                            {
-                                AI.Frozen();
-                            }
+                if(freezingComplete == true)
+                {
+                    CanFreeze = false;
+                    if(TryGetComponent<EnemyAI>(out var AI))
+                    {
+                        AI.Frozen();
+                    }
 
-                            if (TryGetComponent<Platform>(out var platform))
-                            {
-                                platform.Frozen();
-                            }
-                            
-                             Invoke("TheTimer", 5f);      
-                        }
-       }
-     
-       if (!freezing)
-       {
-        timertoFreeze = 0;
-     
-        timerunFreeze = 5;
+                    if(TryGetComponent<Platform>(out var platform))
+                    {
+                        platform.Frozen();
+                    }
+
+                    Invoke("TheTimer", 5f);
+                }
+            }
         }
-    
+
+        if(!freezing)
+        {
+            timertoFreeze = 0;
+
+            timerunFreeze = 5;
+        }
     }
-    
-    
-    }
+
     public void StartFreezing()
     {
         freezing = true;      
@@ -114,10 +110,10 @@ public class Freeze : MonoBehaviour
             AI.UnFrozen();
         }
 
-        if (TryGetComponent<Platform>(out var platform))
-            {
-                platform.UnFrozen();
-            }
+        if(TryGetComponent<Platform>(out var platform))
+        {
+            platform.UnFrozen();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,12 +125,10 @@ public class Freeze : MonoBehaviour
                 if(this.gameObject.TryGetComponent<Health>(out var health))
                 {
                     health.ShardDamage(damageAmount);
-                }
-                
+                }           
             }
         }
     }
-
 }
 
 
