@@ -12,6 +12,9 @@ public class EnemyGun : MonoBehaviour
     private float fireRate;
     private Animator anim;
 
+    [SerializeField]
+    private AudioSource shotFired;
+
     private Transform player;
 
     private void Awake()
@@ -35,7 +38,9 @@ public class EnemyGun : MonoBehaviour
         {
             alreadyFired = true;
             anim.SetTrigger("attacktrigger");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
+            shotFired.Play();
+            yield return new WaitForSeconds(0.1f);
             Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
         }  
     }

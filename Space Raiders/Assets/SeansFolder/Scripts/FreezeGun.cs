@@ -64,7 +64,7 @@ public class FreezeGun : MonoBehaviour
         freezebeam.Stop();
         shooting = false;
         colliderBeam.GetComponent<Collider>().enabled = false;
-       // anim = GetComponentInChildren<Animator>();
+       // anim = GetComponentInChildren<Animator>();      
     }
     // Update is called once per frame
     void Update()
@@ -125,6 +125,7 @@ public class FreezeGun : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && !freezeon && !Beam && Time.time >= nexttimetofire)
         {
+            FindObjectOfType<AudioManager>().Play("playerGunFire");
             nexttimetofire = Time.time + 1f / firerate;
             //Gets position of Gun -- JET
             lastKnownPos = this.transform.position;         
