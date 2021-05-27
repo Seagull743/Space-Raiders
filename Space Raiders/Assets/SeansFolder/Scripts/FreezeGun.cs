@@ -130,12 +130,20 @@ public class FreezeGun : MonoBehaviour
             lastKnownPos = this.transform.position;         
             Shoot();
             shooting = true;
+           // StartCoroutine(AbleToShoot());
         }
         else
         {
             shooting = false;
         }
     }
+
+
+    //IEnumerator AbleToShoot()
+    //{
+   //     yield return new WaitForSeconds(4f);
+    //    shooting = false;
+   // }
 
     public void Shoot()
     {

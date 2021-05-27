@@ -262,6 +262,7 @@ public class GameManager : MonoBehaviour
 
     private void YouWon()
     {
+        Accomplished.SetActive(false);
         Debug.Log("You Won");
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game");
         SceneManager.LoadScene("MainMenu-Final");

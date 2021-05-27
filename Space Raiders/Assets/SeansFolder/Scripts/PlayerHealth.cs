@@ -112,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Youlost()
     {
+        unAccomplished.SetActive(false);
         SceneManager.LoadScene("MainMenu-Final");
     }
 
