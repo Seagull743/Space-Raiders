@@ -447,6 +447,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+--- !u!1 &514227901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9146504814307396855, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+  m_PrefabInstance: {fileID: 1824971443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &529764600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -881,6 +886,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: EnemysIsland2.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: EnemysIsland3.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: EnemysIsland4.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: InteractCross
       value: 
       objectReference: {fileID: 97431902}
@@ -923,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: Boss
       value: 
-      objectReference: {fileID: 581171407}
+      objectReference: {fileID: 1830201691}
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: BossSpawnLocation
       value: 
@@ -3619,6 +3636,14 @@ PrefabInstance:
       propertyPath: viewMeshFilter
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4358052128665023313, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: viewRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358052128665023313, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4918620131657299477, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3678,7 +3703,11 @@ PrefabInstance:
     - target: {fileID: 5206921556509620918, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: FreezeEffect
       value: 
-      objectReference: {fileID: 1824971444}
+      objectReference: {fileID: 514227901}
+    - target: {fileID: 5206921556509620918, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f2458f679e59de42aea0a3aff42f4aa, type: 2}
     - target: {fileID: 5706360094748611429, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: m_Name
       value: Boss-V2
@@ -3689,11 +3718,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b729221a4afba5d48959ea07e9732907, type: 3}
---- !u!1 &1824971444 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 106178690293179829, guid: b729221a4afba5d48959ea07e9732907, type: 3}
-  m_PrefabInstance: {fileID: 1824971443}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1830201691
 GameObject:
   m_ObjectHideFlags: 0

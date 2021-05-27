@@ -20,7 +20,6 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] float timeBetweenAttacks;
 	[SerializeField] float attackDelay;
-	public bool alreadyAttacked;
     public bool playerInSightRange, playerInAttackRange;	
 	public bool attacking;
 	public bool alerted;
@@ -106,7 +105,8 @@ public class EnemyAI : MonoBehaviour
 			{
 				anim.SetBool("walk", true);
 			}
-			else
+			
+			if(!playerInSightRange && playerInAttackRange || !playerInSightRange && !playerInAttackRange)
 			{
 				anim.SetBool("walk", false);
 			}
@@ -141,27 +141,27 @@ public class EnemyAI : MonoBehaviour
 	{
 		Debug.Log("Damage Player");
 
+		Vector3 targetPosition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
+
+		this.transform.LookAt(targetPosition);
+
         if (melee != false || boss != false || range != true)
         {
 			anim.SetTrigger("attacktrigger");
 		}
-        
-		transform.LookAt(player);
 
-        if (!alreadyAttacked && melee != false && !isFrozen && !isDead || !alreadyAttacked && boss != false && !isFrozen && !isDead)
+        if (!attacking && melee != false && !isFrozen && !isDead || !attacking && boss != false && !isFrozen && !isDead)
 		{
 			nav.SetDestination(transform.position);
 			attacking = true;
-			alreadyAttacked = true;
 			Invoke(nameof(StartAttack), attackDelay);
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
 		}
 
-		if (!alreadyAttacked && range != false && !isFrozen && !isDead)
+		if (!attacking && range != false && !isFrozen && !isDead)
         {
 			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
-			alreadyAttacked = true;
 			Invoke(nameof(StartAttack), attackDelay);
 			Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -186,7 +186,6 @@ public class EnemyAI : MonoBehaviour
 			GetComponentInChildren<EnemyGun>().alreadyFired = false;
         }
 		attacking = false;
-		alreadyAttacked = false;
     }
 
 	public void Frozen()

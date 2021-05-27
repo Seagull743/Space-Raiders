@@ -12,8 +12,11 @@ public class EnemyGun : MonoBehaviour
     private float fireRate;
     private Animator anim;
 
+    private Transform player;
+
     private void Awake()
     {
+        player = GameObject.Find("Player").transform;
         anim = GetComponentInParent<Animator>();
     }
 
@@ -26,6 +29,7 @@ public class EnemyGun : MonoBehaviour
     IEnumerator Fire()
     {
         yield return new WaitForSeconds(0.1f);
+        transform.LookAt(player);
         Debug.Log("Shot Fired");
         if(alreadyFired != true)
         {

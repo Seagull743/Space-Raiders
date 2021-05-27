@@ -1243,7 +1243,6 @@ GameObject:
   - component: {fileID: 4358052128665023313}
   - component: {fileID: 1606791329673846033}
   - component: {fileID: 5206921556509620918}
-  - component: {fileID: 4833193919961853576}
   m_Layer: 0
   m_Name: Boss-V2
   m_TagString: Boss
@@ -1360,7 +1359,6 @@ MonoBehaviour:
   runSpeed: 5
   timeBetweenAttacks: 2
   attackDelay: 0
-  alreadyAttacked: 0
   playerInSightRange: 0
   playerInAttackRange: 0
   attacking: 0
@@ -1428,23 +1426,6 @@ MonoBehaviour:
   - {fileID: 7586867527125019731}
   - {fileID: 1743693562401649238}
   - {fileID: 8517843700581024119}
---- !u!114 &4833193919961853576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5706360094748611429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a592ae197aa945847b6960fb1fde57b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patrolWaiting: 0
-  _totalWaitTime: 3
-  _switchProbability: 0.2
-  _patrolPoints: []
-  _travelling: 0
 --- !u!1 &5865103795805673945
 GameObject:
   m_ObjectHideFlags: 0
