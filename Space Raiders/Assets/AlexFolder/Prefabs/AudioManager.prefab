@@ -48,60 +48,84 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 96cb9c0861b9ac34eaec66e379044051, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 1
     source: {fileID: 0}
   - name: freezing
     clip: {fileID: 8300000, guid: 1b2df16dec2ccc145a916cf009ac05ee, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 1
     source: {fileID: 0}
   - name: frozen
     clip: {fileID: 8300000, guid: 38b7d95d670deb2478ed87592313ce75, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: gasrelease
     clip: {fileID: 8300000, guid: a7a371e3d4f48144d83b8cd56bf6a863, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: gunSwitch
     clip: {fileID: 8300000, guid: 1ca9e9beff235fb43ae92cc6e68170b2, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: lazerFire
     clip: {fileID: 8300000, guid: df36ba80791df0445a003495ec70d6d5, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: crystalCollect
     clip: {fileID: 8300000, guid: e1099df58a36057499469271bc9ad870, type: 3}
     pitchVariance: 0
     volumeVariance: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: playerGunFire
     clip: {fileID: 8300000, guid: df36ba80791df0445a003495ec70d6d5, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: crystalPlacement
+    clip: {fileID: 8300000, guid: 4e7b75e1e1a46c74bb5577308c594eeb, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: movingRock
+    clip: {fileID: 8300000, guid: 097b610b663e4b54cb577b4a620a251b, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: ' ambiance'
+    clip: {fileID: 8300000, guid: d58ea1523c0f2f047b8c1c9cb6d016c2, type: 3}
     pitchVariance: 0
     volumeVariance: 0
     volume: 1
