@@ -2626,6 +2626,7 @@ GameObject:
   - component: {fileID: 1800706598}
   - component: {fileID: 2182606283408650224}
   - component: {fileID: 4587336664951634477}
+  - component: {fileID: 1544435738113031074}
   m_Layer: 12
   m_Name: Melee-bug
   m_TagString: Melee
@@ -2950,6 +2951,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1544435738113031074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649443839035394444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8760df0a13593de43a171c2a7ab38cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footSteps: {fileID: 0}
 --- !u!1 &7965638837713159536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,14 +3450,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35e4cf236178d149a1aca14f7be3d82, type: 3}
---- !u!1 &2849219582711538983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9206115893408249224, guid: e35e4cf236178d149a1aca14f7be3d82, type: 3}
-  m_PrefabInstance: {fileID: 6361554085425352879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6166510847920229339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 998426160261389172, guid: e35e4cf236178d149a1aca14f7be3d82, type: 3}
+  m_PrefabInstance: {fileID: 6361554085425352879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2849219582711538983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9206115893408249224, guid: e35e4cf236178d149a1aca14f7be3d82, type: 3}
   m_PrefabInstance: {fileID: 6361554085425352879}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8323502401886575772

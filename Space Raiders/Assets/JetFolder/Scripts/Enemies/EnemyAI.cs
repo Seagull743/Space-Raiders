@@ -144,7 +144,7 @@ public class EnemyAI : MonoBehaviour
 		
 		Vector3 targetPosition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
 
-		if (!isFrozen)
+		if (!isFrozen && !isDead)
 			this.transform.LookAt(targetPosition);
 
         if (melee != false || boss != false || range != true)
@@ -193,6 +193,8 @@ public class EnemyAI : MonoBehaviour
 	public void Frozen()
 	{
 		isFrozen = true;
+
+		FindObjectOfType<AudioManager>().Play("frozen");
 
 		if (boss)
 			anim.speed = 0.3F;

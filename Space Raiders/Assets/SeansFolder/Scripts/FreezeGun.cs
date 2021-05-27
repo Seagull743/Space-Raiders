@@ -73,6 +73,7 @@ public class FreezeGun : MonoBehaviour
         {
             if (freezeon)
             {
+                FindObjectOfType<AudioManager>().Play("gunSwitch");
                 FreezeVials.SetActive(false);
                 ShardVials.SetActive(true);
                 anim.SetBool("isbeamon", false);
@@ -82,7 +83,7 @@ public class FreezeGun : MonoBehaviour
             }
             else if (freezeon == false)
             {
-               
+                FindObjectOfType<AudioManager>().Play("gunSwitch");
                 anim.SetBool("isbeamon", true);
                 ShardVials.SetActive(false);
                 FreezeVials.SetActive(true);
@@ -94,6 +95,7 @@ public class FreezeGun : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && freezeon && PauseMenu.GameIsPause == false)
         {
+            //FindObjectOfType<AudioManager>().Play("freezeRay");
             freezebeam.Play();
             colliderBeam.GetComponent<Collider>().enabled = true;
             Beam = true;

@@ -5,11 +5,9 @@ using GameAnalyticsSDK;
 
 public class GreenCrystal : InteractiveObject
 {
-   
     public static bool GreenCrystalCollected = false;
     [SerializeField]
     private bool pickedup = false;
-    
 
     void Start()
     {
@@ -38,5 +36,4 @@ public class GreenCrystal : InteractiveObject
         GameAnalytics.NewDesignEvent("Crystal-green");
         Destroy(gameObject);
     }
-
 }
