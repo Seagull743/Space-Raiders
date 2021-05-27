@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private GameObject unAccomplished;
 
+    [SerializeField]
+    private Animator damageAnim;
 
     private bool isTakingDmg = false;
     private bool isRegeningHealth;
@@ -45,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currenthealth <= 0)
         {
+            //GameAnalytics.NewDesignEvent("Death:Mob");
             RespawnPlayer();         
         }
     }
@@ -62,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
        if(Input.GetKeyDown(KeyCode.P))
        {
            currenthealth -= 20;
+           damageAnim.SetTrigger("dmg");
        }
 
     }  
@@ -81,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currenthealth -= damagetoplayer;
         isTakingDmg = true;
+        //damageAnim.SetTrigger("dmg");
         Invoke("TakingDamageFalse", 3);
 
     }
