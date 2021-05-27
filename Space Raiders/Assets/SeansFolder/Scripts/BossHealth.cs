@@ -25,7 +25,7 @@ public class BossHealth : MonoBehaviour
         if (currenthealth <= 0 && BossKilled != true)
         {
             BossKilled = true;
-            DestroyEnemy();         
+            StartCoroutine("DestroyEnemy");         
         }
     }
 
