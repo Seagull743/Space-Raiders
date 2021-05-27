@@ -100,3 +100,11 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  - name: playerGunFire
+    clip: {fileID: 8300000, guid: df36ba80791df0445a003495ec70d6d5, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
