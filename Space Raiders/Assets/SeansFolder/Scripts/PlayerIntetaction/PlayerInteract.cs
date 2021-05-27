@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour {
 
 
 public Transform playerCam;
-public static float maxDistance = 5f;
+public float maxDistance = 5f;
 public LayerMask playerLayer;
 
 
@@ -15,7 +15,6 @@ public LayerMask playerLayer;
 // Update is called once per frame
 void Update()
 {
-
 
     if (Input.GetKeyDown(KeyCode.E))
     {

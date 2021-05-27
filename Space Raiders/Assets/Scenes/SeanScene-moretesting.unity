@@ -557,7 +557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &205046300
 Transform:
   m_ObjectHideFlags: 0
@@ -1256,7 +1256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c415b16486dd3444eb4285c17e0ea253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 2025779923}
 --- !u!65 &321944280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13642,7 +13641,7 @@ PrefabInstance:
       objectReference: {fileID: 1568842636}
     - target: {fileID: 1788678730, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 479876495143902956, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: m_LocalScale.x

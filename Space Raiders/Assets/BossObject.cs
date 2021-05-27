@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BossObject : InteractiveObject
 {
-    public static bool boss = false;
-    [SerializeField]
-    public GameManager gameManager;
 
     public override void PlayerInteraction()
     {
@@ -15,13 +12,13 @@ public class BossObject : InteractiveObject
 
     private void SpawnBoss()
     {
-        if(BlueCrystalShrine.BlueCrystalplaced == true && GreenCrystalShrine.GreenPlaced == true && PurpleCrystalShrine.PurplePlaced == true && PinkCrystalShrine.PinkCrystalplaced == true)
+        if(GameManager.AllCrystalsPlaced())
         {
-            boss = true;  
+            GameManager.SetBossSpawned();  
         }
         else
         {
-            gameManager.GetComponent<GameManager>().BossTextStart();
+            GameManager.BossTextStart();
         }
     }
 }

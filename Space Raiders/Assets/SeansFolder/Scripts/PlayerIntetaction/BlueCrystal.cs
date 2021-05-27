@@ -5,7 +5,7 @@ using GameAnalyticsSDK;
 
 public class BlueCrystal : InteractiveObject
 {
-    public static bool BlueCrystalCollected = false;
+    public bool BlueCrystalCollected = false;
     public override void PlayerInteraction()
     {
         PickedupCrystal();
@@ -14,9 +14,10 @@ public class BlueCrystal : InteractiveObject
     public void PickedupCrystal()
     {
         GameManager.TheScoreAdd();
+        GameManager.CollectBlueCrystal();
         BlueCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        GameAnalytics.NewDesignEvent("Crystal-blue");
-        Destroy(gameObject);
+        //GameAnalytics.NewDesignEvent("Crystal-blue");
+        this.gameObject.SetActive(false);
     }
 }
