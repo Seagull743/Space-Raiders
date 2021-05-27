@@ -5,22 +5,10 @@ using GameAnalyticsSDK;
 
 public class GreenCrystal : InteractiveObject
 {
-    public static bool GreenCrystalCollected = false;
+   
+    public bool GreenCrystalCollected = false;
     [SerializeField]
-    private bool pickedup = false;
-
-    void Start()
-    {
-        if (!pickedup)
-        {
-            this.gameObject.SetActive(true);
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
-
+    
     public override void PlayerInteraction()
     {
         PickedupCrystal();
@@ -28,12 +16,12 @@ public class GreenCrystal : InteractiveObject
     
     public void PickedupCrystal()
     {
-        //GM.GetComponent<GameManager>().TheScoreInternal();
+        
         GameManager.TheScoreAdd();
+        GameManager.CollectGreenCrystal();
         GreenCrystalCollected = true;
-        pickedup = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        GameAnalytics.NewDesignEvent("Crystal-green");
-        Destroy(gameObject);
+        //GameAnalytics.NewDesignEvent("Crystal-green");
+        this.gameObject.SetActive(false);
     }
 }
