@@ -116,16 +116,16 @@ public class GameManager : MonoBehaviour
         HealthBackGround.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
-        
-       // if (Instance == null)
-       // {
-       //     Instance = this;
-        //    DontDestroyOnLoad(Instance);
-        //}
-       // else
-       // {
-        //    Destroy(gameObject);
-       // }
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
