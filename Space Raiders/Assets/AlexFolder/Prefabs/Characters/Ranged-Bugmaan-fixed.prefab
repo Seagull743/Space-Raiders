@@ -1605,6 +1605,7 @@ MonoBehaviour:
   maxHealth: 100
   currenthealth: 0
   HealthBar: {fileID: 488599935}
+  hurt: {fileID: 8679032373110254460}
 --- !u!114 &3991449778926375918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1734,7 +1735,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1e85334e49bdd7b47b4aa80ea8bbdd79, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

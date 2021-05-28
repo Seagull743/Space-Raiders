@@ -59,6 +59,11 @@ public class Movement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        if(controller.isGrounded != false && controller.velocity.magnitude > 2f)
+        {
+
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -74,6 +79,11 @@ public class Movement : MonoBehaviour
         else
         {
             isWalking = false;
+        }
+
+        if(isWalking && isGrounded)
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerFootStep");
         }
 
 

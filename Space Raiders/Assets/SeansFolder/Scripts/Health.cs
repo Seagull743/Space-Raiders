@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
     private AudioSource hurt;
 
     // Start is called before the first frame update
