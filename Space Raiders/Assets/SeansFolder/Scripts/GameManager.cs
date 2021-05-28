@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
             {
                 youwon = true;
                 Accomplished.SetActive(true);
-                Invoke("YouWon", 6);
+                Invoke("YouWon", 5);
             }
         }
     }

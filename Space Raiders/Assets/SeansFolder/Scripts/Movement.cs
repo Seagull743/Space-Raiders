@@ -39,6 +39,9 @@ public class Movement : MonoBehaviour
     private float walkingTime;
     private Vector3 targetCameraPosition;
 
+    [SerializeField]
+    private GunAnimations GA;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -68,10 +71,12 @@ public class Movement : MonoBehaviour
         if (move.magnitude > 0)
         {
             isWalking = true;
+            GA.Walk();
         }
         else
         {
             isWalking = false;
+            GA.WalkOFF();
         }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -82,6 +87,7 @@ public class Movement : MonoBehaviour
         if (!isGrounded)
         {
             isWalking = false;
+            GA.WalkOFF();
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -108,11 +114,11 @@ public class Movement : MonoBehaviour
         // Set time and offset to 0
         if (!isWalking)
         {
-            walkingTime = 0;
+            walkingTime = 0;            
         }
         else
         {
-            walkingTime += Time.deltaTime;
+            walkingTime += Time.deltaTime;           
         }
 
         targetCameraPosition = headTransform.position + CalculateHeadBobOffset(walkingTime);

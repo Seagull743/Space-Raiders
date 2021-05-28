@@ -52,10 +52,23 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currenthealth <= 0)
         {
-            currenthealth = 0;
-            GameAnalytics.NewDesignEvent("Death:Mob");
-            fadeAnim.SetBool("out", true);          
-            RespawnPlayer();         
+            if (playerLives >= 0)
+            {
+                currenthealth = 0;
+                GameAnalytics.NewDesignEvent("Death:Mob");
+                fadeAnim.SetBool("out", true);
+                RespawnPlayer();
+            }
+            else if (playerLives == 0)
+            {
+                heart1.SetActive(false);
+                Debug.Log("You lost");
+                unAccomplished.SetActive(true);
+                HealthBar.value = 0;
+                healthText.text = 0 + "/100";
+                Invoke("Youlost", 5);
+            }
+     
         }
     }
     
@@ -115,20 +128,21 @@ public class PlayerHealth : MonoBehaviour
         {
             heart2.SetActive(false);
         }
-        else if(playerLives == 0)
-        {
-            heart1.SetActive(false);
-            Debug.Log("You lost");
-            unAccomplished.SetActive(true);
-            HealthBar.value = 0;
-            healthText.text = 0 + "/100";
-            Invoke("Youlost", 8);
-        }
+        //else if(playerLives == 0)
+        //{
+        //    heart1.SetActive(false);
+        //    Debug.Log("You lost");
+        //    unAccomplished.SetActive(true);
+        //    HealthBar.value = 0;
+        //    healthText.text = 0 + "/100";
+        //    Invoke("Youlost", 5);
+        //}
     }
 
     private void Youlost()
     {
         unAccomplished.SetActive(false);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Game");
         SceneManager.LoadScene("Lose");
         Cursor.lockState = CursorLockMode.None;
     }

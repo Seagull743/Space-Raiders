@@ -12,6 +12,16 @@ public class GunAnimations : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+
+    public void Walk()
+    {
+        anim.SetBool("walk", true);
+    }
+
+    public void WalkOFF()
+    {
+        anim.SetBool("walk", false);
+    }
    
     public void BeamAnim()
     {
