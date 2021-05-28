@@ -2758,7 +2758,7 @@ MonoBehaviour:
   attackRange: 5
   health: {fileID: 0}
   viewRadius: 20
-  viewAngle: 120
+  viewAngle: 360
   targetMask:
     serializedVersion: 2
     m_Bits: 2048

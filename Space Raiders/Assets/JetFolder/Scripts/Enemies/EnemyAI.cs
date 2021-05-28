@@ -140,7 +140,6 @@ public class EnemyAI : MonoBehaviour
 	private void Attack()
 	{
 		Debug.Log("Damage Player");
-
 		
 		Vector3 targetPosition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
 
@@ -170,7 +169,9 @@ public class EnemyAI : MonoBehaviour
 	private void StartAttack()
 	{
 		if (damageBox != null && !isFrozen)
+        {
 			damageBox.SetActive(true);
+		}		
 		Invoke(nameof(ResetAttack), timeBetweenAttacks);
 	}
 
