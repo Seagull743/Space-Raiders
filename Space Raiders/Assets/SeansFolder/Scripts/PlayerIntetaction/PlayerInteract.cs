@@ -10,6 +10,8 @@ public Transform playerCam;
 public float maxDistance = 5f;
 public LayerMask playerLayer;
 
+public
+
 
 
 // Update is called once per frame

@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
 
     public int speed;
 
-    public float maxLifeTime;
+    
     public float currentLifeTime;
 
     [SerializeField]
@@ -20,7 +20,8 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentLifeTime = maxLifeTime;
+        currentLifeTime = 8;
+
 
         this.GetComponent<Rigidbody>().AddForce((hitpoint - this.transform.position).normalized * speed);
     }
@@ -29,10 +30,12 @@ public class Projectile : MonoBehaviour
     {
         currentLifeTime -= Time.deltaTime;
 
-        currentLifeTime = Mathf.Clamp(currentLifeTime, 0, maxLifeTime);
+       if(currentLifeTime <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 
-        if (currentLifeTime <= 0)
-            Destroy(gameObject);
+
     }
 
     private void OnTriggerEnter(Collider other)
