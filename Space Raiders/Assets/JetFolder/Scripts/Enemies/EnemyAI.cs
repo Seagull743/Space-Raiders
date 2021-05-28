@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
 
 		if (!playerInSightRange && !playerInAttackRange && !isDead) nav.speed = walkSpeed;
         if (playerInSightRange && !playerInAttackRange && !isDead && !isFrozen && melee || playerInSightRange && !playerInAttackRange && !isDead && !isFrozen && boss) Chase();
-        if (playerInAttackRange && playerInSightRange && !isDead) Attack();
+        if (playerInAttackRange && playerInSightRange && !isDead && !isFrozen) Attack();
 		
 		if (melee != false && !isDead || boss != false && !isDead)
 		{
@@ -169,14 +169,14 @@ public class EnemyAI : MonoBehaviour
 
 	private void StartAttack()
 	{
-		if (damageBox != null)
+		if (damageBox != null && !isFrozen)
 			damageBox.SetActive(true);
 		Invoke(nameof(ResetAttack), timeBetweenAttacks);
 	}
 
     private void ResetAttack()
     {	
-		if(damageBox != null)
+		if(damageBox != null && !isFrozen)
         {
 			damageBox.SetActive(false);
 		}	
