@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        controller.GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
         isWalking = false;
     }
 
@@ -52,18 +52,11 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        
-
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-
-        if(controller.isGrounded != false && controller.velocity.magnitude > 2f)
-        {
-
-        }
-
+       
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -80,12 +73,6 @@ public class Movement : MonoBehaviour
         {
             isWalking = false;
         }
-
-        if(isWalking && isGrounded)
-        {
-            FindObjectOfType<AudioManager>().Play("PlayerFootStep");
-        }
-
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {

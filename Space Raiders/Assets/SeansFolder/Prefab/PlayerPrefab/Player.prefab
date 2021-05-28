@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 8927324080614394603}
+  maxDistance: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -491,6 +492,8 @@ MonoBehaviour:
   heart3: {fileID: 0}
   HealthBar: {fileID: 0}
   healthText: {fileID: 0}
+  unAccomplished: {fileID: 0}
+  damageAnim: {fileID: 0}
   damagetoplayer: 20
   gameManager: {fileID: 0}
 --- !u!114 &1788678730
@@ -769,6 +772,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6511236243300525138}
     m_Modifications:
+    - target: {fileID: 479876495293942466, guid: 3d23f052faf04ce499a0276bcc6afaf3, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 479876495293942467, guid: 3d23f052faf04ce499a0276bcc6afaf3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.16159898
