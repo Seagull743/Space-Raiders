@@ -53,6 +53,7 @@ public class Health : MonoBehaviour
     {
         currenthealth = maxHealth;
         death = false;
+        GetComponent<EnemyAI>().isDead = false;
     }
 
     public void DestroyEnemy()
