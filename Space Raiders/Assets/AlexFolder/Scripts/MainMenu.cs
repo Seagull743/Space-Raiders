@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
     {
         GameAnalytics.Initialize();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Main Menu");
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
