@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currenthealth <= 0)
         {
-            //GameAnalytics.NewDesignEvent("Death:Mob");
+            GameAnalytics.NewDesignEvent("Death:Mob");
             RespawnPlayer();         
         }
     }

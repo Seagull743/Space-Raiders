@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameAnalyticsSDK;
 
-public class jumpLog : MonoBehaviour
+public class JumpCloud : MonoBehaviour
 {
-    [SerializeField]
-    private string progressionEvent;
     private bool tripped = false;
 
     private void OnTriggerEnter(Collider other)
@@ -14,9 +12,9 @@ public class jumpLog : MonoBehaviour
         if (tripped == false)
         {
             tripped = true;
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, progressionEvent);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "CloudJump");
         }
-
+        
     }
 
 }
