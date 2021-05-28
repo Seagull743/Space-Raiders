@@ -87,8 +87,12 @@ public class EnemyAI : MonoBehaviour
 			viewMesh.name = "View Mesh";
 			viewMeshFilter.mesh = viewMesh;
 		}
-        StartCoroutine("FindTargetsWithDelay", .2f);
     }
+
+	void OnEnable()
+    {
+		StartCoroutine("FindTargetsWithDelay", .2f);
+	}
 
     void Update()
     {
