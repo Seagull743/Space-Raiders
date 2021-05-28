@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject ObjectiveBar;
 
-   // [SerializeField]
-   // private GameObject bossText;
+    [SerializeField]
+    private GameObject bossText;
     [SerializeField]
     private GameObject Accomplished;
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         Accomplished.SetActive(false);
         Boss.SetActive(false);
         Ring.Stop();
-        //bossText.SetActive(false);
+        bossText.SetActive(false);
         ForceField.SetActive(false);
        // HealthBackGround.SetActive(false);
        // BossHealthBar.gameObject.SetActive(false);
@@ -222,10 +222,10 @@ public class GameManager : MonoBehaviour
     {
         bossSpawned = true;
     }
-   // private void BossTextStartInternal()
-  //  {
-   //     StartCoroutine(BossText());
-   // }
+    private void BossTextStartInternal()
+    {
+        StartCoroutine(BossText());
+    }
 
 
     
@@ -268,6 +268,13 @@ public class GameManager : MonoBehaviour
         return LastCheckPointIsSet;
     }
 
+
+     IEnumerator BossText()
+    {
+        bossText.SetActive(true);
+        yield return new WaitForSeconds(3);
+        bossText.SetActive(false);
+    }
 
     private void YouWon()
     {
@@ -421,7 +428,7 @@ public class GameManager : MonoBehaviour
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();
 
-   // public static void BossTextStart() => Instance.BossTextStartInternal();
+    public static void BossTextStart() => Instance.BossTextStartInternal();
     public static void SetBossSpawned() => Instance.SetBossSpawnedInternal();
 
     public static void CollectPurpleCrystal() => Instance.CrystalPurpleCollected = true;

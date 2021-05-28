@@ -12,17 +12,21 @@ public class BossHealth : MonoBehaviour
     private Animator anim;
     private AudioSource hurt;
 
-  //  [SerializeField]
-  //  private Slider BossHealthBar;
-  //  [SerializeField]
-  //  private GameObject BossHealthBackground;
-  //  [SerializeField]
-  //  private GameObject bossText;
+    [SerializeField]
+    private Slider BossHealthBar;
+    [SerializeField]
+    private GameObject BossHealthBackground;
+    [SerializeField]
+    private GameObject bossText;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        bossText.SetActive(false);
+        BossHealthBackground.SetActive(false);
+        BossHealthBackground.SetActive(false);
+        
         hurt = GetComponent<AudioSource>();
         currenthealth = maxHealth;
         anim = GetComponent<Animator>();
@@ -31,9 +35,13 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BossHealthBar.value = currenthealth / maxHealth;
+        
         if (currenthealth <= 0 && BossKilled != true)
         {
             BossKilled = true;
+            BossHealthBackground.SetActive(false);
+            BossHealthBackground.SetActive(false);
             StartCoroutine("DestroyEnemy");         
         }
     }
@@ -43,6 +51,7 @@ public class BossHealth : MonoBehaviour
         currenthealth = maxHealth;
     }
 
+ 
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(0.1f);
