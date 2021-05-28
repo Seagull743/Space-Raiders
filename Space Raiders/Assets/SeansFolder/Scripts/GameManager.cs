@@ -134,10 +134,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-       // if (Input.GetKeyDown(KeyCode.O))
-      //  {
-      //      SpawnTheBoss();
-      //  }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SpawnTheBoss();
+        }
 
 
        // BlueCrystalplaced && GreenPlaced && PurplePlaced && PinkCrystalplaced
@@ -154,6 +154,9 @@ public class GameManager : MonoBehaviour
        
             if(BH.BossKilled == true && !youwon)
             {
+                BossHealthBackground.SetActive(false);
+                BossHealthBar.gameObject.SetActive(false);
+                BossHealthBar.value = 0;
                 youwon = true;
                 Accomplished.SetActive(true);
                 Invoke("YouWon", 6);
@@ -193,6 +196,7 @@ public class GameManager : MonoBehaviour
         Boss.transform.position = BossSpawnLocation.position;
         Boss.SetActive(true);
         SpawnedBoss = true;
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Spawn-Boss");
     } 
     public void InteractCrossOnInternal()
     {

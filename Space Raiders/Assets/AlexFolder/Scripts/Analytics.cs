@@ -5,9 +5,7 @@ using GameAnalyticsSDK;
 
 public class Analytics : MonoBehaviour
 {
-    private int fail = 0;
-    private int mobdeath = 0;
-    private int falldeath = 0;
+    private int time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,31 +19,13 @@ public class Analytics : MonoBehaviour
        
     }
 
-    private void OnLose()
+ 
+    IEnumerator TimeInScene()
     {
-        fail++;
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Game", fail);
-        GameAnalytics.NewDesignEvent("deathbymob", mobdeath);
-        GameAnalytics.NewDesignEvent("deathbyfall", falldeath);
+        yield return new WaitForSecondsRealtime(1);
+        time++;
     }
 
-    private void OnWin()
-    {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game", fail);
-        GameAnalytics.NewDesignEvent("");
-    }
-
-
-
-    
-    private void Death()
-    {
-        //When death by falling
-        GameAnalytics.NewDesignEvent("Death:Falling");
-
-        //Death by Mob
-        GameAnalytics.NewDesignEvent("Death:Mob");
-    }
 
 
 }
