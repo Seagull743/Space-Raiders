@@ -839,11 +839,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6274003486099073199, guid: 9f9d01c3b3060f844823a90f37dfc29a, type: 3}
   m_PrefabInstance: {fileID: 5520438738788237759}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &412892052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2839736195052077441, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
-  m_PrefabInstance: {fileID: 1868517500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &423838506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2653,6 +2648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19ca1814814340d4d806a875d546e23d, type: 3}
+--- !u!1 &1251095433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5488804517182794615, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+  m_PrefabInstance: {fileID: 1868517500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1281989990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2378271072933110632, guid: 8d9ec05e24405e642b57ec83a978404f, type: 3}
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccda1a4c739c7cb45adadcfa17948d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FreezeWord: {fileID: 412892052}
+  FreezeWord: {fileID: 1251095433}
 --- !u!1 &1782292596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2742504984409165701, guid: 3a85ae31aefc67647b0b6f8b6f5fe6cc, type: 3}
@@ -3714,6 +3714,10 @@ PrefabInstance:
       value: PlayerCanvas-alex
       objectReference: {fileID: 0}
     - target: {fileID: 3836072719019659735, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488804517182794615, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
