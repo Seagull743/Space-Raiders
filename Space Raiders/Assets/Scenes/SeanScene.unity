@@ -818,6 +818,10 @@ PrefabInstance:
       propertyPath: BossHealthBackground
       value: 
       objectReference: {fileID: 16573057}
+    - target: {fileID: 1606791329673846033, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: maxHealth
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 3043772068147149684, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -7547,6 +7551,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5488804517182794615, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7554,6 +7562,10 @@ PrefabInstance:
     - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636328989651173539, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}

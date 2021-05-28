@@ -56,6 +56,7 @@ public class FreezeGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnergyGun.EnergyPickedUp = false;
         FreezeVials.SetActive(true);
         ShardVials.SetActive(false);
         crossCircle.SetActive(true);
