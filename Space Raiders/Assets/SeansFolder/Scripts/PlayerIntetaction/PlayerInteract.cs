@@ -10,9 +10,6 @@ public Transform playerCam;
 public float maxDistance = 5f;
 public LayerMask playerLayer;
 
-public
-
-
 
 // Update is called once per frame
 void Update()
@@ -29,18 +26,19 @@ void Update()
         var Selection = hit.transform;
         var SelectionComponent = Selection.GetComponent<InteractiveObject>();
         if (SelectionComponent != null)
-        {
+        {      
             GameManager.InteractCrossOn();
         }
         else
-        {
-             GameManager.InteractCrossOff();
+        {           
+            GameManager.InteractCrossOff();
         }
     }
-    else
-    {
+        else
+        {
+           
             GameManager.InteractCrossOff();
-    }
+        }
 
 }
 

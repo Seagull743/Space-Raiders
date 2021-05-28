@@ -52,17 +52,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ParticleSystem Ring;
 
-    [SerializeField]
-    private Slider BossHealthBar;
-    [SerializeField]
-    private GameObject HealthBackGround;
-    [SerializeField]
+    //[SerializeField]
+   // private Slider BossHealthBar;
+    //[SerializeField]
+   // private GameObject HealthBackGround;
+    //[SerializeField]
     private GameObject ForceField;
     [SerializeField]
     private GameObject ObjectiveBar;
 
-    [SerializeField]
-    private GameObject bossText;
+   // [SerializeField]
+   // private GameObject bossText;
     [SerializeField]
     private GameObject Accomplished;
 
@@ -111,28 +111,28 @@ public class GameManager : MonoBehaviour
         Accomplished.SetActive(false);
         Boss.SetActive(false);
         Ring.Stop();
-        bossText.SetActive(false);
+        //bossText.SetActive(false);
         ForceField.SetActive(false);
-        HealthBackGround.SetActive(false);
-        BossHealthBar.gameObject.SetActive(false);
+       // HealthBackGround.SetActive(false);
+       // BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
 
-      //  if (Instance == null)
-       // {
-        //    Instance = this;
-        //    DontDestroyOnLoad(Instance);
-       // }
-       // else
-       // {
-      //      Destroy(gameObject);
-      //  }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
-        BossHealthBar.value = BH.currenthealth / BH.maxHealth;
+       // BossHealthBar.value = BH.currenthealth / BH.maxHealth;
 
         //GreenCrystalCollected == true
         if (CrystalGreenCollected == true)
@@ -158,8 +158,8 @@ public class GameManager : MonoBehaviour
             if(BH.BossKilled == true && !youwon)
             {
                 youwon = true;
-                BossHealthBar.gameObject.SetActive(false);
-                HealthBackGround.SetActive(false);
+              //  BossHealthBar.gameObject.SetActive(false);
+              //  HealthBackGround.SetActive(false);
                 //Can have a you won text then load you won screen
                 Accomplished.SetActive(true);
                 Invoke("YouWon", 6);
@@ -186,8 +186,8 @@ public class GameManager : MonoBehaviour
         Boss.SetActive(false);
         crystalBoss.SetActive(true);
         anim.SetBool("sink", false);
-        BossHealthBar.gameObject.SetActive(false);
-        HealthBackGround.SetActive(false);
+        //BossHealthBar.gameObject.SetActive(false);
+       // HealthBackGround.SetActive(false);
         bossSpawned = false;
         SpawnedBoss = false;
         ForceField.SetActive(false);
@@ -200,15 +200,15 @@ public class GameManager : MonoBehaviour
         ObjectiveBar.SetActive(false);
         Boss.transform.position = BossSpawnLocation.position;
         Boss.SetActive(true);
-        BossHealthBar.gameObject.SetActive(true);
-        HealthBackGround.SetActive(true);
+        //BossHealthBar.gameObject.SetActive(true);
+       // HealthBackGround.SetActive(true);
         SpawnedBoss = true;
     } 
-    private void InteractCrossOnInternal()
+    public void InteractCrossOnInternal()
     {
         InteractCross.SetActive(true);
     }
-    private void InteractCrossOffInternal()
+    public void InteractCrossOffInternal()
     {
         InteractCross.SetActive(false);
     }
@@ -420,7 +420,9 @@ public class GameManager : MonoBehaviour
     public static void SetLastCheckpoint(Vector3 checkpoint) => Instance.SetLastCheckpointInternal(checkpoint);
     public static Vector3 GetLastCheckpoint() => Instance.GetLastCheckpointInternal();
     public static bool HasLastCheckpoint() => Instance.HasLastCheckPointInternal();
+    
     public static void InteractCrossOn() => Instance.InteractCrossOnInternal();
+    
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();
 
