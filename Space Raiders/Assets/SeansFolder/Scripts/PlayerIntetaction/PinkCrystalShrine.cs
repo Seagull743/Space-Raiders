@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class PinkCrystalShrine : InteractiveObject
 {
@@ -19,6 +20,7 @@ public class PinkCrystalShrine : InteractiveObject
             CrystalIn.SetActive(true);
             Crystal.gameObject.SetActive(true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
+            GameAnalytics.NewDesignEvent("CrystalPlaced:pinkplaced");
             GameManager.PlacePinkCrystal();
             //PinkCrystalplaced = true;
         }

@@ -17,7 +17,7 @@ public class BlueCrystal : InteractiveObject
         GameManager.CollectBlueCrystal();
         BlueCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        //GameAnalytics.NewDesignEvent("Crystal-blue");
+        GameAnalytics.NewDesignEvent("Crystal:blue");
         this.gameObject.SetActive(false);
     }
 }

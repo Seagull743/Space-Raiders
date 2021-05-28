@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class BlueCrystalShrine : InteractiveObject
 {
@@ -20,6 +21,7 @@ public class BlueCrystalShrine : InteractiveObject
             Crystal.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameManager.PlaceBlueCrystal();
+            GameAnalytics.NewDesignEvent("CrystalPlaced:blueplaced");
             //BlueCrystalplaced = true;
         }
         else

@@ -19,7 +19,7 @@ public class PinkCrystal : InteractiveObject
         GameManager.CollectPinkCrystal();
         PinkCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        //GameAnalytics.NewDesignEvent("Crystal-pink");
+        GameAnalytics.NewDesignEvent("Crystal:pink");
         this.gameObject.SetActive(false);
     }
 }

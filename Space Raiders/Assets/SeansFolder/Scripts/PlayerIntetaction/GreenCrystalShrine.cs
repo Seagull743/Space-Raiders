@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class GreenCrystalShrine : InteractiveObject
 {
@@ -21,6 +22,7 @@ public class GreenCrystalShrine : InteractiveObject
             Crystal.gameObject.SetActive(true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameManager.PlaceGreenCrystal();
+            GameAnalytics.NewDesignEvent("CrystalPlaced:greenplaced");
             //GreenPlaced = true;
         }
         else

@@ -18,7 +18,7 @@ public class PurpleCrystal : InteractiveObject
         GameManager.CollectPurpleCrystal();
         PurpleCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        //GameAnalytics.NewDesignEvent("Crystal-purple");
+        GameAnalytics.NewDesignEvent("Crystal:purple");
         this.gameObject.SetActive(false); 
     }
 }

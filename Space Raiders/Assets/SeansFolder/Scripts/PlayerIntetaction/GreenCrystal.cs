@@ -21,7 +21,7 @@ public class GreenCrystal : InteractiveObject
         GameManager.CollectGreenCrystal();
         GreenCrystalCollected = true;
         FindObjectOfType<AudioManager>().Play("crystalCollect");
-        //GameAnalytics.NewDesignEvent("Crystal-green");
+        GameAnalytics.NewDesignEvent("Crystal:green");
         this.gameObject.SetActive(false);
     }
 }
