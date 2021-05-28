@@ -15,8 +15,7 @@ public class EnergyGun : InteractiveObject
     public void SerumPickedup()
     {
         EnergyPickedUp = true;
-        //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game", "ShootingCollected");
-        GameAnalytics.NewDesignEvent("ShootingCollected");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "ShootingCollected");      
         GameManager.EnergyTextCoroutine();
         Destroy(gameObject);
     }
