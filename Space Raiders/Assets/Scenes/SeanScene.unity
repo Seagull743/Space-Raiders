@@ -5088,7 +5088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7178561186273180976, guid: 7c43960d4e2d83346aaa9d9e75f73af0, type: 3}
       propertyPath: sounds.Array.data[11].pitch
-      value: 1
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178561186273180976, guid: 7c43960d4e2d83346aaa9d9e75f73af0, type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7178561186273180977, guid: 7c43960d4e2d83346aaa9d9e75f73af0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -51,24 +51,11 @@ public class PlayerHealth : MonoBehaviour
     void FixedUpdate()
     {
         if(currenthealth <= 0)
-        {
-            if (playerLives >= 0)
-            {
-                currenthealth = 0;
-                GameAnalytics.NewDesignEvent("Death:Mob");
-                fadeAnim.SetBool("out", true);
-                RespawnPlayer();
-            }
-            else if (playerLives == 0)
-            {
-                heart1.SetActive(false);
-                Debug.Log("You lost");
-                unAccomplished.SetActive(true);
-                HealthBar.value = 0;
-                healthText.text = 0 + "/100";
-                Invoke("Youlost", 5);
-            }
-     
+        {        
+             currenthealth = 0;
+             GameAnalytics.NewDesignEvent("Death:Mob");
+             fadeAnim.SetBool("out", true);
+             RespawnPlayer();             
         }
     }
     
@@ -128,15 +115,15 @@ public class PlayerHealth : MonoBehaviour
         {
             heart2.SetActive(false);
         }
-        //else if(playerLives == 0)
-        //{
-        //    heart1.SetActive(false);
-        //    Debug.Log("You lost");
-        //    unAccomplished.SetActive(true);
-        //    HealthBar.value = 0;
-        //    healthText.text = 0 + "/100";
-        //    Invoke("Youlost", 5);
-        //}
+        else if(playerLives == 0)
+        {
+            heart1.SetActive(false);
+            Debug.Log("You lost");
+            unAccomplished.SetActive(true);
+            HealthBar.value = 0;
+            healthText.text = 0 + "/100";
+            Invoke("Youlost", 5);
+        }
     }
 
     private void Youlost()
