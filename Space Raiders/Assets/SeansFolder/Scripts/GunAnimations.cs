@@ -31,6 +31,6 @@ public class GunAnimations : MonoBehaviour
     public void Shardrecoil()
     {
         anim.SetBool("isShooting", true);
-        Invoke("ShardDown", 0.8f);
+        Invoke("ShardDown", 0.4f);
     }
 }
