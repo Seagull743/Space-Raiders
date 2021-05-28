@@ -12,10 +12,12 @@ public class BossHealth : MonoBehaviour
     private Animator anim;
     private AudioSource hurt;
 
-    [SerializeField]
-    private Slider BossHealthBar;
-    [SerializeField]
-
+  //  [SerializeField]
+  //  private Slider BossHealthBar;
+  //  [SerializeField]
+  //  private GameObject BossHealthBackground;
+  //  [SerializeField]
+  //  private GameObject bossText;
 
 
     // Start is called before the first frame update

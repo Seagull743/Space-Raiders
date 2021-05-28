@@ -222,17 +222,12 @@ public class GameManager : MonoBehaviour
     {
         bossSpawned = true;
     }
-    private void BossTextStartInternal()
-    {
-        StartCoroutine(BossText());
-    }
+   // private void BossTextStartInternal()
+  //  {
+   //     StartCoroutine(BossText());
+   // }
 
-     IEnumerator BossText()
-    {
-        bossText.SetActive(true);
-        yield return new WaitForSeconds(2);
-        bossText.SetActive(false);
-    }
+
     
     IEnumerator CrystalTextCoroutine()
     {
@@ -426,7 +421,7 @@ public class GameManager : MonoBehaviour
     public static void InteractCrossOff() => Instance.InteractCrossOffInternal();
     public static void TheScoreAdd() => Instance.TheScoreInternal();
 
-    public static void BossTextStart() => Instance.BossTextStartInternal();
+   // public static void BossTextStart() => Instance.BossTextStartInternal();
     public static void SetBossSpawned() => Instance.SetBossSpawnedInternal();
 
     public static void CollectPurpleCrystal() => Instance.CrystalPurpleCollected = true;
