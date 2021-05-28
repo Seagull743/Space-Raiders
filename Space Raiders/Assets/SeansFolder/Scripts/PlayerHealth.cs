@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
     {   
         currenthealth = maxHealth;
         unAccomplished.SetActive(false);
+        playerLives = 3;
     }
 
     // Update is called once per frame
