@@ -52,6 +52,7 @@ public class Health : MonoBehaviour
     public void RespawnEnemy()
     {
         currenthealth = maxHealth;
+        death = false;
     }
 
     public void DestroyEnemy()

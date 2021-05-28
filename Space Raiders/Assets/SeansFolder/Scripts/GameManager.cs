@@ -239,12 +239,13 @@ public class GameManager : MonoBehaviour
     {
         TheScore += 1;
     }
-
+    
     private void SetLastCheckpointInternal(Vector3 checkpoint)
     {
         LastCheckPointIsSet = true;
         LastCheckPoint = checkpoint;
     }
+    
     private Vector3 GetLastCheckpointInternal()
     {
         return LastCheckPoint;
