@@ -70,7 +70,7 @@ public class FreezeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true && PauseMenu.GameIsPause == false)
+        if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true)
         {
             if (freezeon)
             {
@@ -94,7 +94,7 @@ public class FreezeGun : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && freezeon && PauseMenu.GameIsPause == false)
+        if (Input.GetKey(KeyCode.Mouse0) && freezeon)
         {
             //FindObjectOfType<AudioManager>().Play("freezeRay");
             freezebeam.Play();
