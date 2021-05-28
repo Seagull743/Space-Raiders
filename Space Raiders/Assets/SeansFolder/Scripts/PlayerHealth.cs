@@ -32,6 +32,9 @@ public class PlayerHealth : MonoBehaviour
 
     public float damagetoplayer = 20;
 
+    [SerializeField]
+    private Animator fadeAnim;
+
     public GameManager gameManager;
     
     // Start is called before the first frame update
@@ -49,7 +52,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currenthealth <= 0)
         {
+            currenthealth = 0;
             GameAnalytics.NewDesignEvent("Death:Mob");
+            fadeAnim.SetBool("out", true);          
             RespawnPlayer();         
         }
     }
@@ -94,8 +99,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        
         playerLives -= 1;
         gameManager.SpawnPlayer();
+        fadeAnim.SetBool("in", true);
         currenthealth = maxHealth;
         Debug.Log("Spawned");
         isTakingDmg = true;

@@ -3405,6 +3405,14 @@ PrefabInstance:
       propertyPath: viewRadius
       value: 39.14
       objectReference: {fileID: 0}
+    - target: {fileID: 1854817768373804625, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d41be9d98ed006c40a397c9ea70cc1f9, type: 2}
+    - target: {fileID: 3991449778926375918, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: d41be9d98ed006c40a397c9ea70cc1f9, type: 2}
     - target: {fileID: 7355893813970714870, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8899994
@@ -3840,13 +3848,21 @@ PrefabInstance:
       propertyPath: viewRadius
       value: 39.14
       objectReference: {fileID: 0}
+    - target: {fileID: 1854817768373804625, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d41be9d98ed006c40a397c9ea70cc1f9, type: 2}
+    - target: {fileID: 3991449778926375918, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: d41be9d98ed006c40a397c9ea70cc1f9, type: 2}
     - target: {fileID: 7355893813970714870, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.87
       objectReference: {fileID: 0}
     - target: {fileID: 7355893813970714870, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.88
+      value: -5.01
       objectReference: {fileID: 0}
     - target: {fileID: 7355893813970714870, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5203,6 +5219,14 @@ PrefabInstance:
       propertyPath: viewRadius
       value: 39.14
       objectReference: {fileID: 0}
+    - target: {fileID: 1854817768373804625, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f171a80f5b2357f43a1421922be5b3f9, type: 2}
+    - target: {fileID: 3991449778926375918, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: f171a80f5b2357f43a1421922be5b3f9, type: 2}
     - target: {fileID: 7355893813970714870, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.1100006
@@ -5549,6 +5573,14 @@ PrefabInstance:
       propertyPath: viewRadius
       value: 39.14
       objectReference: {fileID: 0}
+    - target: {fileID: 1854817768373804625, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f171a80f5b2357f43a1421922be5b3f9, type: 2}
+    - target: {fileID: 3991449778926375918, guid: f60d220deda340d4796e7d653a02199f, type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: f171a80f5b2357f43a1421922be5b3f9, type: 2}
     - target: {fileID: 6807586185710691334, guid: f60d220deda340d4796e7d653a02199f, type: 3}
       propertyPath: isFiring
       value: 0
@@ -6091,6 +6123,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4445737076133096672, guid: 203f03e2bf97db240b95304855da6404, type: 3}
   m_PrefabInstance: {fileID: 2754900345297747387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1778780909 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8276338476203344974, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+  m_PrefabInstance: {fileID: 1868517500}
   m_PrefabAsset: {fileID: 0}
 --- !u!143 &1788678729 stripped
 CharacterController:
@@ -11294,6 +11331,10 @@ PrefabInstance:
       propertyPath: damageAnim
       value: 
       objectReference: {fileID: 978628374}
+    - target: {fileID: 1788678726, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
+      propertyPath: fadeAnim
+      value: 
+      objectReference: {fileID: 1778780909}
     - target: {fileID: 1788678730, guid: e7d298f6e24012048b404aad97ecdd9c, type: 3}
       propertyPath: interactCross
       value: 
