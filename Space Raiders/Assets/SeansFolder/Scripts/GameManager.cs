@@ -52,11 +52,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ParticleSystem Ring;
 
-    //[SerializeField]
-   // private Slider BossHealthBar;
-    //[SerializeField]
-   // private GameObject HealthBackGround;
-    //[SerializeField]
+    [SerializeField]
     private GameObject ForceField;
     [SerializeField]
     private GameObject ObjectiveBar;
