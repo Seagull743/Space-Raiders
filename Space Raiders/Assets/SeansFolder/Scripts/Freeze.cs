@@ -45,7 +45,7 @@ public class Freeze : MonoBehaviour
         if(freezing && CanFreeze == true)
         {
             timertoFreeze += Time.deltaTime;
-            if(timertoFreeze >= 0.5)
+            if(timertoFreeze >= 0.3)
             {
                 Debug.Log("Frozen complete");
                 FreezeEffect.SetActive(true);

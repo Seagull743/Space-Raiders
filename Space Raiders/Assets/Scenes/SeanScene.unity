@@ -4756,6 +4756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Extraclouds
       objectReference: {fileID: 0}
+    - target: {fileID: 4089248212283460576, guid: 3a85ae31aefc67647b0b6f8b6f5fe6cc, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 4089248212283460577, guid: 3a85ae31aefc67647b0b6f8b6f5fe6cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6380,6 +6384,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3433974315950112259, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3836072719019659735, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6394,6 +6402,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978736630301489834, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8636328989651173539, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}

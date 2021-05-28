@@ -11,16 +11,23 @@ public class FreezeBeam : MonoBehaviour
     {
         if (other.gameObject.tag == ("Melee") || other.gameObject.tag == ("Range") || other.gameObject.tag == ("Boss") || other.gameObject.tag == ("Platform"))
         {
-            other.GetComponent<Freeze>().StartFreezing();
+           if(other.TryGetComponent<Freeze>(out var AI))
+            {
+                AI.StartFreezing();
+            }
+            //other.GetComponent<Freeze>().StartFreezing();
         }
     }
-
-    
+  
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == ("Melee") || other.gameObject.tag == ("Range") || other.gameObject.tag == ("Boss") || other.gameObject.tag == ("Platform"))
         {
-            other.GetComponent<Freeze>().UnFreezing();
+           if(other.TryGetComponent<Freeze>(out var AI))
+            {
+                AI.UnFreezing();
+            }
+            //other.GetComponent<Freeze>().UnFreezing();
         }
     }
 
