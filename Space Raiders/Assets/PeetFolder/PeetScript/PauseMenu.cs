@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()  
     {
-        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        FindObjectOfType<AudioManager>().Play("UI-Click");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPause = false;
@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        FindObjectOfType<AudioManager>().Play("UI-Click");
         pauseMenuUI.SetActive(true);
         instructions.SetActive(false);
         Time.timeScale = 0f;
@@ -49,21 +49,21 @@ public class PauseMenu : MonoBehaviour
 
     public void InstructionsON()
     {
-        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        FindObjectOfType<AudioManager>().Play("UI-Click");
         instructions.SetActive(true);
         pauseMenuUI.SetActive(false);
     }
 
     public void InstructionsOFF()
     {
-        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        FindObjectOfType<AudioManager>().Play("UI-Click");
         instructions.SetActive(false);
         pauseMenuUI.SetActive(true);
     }
 
     public void MainMenu()
     {
-        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        FindObjectOfType<AudioManager>().Play("UI-Click");
         SceneManager.LoadScene(0);
     }
 

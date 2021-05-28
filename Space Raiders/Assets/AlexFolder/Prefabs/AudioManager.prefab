@@ -140,3 +140,11 @@ MonoBehaviour:
     pitch: 0.3
     loop: 0
     source: {fileID: 0}
+  - name: UI-Click
+    clip: {fileID: 8300000, guid: de01884ec475e4043ad6c24b62768bdd, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 1.8
+    loop: 0
+    source: {fileID: 0}
