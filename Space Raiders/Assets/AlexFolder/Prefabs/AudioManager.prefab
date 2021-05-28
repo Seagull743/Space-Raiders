@@ -108,7 +108,7 @@ MonoBehaviour:
     pitch: 0.3
     loop: 0
     source: {fileID: 0}
-  - name: crystalPlacement
+  - name: rockPlacement
     clip: {fileID: 8300000, guid: 4e7b75e1e1a46c74bb5577308c594eeb, type: 3}
     pitchVariance: 0
     volumeVariance: 0
@@ -126,6 +126,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ' ambiance'
     clip: {fileID: 8300000, guid: d58ea1523c0f2f047b8c1c9cb6d016c2, type: 3}
+    pitchVariance: 0
+    volumeVariance: 0
+    volume: 1
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootStep
+    clip: {fileID: 8300000, guid: e566d1678e6a5f54e893a34867ce7d85, type: 3}
     pitchVariance: 0
     volumeVariance: 0
     volume: 1
