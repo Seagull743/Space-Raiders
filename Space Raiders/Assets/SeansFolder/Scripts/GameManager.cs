@@ -304,7 +304,9 @@ public class GameManager : MonoBehaviour
             CheckPoint2Complete = true;
             CheckPoint3Complete = true;
             CheckPoint4Complete = true;
-            
+            BossHealthBackground.SetActive(false);
+            BossHealthBar.gameObject.SetActive(false);
+
             body.transform.position = checkpoint5.position;
             RespawnPlayer();
         }         
