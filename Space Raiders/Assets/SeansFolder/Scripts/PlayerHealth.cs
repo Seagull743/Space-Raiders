@@ -68,12 +68,6 @@ public class PlayerHealth : MonoBehaviour
         {
             StartCoroutine(RegainHealthOverTime());
         }
-    
-       if(Input.GetKeyDown(KeyCode.P))
-       {
-           currenthealth -= 20;
-          
-       }
 
     }  
 
