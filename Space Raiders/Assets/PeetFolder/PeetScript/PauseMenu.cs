@@ -13,6 +13,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject instructions;
 
+    [SerializeField]
+    private FreezeGun fg;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -33,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("UI-Click");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        fg.PauseOFF();
         GameIsPause = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -43,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         instructions.SetActive(false);
         Time.timeScale = 0f;
+        fg.PauseON();
         GameIsPause = true;
         Cursor.lockState = CursorLockMode.None;
     }

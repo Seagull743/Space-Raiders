@@ -9,7 +9,7 @@ public class BeginFade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim.SetBool("in", true);
     }
 
     // Update is called once per frame

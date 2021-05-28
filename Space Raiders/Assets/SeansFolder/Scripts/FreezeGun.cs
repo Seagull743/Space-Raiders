@@ -53,6 +53,10 @@ public class FreezeGun : MonoBehaviour
 
     public Vector3 lastKnownPos;
 
+
+    //Paused variables:
+    private bool inPlay = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +74,10 @@ public class FreezeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inPlay == true)
+        {
+
+
         if (Input.GetKeyDown(KeyCode.R) && !Beam && EnergyGun.EnergyPickedUp == true)
         {
             if (freezeon)
@@ -140,6 +148,9 @@ public class FreezeGun : MonoBehaviour
         {
             shooting = false;
         }
+
+        }
+
     }
 
 
@@ -167,6 +178,17 @@ public class FreezeGun : MonoBehaviour
             GA.GetComponent<GunAnimations>().Shardrecoil();
         } 
     }
+
+    public void PauseON()
+    {
+        inPlay = false;
+    }
+
+    public void PauseOFF()
+    {
+        inPlay = true;
+    }
+
 }
 
 
