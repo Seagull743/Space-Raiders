@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPause = false;
 
     public GameObject pauseMenuUI;
+
+    [SerializeField]
+    private GameObject instructions;
 
     private void Update()
     {
@@ -26,6 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()  
     {
+        //FindObjectOfType<AudioManager>().Play("UI-Click");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPause = false;
@@ -34,9 +39,32 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        //FindObjectOfType<AudioManager>().Play("UI-Click");
         pauseMenuUI.SetActive(true);
+        instructions.SetActive(false);
         Time.timeScale = 0f;
         GameIsPause = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    public void InstructionsON()
+    {
+        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        instructions.SetActive(true);
+        pauseMenuUI.SetActive(false);
+    }
+
+    public void InstructionsOFF()
+    {
+        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        instructions.SetActive(false);
+        pauseMenuUI.SetActive(true);
+    }
+
+    public void MainMenu()
+    {
+        //FindObjectOfType<AudioManager>().Play("UI-Click");
+        SceneManager.LoadScene(0);
+    }
+
 }

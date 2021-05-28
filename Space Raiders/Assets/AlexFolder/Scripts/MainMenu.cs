@@ -21,6 +21,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject quitPromt = null;
 
+    [SerializeField]
+    private AudioSource click;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +39,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        click.Play();
         StartCoroutine(Starting());
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game");
         fade.SetActive(true);
@@ -54,6 +57,7 @@ public class MainMenu : MonoBehaviour
     //Instruction Menu turn On
     public void InstructionsON()
     {
+        click.Play();
         menuPage.SetActive(false);
         infoPage.SetActive(true);
     }
@@ -61,6 +65,7 @@ public class MainMenu : MonoBehaviour
     //Instruction Menu Turn Off
     public void InstructionsOFF()
     {
+        click.Play();
         infoPage.SetActive(false);
         menuPage.SetActive(true);
     }
@@ -68,6 +73,7 @@ public class MainMenu : MonoBehaviour
     //Credit page turn on
     public void CreditsON()
     {
+        click.Play();
         creditsPage.SetActive(true);
         menuPage.SetActive(false);
 
@@ -76,6 +82,7 @@ public class MainMenu : MonoBehaviour
     //Credit page turn off
     public void CreditsOFF()
     {
+        click.Play();
         creditsPage.SetActive(false);
         menuPage.SetActive(true);
 
@@ -84,11 +91,13 @@ public class MainMenu : MonoBehaviour
     //Quit Prompt:
     public void QuitGamePromtON()
     {
+        click.Play();
         quitPromt.SetActive(true);
         menuPage.SetActive(false);
     }
     public void QuitGamePromtOFF()
     {
+        click.Play();
         quitPromt.SetActive(false);
         menuPage.SetActive(true);
     }
@@ -96,6 +105,7 @@ public class MainMenu : MonoBehaviour
     //Quit Game
     public void ExitGame()
     {
+        click.Play();
         Application.Quit();
     }
         
