@@ -23,6 +23,10 @@ public class Freeze : MonoBehaviour
     [SerializeField]
     private GameObject FreezeEffect;
 
+    //about to unfreeze cues:
+    [SerializeField]
+    private ParticleSystem unFreeze;
+
     [SerializeField]
     private int damageAmount;
 
@@ -49,6 +53,8 @@ public class Freeze : MonoBehaviour
             {
                 Debug.Log("Frozen complete");
                 FreezeEffect.SetActive(true);
+                unFreeze.Play();
+                
                 foreach (GameObject CM in CharacterMesh)
                 {
                     CM.GetComponent<Renderer>().material = Frozen;
