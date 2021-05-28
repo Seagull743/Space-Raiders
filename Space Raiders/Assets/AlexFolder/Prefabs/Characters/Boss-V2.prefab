@@ -1360,8 +1360,8 @@ MonoBehaviour:
   player: {fileID: 0}
   walkSpeed: 2
   runSpeed: 5
-  timeBetweenAttacks: 2
-  attackDelay: 0
+  timeBetweenAttacks: 3
+  attackDelay: 1.25
   playerInSightRange: 0
   playerInAttackRange: 0
   attacking: 0

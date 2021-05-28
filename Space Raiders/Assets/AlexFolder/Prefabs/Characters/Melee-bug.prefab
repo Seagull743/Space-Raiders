@@ -2746,7 +2746,7 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 5
   timeBetweenAttacks: 2
-  attackDelay: 0
+  attackDelay: 0.7
   playerInSightRange: 0
   playerInAttackRange: 0
   attacking: 0

@@ -147,17 +147,16 @@ public class EnemyAI : MonoBehaviour
 		if (!isFrozen && !isDead)
 			this.transform.LookAt(targetPosition);
 
-        if (melee != false || boss != false || range != true)
+		if (!attacking && (melee || boss) && !range)
         {
 			anim.SetTrigger("attacktrigger");
 		}
 
-        if (!attacking && melee != false && !isFrozen && !isDead || !attacking && boss != false && !isFrozen && !isDead)
+        if ((!attacking && melee != false && !isFrozen && !isDead) || (!attacking && boss != false && !isFrozen && !isDead))
 		{
 			nav.SetDestination(transform.position);
 			attacking = true;
 			Invoke(nameof(StartAttack), attackDelay);
-			Invoke(nameof(ResetAttack), timeBetweenAttacks);
 		}
 
 		if (!attacking && range != false && !isFrozen && !isDead)
@@ -165,7 +164,6 @@ public class EnemyAI : MonoBehaviour
 			GetComponentInChildren<EnemyGun>().isFiring = true;
 			attacking = true;
 			Invoke(nameof(StartAttack), attackDelay);
-			Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 	}
 
@@ -173,6 +171,7 @@ public class EnemyAI : MonoBehaviour
 	{
 		if (damageBox != null)
 			damageBox.SetActive(true);
+		Invoke(nameof(ResetAttack), timeBetweenAttacks);
 	}
 
     private void ResetAttack()
