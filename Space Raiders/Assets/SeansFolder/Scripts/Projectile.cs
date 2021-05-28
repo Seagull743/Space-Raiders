@@ -38,18 +38,18 @@ public class Projectile : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "Range" || other.gameObject.tag == "Melee")
+        if(collision.gameObject.tag == "Range" || collision.gameObject.tag == "Melee")
         {
-            other.gameObject.GetComponent<Health>().HurtSound();
-            other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
+            collision.gameObject.GetComponent<Health>().HurtSound();
+            collision.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
             GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));     
             Destroy(this.gameObject);       
         }
-        else if(other.gameObject.tag == "Boss")
+        else if(collision.gameObject.tag == "Boss")
         {
-            other.gameObject.GetComponent<BossHealth>().ShardDamage(shardDmg);
+            collision.gameObject.GetComponent<BossHealth>().ShardDamage(shardDmg);
             GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));
             Destroy(this.gameObject);
         }     
