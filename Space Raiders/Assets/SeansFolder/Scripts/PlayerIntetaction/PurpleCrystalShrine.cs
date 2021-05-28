@@ -19,7 +19,7 @@ public class PurpleCrystalShrine : InteractiveObject
         if (Crystal.PurpleCrystalCollected == true)
         {
             CrystalIn.SetActive(true);
-            Crystal.gameObject.SetActive(true);
+            Crystal.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameManager.PlacePurpleCrystal();
             GameAnalytics.NewDesignEvent("CrystalPlaced:purpleplaced");

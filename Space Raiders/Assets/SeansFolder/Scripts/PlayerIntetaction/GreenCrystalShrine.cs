@@ -19,7 +19,7 @@ public class GreenCrystalShrine : InteractiveObject
         if(Crystal.GreenCrystalCollected == true)
         {
             CrystalIn.SetActive(true);
-            Crystal.gameObject.SetActive(true);
+            Crystal.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameManager.PlaceGreenCrystal();
             GameAnalytics.NewDesignEvent("CrystalPlaced:greenplaced");

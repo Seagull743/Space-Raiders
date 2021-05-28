@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
     private GameObject crystalBoss;
 
     
-    [SerializeField]
-    private ParticleSystem Ring;
+  //  [SerializeField]
+   // private ParticleSystem Ring;
 
     [SerializeField]
     private GameObject ForceField;
@@ -92,10 +92,12 @@ public class GameManager : MonoBehaviour
     private bool CrystalPinkPlaced = false;
     private bool CrystalBluePlaced = false;
 
-    private bool CanSpawnBoss = false;
-
-
     private bool bossSpawned = false;
+
+     [SerializeField]
+     private Slider BossHealthBar;
+     [SerializeField]
+     private GameObject BossHealthBackground;
 
     void Awake()
     {
@@ -104,31 +106,24 @@ public class GameManager : MonoBehaviour
         {
             Enemy.SetActive(false);
         }
+        
+
         Accomplished.SetActive(false);
         Boss.SetActive(false);
-        Ring.Stop();
+       // Ring.Stop();
         bossText.SetActive(false);
         ForceField.SetActive(false);
-       // HealthBackGround.SetActive(false);
-       // BossHealthBar.gameObject.SetActive(false);
+        BossHealthBackground.SetActive(false);
+        BossHealthBar.gameObject.SetActive(false);
         TheScore = 0;
-
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
     void Update()
     {
         ScoreText.text = "Collected  " + TheScore + " / 4" ;
 
-       // BossHealthBar.value = BH.currenthealth / BH.maxHealth;
+        BossHealthBar.value = BH.currenthealth;
 
         //GreenCrystalCollected == true
         if (CrystalGreenCollected == true)
@@ -139,31 +134,31 @@ public class GameManager : MonoBehaviour
             }
         }
 
+       // if (Input.GetKeyDown(KeyCode.O))
+      //  {
+      //      SpawnTheBoss();
+      //  }
+
+
        // BlueCrystalplaced && GreenPlaced && PurplePlaced && PinkCrystalplaced
         if (CrystalBluePlaced && CrystalGreenPlaced && CrystalPurplePlaced && CrystalPinkPlaced && bossSpawned)
         {
             if (!SpawnedBoss)
             {
+                
                 anim.SetBool("sink",true);
-                crystalBoss.SetActive(false);
+                crystalBoss.SetActive(false);        
                 ForceField.SetActive(true);
-                Ring.Play();
-                Invoke("SpawnTheBoss", 4);
+                SpawnTheBoss();
             }
        
             if(BH.BossKilled == true && !youwon)
             {
                 youwon = true;
-              //  BossHealthBar.gameObject.SetActive(false);
-              //  HealthBackGround.SetActive(false);
-                //Can have a you won text then load you won screen
                 Accomplished.SetActive(true);
                 Invoke("YouWon", 6);
             }
         }
-   
- 
-
     }
     private void RegisterPlayerCharacterInternal(GameObject interactCross, GameObject pickedUpText, GameObject crystalText, Text scoreText)
     {
@@ -182,8 +177,6 @@ public class GameManager : MonoBehaviour
         Boss.SetActive(false);
         crystalBoss.SetActive(true);
         anim.SetBool("sink", false);
-        //BossHealthBar.gameObject.SetActive(false);
-       // HealthBackGround.SetActive(false);
         bossSpawned = false;
         SpawnedBoss = false;
         ForceField.SetActive(false);
@@ -191,13 +184,14 @@ public class GameManager : MonoBehaviour
 
     private void SpawnTheBoss()
     {
-        Ring.Stop();
+       // Ring.Stop();
         BH.GetComponent<BossHealth>().RespawnEnemy();
         ObjectiveBar.SetActive(false);
+        BossHealthBackground.SetActive(true);
+        BossHealthBar.gameObject.SetActive(true);
+        BossHealthBar.maxValue = BH.maxHealth;
         Boss.transform.position = BossSpawnLocation.position;
         Boss.SetActive(true);
-        //BossHealthBar.gameObject.SetActive(true);
-       // HealthBackGround.SetActive(true);
         SpawnedBoss = true;
     } 
     public void InteractCrossOnInternal()
@@ -222,9 +216,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(BossText());
     }
-
-
-    
+   
     IEnumerator CrystalTextCoroutine()
     {
         CrytalText.SetActive(true);
@@ -243,7 +235,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         PickedUpText.SetActive(false);
     }
-
     private void TheScoreInternal()
     {
         TheScore += 1;
@@ -263,7 +254,6 @@ public class GameManager : MonoBehaviour
     {
         return LastCheckPointIsSet;
     }
-
 
      IEnumerator BossText()
     {

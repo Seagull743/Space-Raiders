@@ -295,6 +295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bc16023439a6f4480a9088234b6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &66742526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6975140487319066116, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
+  m_PrefabInstance: {fileID: 1868517500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &79704026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3836072719019659735, guid: 2c63c4b8bf27f7b47a90d86a77590a82, type: 3}
@@ -975,6 +980,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1606791329673846033, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: BossHealthBackground
+      value: 
+      objectReference: {fileID: 66742526}
+    - target: {fileID: 1606791329673846033, guid: b729221a4afba5d48959ea07e9732907, type: 3}
+      propertyPath: BossHealthBar
+      value: 
+      objectReference: {fileID: 602299709}
     - target: {fileID: 3043772068147149684, guid: b729221a4afba5d48959ea07e9732907, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -10097,6 +10110,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1303105781, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2754900346515771240, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: EnemysIsland1.Array.size
       value: 3
@@ -10316,6 +10333,14 @@ PrefabInstance:
     - target: {fileID: 2754900346515771242, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525974029370105164, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445737076133096676, guid: 203f03e2bf97db240b95304855da6404, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6670800739145658541, guid: 203f03e2bf97db240b95304855da6404, type: 3}
       propertyPath: m_IsActive

@@ -18,7 +18,7 @@ public class PinkCrystalShrine : InteractiveObject
         if (Crystal.PinkCrystalCollected == true)
         {
             CrystalIn.SetActive(true);
-            Crystal.gameObject.SetActive(true);
+            Crystal.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameAnalytics.NewDesignEvent("CrystalPlaced:pinkplaced");
             GameManager.PlacePinkCrystal();

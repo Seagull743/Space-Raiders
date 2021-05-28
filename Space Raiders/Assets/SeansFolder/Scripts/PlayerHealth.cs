@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
        if(Input.GetKeyDown(KeyCode.P))
        {
            currenthealth -= 20;
-           damageAnim.SetTrigger("dmg");
+          
        }
 
     }  
@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currenthealth -= damagetoplayer;
         isTakingDmg = true;
-        //damageAnim.SetTrigger("dmg");
+        damageAnim.SetTrigger("dmg");
         Invoke("TakingDamageFalse", 3);
 
     }
