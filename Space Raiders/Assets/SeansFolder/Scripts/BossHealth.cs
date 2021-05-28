@@ -10,10 +10,13 @@ public class BossHealth : MonoBehaviour
     public float currenthealth;
     public bool BossKilled = false;
     private Animator anim;
+    private AudioSource hurt;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        hurt = GetComponent<AudioSource>();
         currenthealth = maxHealth;
         anim = GetComponent<Animator>();
     }
@@ -46,5 +49,8 @@ public class BossHealth : MonoBehaviour
         currenthealth -= damageAmount;  
     }
 
-
+    private void HurtSound()
+    {
+        hurt.Play();
+    }
 }

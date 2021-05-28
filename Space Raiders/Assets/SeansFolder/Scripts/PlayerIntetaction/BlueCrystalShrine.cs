@@ -16,8 +16,8 @@ public class BlueCrystalShrine : InteractiveObject
     {
         if (Crystal.BlueCrystalCollected == true)
         {
-            CrystalIn.SetActive(false);
-            Crystal.gameObject.SetActive(true);
+            CrystalIn.SetActive(true);
+            Crystal.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             GameManager.PlaceBlueCrystal();
             //BlueCrystalplaced = true;

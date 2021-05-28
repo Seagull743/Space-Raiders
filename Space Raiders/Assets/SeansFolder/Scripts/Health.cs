@@ -17,9 +17,11 @@ public class Health : MonoBehaviour
 
     private Animator anim;
 
+    private AudioSource hurt;
+
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         anim = GetComponent<Animator>();
         currenthealth = maxHealth;
         HealthBar.enabled = false;
@@ -62,6 +64,10 @@ public class Health : MonoBehaviour
         StartCoroutine(HealthBarIndication());
     }
 
+    public void HurtSound()
+    {
+        hurt.Play();
+    }
 
     IEnumerator HealthBarIndication()
     {

@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Range" || other.gameObject.tag == "Melee")
         {
+            other.gameObject.GetComponent<Health>().HurtSound();
             other.gameObject.GetComponent<Health>().ShardDamage(shardDmg);
             GameObject newImpact = (Instantiate(impact, this.transform.position, this.transform.rotation));     
             Destroy(this.gameObject);       
