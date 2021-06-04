@@ -8,6 +8,9 @@ public class Damage : MonoBehaviour
 
     public int damage;
 
+    [SerializeField]
+    private bool boss = false;
+
     private void OnEnable()
     {
         done = false;
@@ -19,7 +22,15 @@ public class Damage : MonoBehaviour
         {
             if(!done)
             {
-                other.GetComponent<PlayerHealth>().TakeDamage();
+                if (!boss)
+                {
+                    other.GetComponent<PlayerHealth>().TakeDamage();
+                }
+                else if (boss)
+                {
+                    other.GetComponent<PlayerHealth>().TakeDamageBoss();
+                }
+                
                 done = true;
             }            
         }

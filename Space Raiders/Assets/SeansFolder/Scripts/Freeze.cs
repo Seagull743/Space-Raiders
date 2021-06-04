@@ -10,6 +10,9 @@ public class Freeze : MonoBehaviour
     [SerializeField]
     private float timerunFreeze = 5;
 
+    [SerializeField]
+    private float timeToFreeze;
+
     public  bool freezing = false;  
     public  bool freezingComplete = false;
 
@@ -49,7 +52,7 @@ public class Freeze : MonoBehaviour
         if(freezing && CanFreeze == true)
         {
             timertoFreeze += Time.deltaTime;
-            if(timertoFreeze >= 0.3)
+            if(timertoFreeze >= timeToFreeze)
             {
                 Debug.Log("Frozen complete");
                 FreezeEffect.SetActive(true);

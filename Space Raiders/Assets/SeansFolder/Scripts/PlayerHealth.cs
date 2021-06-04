@@ -31,6 +31,8 @@ public class PlayerHealth : MonoBehaviour
     private bool isRegeningHealth;
 
     public float damagetoplayer = 20;
+    [SerializeField]
+    private float damagetoplayerBoss;
 
     [SerializeField]
     private Animator fadeAnim;
@@ -85,6 +87,15 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         currenthealth -= damagetoplayer;
+        isTakingDmg = true;
+        damageAnim.SetTrigger("dmg");
+        Invoke("TakingDamageFalse", 3);
+
+    }
+
+    public void TakeDamageBoss()
+    {
+        currenthealth -= damagetoplayerBoss;
         isTakingDmg = true;
         damageAnim.SetTrigger("dmg");
         Invoke("TakingDamageFalse", 3);

@@ -2786,6 +2786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timertoFreeze: 0
   timerunFreeze: 5
+  timeToFreeze: 0.6
   freezing: 0
   freezingComplete: 0
   normal: {fileID: 2100000, guid: 041b28992ac03a3458f7a6876e67572c, type: 2}
