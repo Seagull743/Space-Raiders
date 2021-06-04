@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentLifeTime = 8;
+        //currentLifeTime = 8;
 
 
         this.GetComponent<Rigidbody>().AddForce((hitpoint - this.transform.position).normalized * speed);

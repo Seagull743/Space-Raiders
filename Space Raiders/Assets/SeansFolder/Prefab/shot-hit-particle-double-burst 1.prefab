@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2188315431005886704}
   - component: {fileID: 2188315431005886705}
   - component: {fileID: 2188315431005886706}
+  - component: {fileID: -5691963743253428455}
   m_Layer: 0
   m_Name: shot-hit-particle-double-burst 1
   m_TagString: Untagged
@@ -4928,3 +4929,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-5691963743253428455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188315431005886707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9422f526e1fc0234eb5555589197d4a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLive: 1
